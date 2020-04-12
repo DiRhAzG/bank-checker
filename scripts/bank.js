@@ -323,7 +323,7 @@ function BankReader() {
 	this.readItems = function (buffer) {
 		qw("reading Items");
 		qw("Columns: " + me.pos.columns);
-		qw("Rows: " + state.rows.length);
+		qw("Rows: " + me.state.rows.length);
 		readcount++;
 		var allvalid = true;
 		var hadempty = false;

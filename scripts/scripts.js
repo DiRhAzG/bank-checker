@@ -15,17 +15,17 @@ var apibase = "https://pc.runeapps.org/apps/ge/";
 //var apibase = "//pc.runeapps.org/apps/ge/";
 
 function start() {
-	a1lib.identifyUrl("appconfig.json");
+	// a1lib.identifyUrl("appconfig.json");
 
-	PasteInput.listen(pasted, message);
+	// PasteInput.listen(pasted, message);
 
-	elput(document.body, bankUI.root);
-	bankUI.draw();
+	// elput(document.body, bankUI.root);
+	// bankUI.draw();
 
-	if (window.alt1) {
-		reader.find();
-		toggleTrack();
-	}
+	// if (window.alt1) {
+	// 	reader.find();
+	// 	toggleTrack();
+	// }
 	pasteExample("https://dirhazg.github.io/bank-checker/images/testbank.png");
 }
 

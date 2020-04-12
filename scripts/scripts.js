@@ -26,7 +26,7 @@ function start() {
 		reader.find();
 		toggleTrack();
 	}
-	pasteExample("./images/testbank.png");
+	pasteExample("https://dirhazg.github.io/bank-checker/images/testbank.png");
 }
 
 function shutdown() {

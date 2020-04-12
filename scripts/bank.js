@@ -957,7 +957,7 @@ function BankReader() {
 
 		var filled = total / rect.width / rect.height;
 		var empty = filled < 0.05;
-		var valid = !empty && filled < 0.95 && !blackcorner;
+		var valid = !empty && filled <= 1 && !blackcorner;
 
 		return {
 			coldata: bytesToHex(coldata, 1),

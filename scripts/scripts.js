@@ -119,7 +119,7 @@ function fixPrices() {
 	}
 
 	if (reqs.length != 0) {
-		dlpagejson(apibase + "pc_getprices.php", reqs, pricesLoaded.bind(null, reqslots), message.b(apibase + "pc_getprices.php") + reqs);
+		dlpagejson(apibase + "pc_getprices.php", reqs, pricesLoaded.bind(null, reqslots), message.b(apibase + "pc_getprices.php"));
 	}
 }
 
@@ -235,7 +235,6 @@ function BankInterface(reader) {
 	this.root = eldiv("bankstate", [
 		eldiv("flexline", [
 			els.toggletrack = eldiv("nisbutton2", { onclick: toggleTrack.b() }, ["Track: off"]),
-			eldiv("nisbutton2", { onclick: generateBankImage.b() }, ["Download bank image"]),
 			eldiv("flexlabel", { style: "flex-grow:1" }, ["Tab value:"]),
 			els.tabvalue = eldiv("flexlabel", { style: "flex-grow:3;" }),
 		]),
@@ -460,46 +459,4 @@ function itemAutocompletebox() {
 	var scope = bindAutoComplete(el, getsuggests);
 	scope.singleword = true;
 	return eldiv("crty-wrapper", [el]);
-}
-
-function generateBankImage() {
-	if (!reader.pos) { return; }
-	var slotsize = 34;
-	var tab = reader.state.tabs[bankUI.activetab];
-
-	var slots = [];
-	for (var a = 0; a < tab.rows.length; a++) {
-		for (var b = 0; b < tab.rows[a].slots.length; b++) {
-			var slot = tab.rows[a].slots[b];
-			if (slot.imginfo && !slot.imginfo.empty) {
-				slots.push(slot);
-			}
-		}
-	}
-	for (var a = 0; a < slots.length; a++) {
-		slots[a]._orderindex = a;
-	}
-	slots = slots.sort(function (a, b) {
-		var pa = 0;
-		var pb = 0;
-		if (a.price && a.price.selected) { pa = a.price.selected.value * a.amount; }
-		if (b.price && b.price.selected) { pb = b.price.selected.value * b.amount; }
-		if (pb != pa) { return pb - pa; }
-		return a._orderindex - b._orderindex;
-	});
-
-	var cnv = eldiv(":canvas");
-	var ctx = cnv.getContext("2d");
-	cnv.width = slotsize * 10;
-	cnv.height = slotsize * Math.ceil(slots.length / 10);
-
-	for (var a = 0; a < slots.length; a++) {
-		var slot = slots[a];
-		if (slot.buffer) {
-			ctx.putImageData(slot.buffer, slotsize * (a % 10), slotsize * Math.floor(a / 10));
-		}
-	}
-	//window.open(cnv.toDataURL("image/png"), "_new", "width=" + cnv.width + ",height=" + cnv.height);
-
-	filedownload("bank " + listdate(Date.now()) + ".png", cnv.toDataURL("image/png"));
 }

@@ -102,6 +102,11 @@ function dlpagepost(url,data,func,errorfunc){
 
 function dlpagejson(url, obj, func, errorfunc) {
 	var req = new XMLHttpRequest();
+
+	if (typeof XDomainRequest != "undefined"){
+		req = new XDomainRequest();
+	}	
+	
 	req.onload = function () {
 		var obj = jsonDecode(req.responseText);
 		if (obj == null) {

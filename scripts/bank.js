@@ -349,6 +349,9 @@ function BankReader() {
 					if (!slot.imginfo.empty) { allvalid = false; }
 					else { hadempty = true; }
 				}
+				
+				var backcolor = a1lib.mixcolor(255, 0, 0);
+				alt1.overLayRect(backcolor, imgx, imgy, 32, 13, 60000, 10);
 			}
 		}
 		me.state.allslotsvalid = allvalid;

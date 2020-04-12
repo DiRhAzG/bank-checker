@@ -363,11 +363,6 @@ function BankReader() {
 					var ctx = c.getContext("2d");
 					
 					ctx.beginPath();
-					var img = new Image;
-					img.onload = function(){
-					ctx.drawImage(img,0,0); // Or at whatever offset you like
-					};
-					img.src = "https://dirhazg.github.io/bank-checker/images/testbank.png";
 					ctx.rect(imgx, imgy, 34, 34);
 					ctx.stroke();
 					qw(x + " | " + y + " | " + imgx + " | " + imgy);

@@ -352,8 +352,8 @@ function BankReader() {
 					else { hadempty = true; }
 				}
 				
-				if (bankx == 0 && banky == 0)
-				{
+				// if (bankx == 0 && banky == 0)
+				// {
 					var x = slot.readinfo.x + me.pos.area.x;
 					var y = slot.readinfo.y + me.pos.area.y;
 					var t = me.config.timers.overlay + 500;
@@ -367,7 +367,7 @@ function BankReader() {
 					ctx.stroke();
 					qw(x + " | " + y + " | " + imgx + " | " + imgy);
 					qw(me.pos.area.x + " | " + me.pos.area.y + " | " + slot.readinfo.x + " | " + slot.readinfo.y);
-				}
+				// }
 			}
 		}
 		qw("Version: 1.1")

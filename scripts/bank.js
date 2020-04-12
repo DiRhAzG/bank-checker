@@ -89,7 +89,7 @@ function BankReader() {
 		};
 		var bankinner = {
 			x: bankarea.x + 11,
-			y: bankarea.y + 87,
+			y: bankarea.y + 78,
 			w: bankarea.w - 11 - 239,//TODO get exact numbers
 			h: bankarea.h - 78 - 50//TODO
 		};
@@ -326,6 +326,13 @@ function BankReader() {
 		qw("Columns: " + me.pos.columns);
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		
+		ctx.beginPath();
+		ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+		ctx.stroke();
+
 		readcount++;
 		var allvalid = true;
 		var hadempty = false;
@@ -334,7 +341,7 @@ function BankReader() {
 			var imgx = me.pos.inner.x + bankx * slotsize + 5; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
 			for (var banky = 0; banky < me.state.rows.length; banky++) {
 				var slot = me.state.slots[bankx + banky * me.pos.columns];
-				var imgy = me.pos.inner.y - me.pos.area.y + me.state.rows[banky].y + 5;
+				var imgy = me.pos.inner.y + me.state.rows[banky].y + 5;
 				slot.readinfo = { x: imgx, y: imgy, readnr: readcount };
 				if (slot.isempty) { continue; }
 				if (slot.imginfo && slot.imginfo.valid) { continue; }
@@ -352,22 +359,20 @@ function BankReader() {
 					else { hadempty = true; }
 				}
 				
-				// if (bankx == 0 && banky == 0)
-				// {
+			
 					var x = slot.readinfo.x + me.pos.area.x;
 					var y = slot.readinfo.y + me.pos.area.y;
 					var t = me.config.timers.overlay + 500;
 					var backcolor = a1lib.mixcolor(255, 0, 0);
 					///alt1.overLayRect(backcolor, imgx, imgy, 32, 13, t, 10);
-					var c = document.getElementById("myCanvas");
-					var ctx = c.getContext("2d");
-					
 					ctx.beginPath();
 					ctx.rect(imgx, imgy, 34, 34);
 					ctx.stroke();
+				if (bankx == 0 && banky == 0)
+				 {
 					qw(x + " | " + y + " | " + imgx + " | " + imgy);
 					qw(me.pos.area.x + " | " + me.pos.area.y + " | " + slot.readinfo.x + " | " + slot.readinfo.y);
-				// }
+				 }
 			}
 		}
 		qw("Version: 1.1")

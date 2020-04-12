@@ -101,6 +101,7 @@ function BankReader() {
 			columns: Math.floor(bankinner.w / 44),
 			legacy: false
 		};
+		me.message("Bank inner at " + me.pos.inner.x + "," + me.pos.inner.y  + "," + me.pos.inner.w  + "," +  me.pos.inner.h);
 
 		if (!me.state) {
 			me.state = {

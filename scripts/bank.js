@@ -88,7 +88,7 @@ function BankReader() {
 			scrollbar: null,
 		};
 		var bankinner = {
-			x: bankarea.x + 6,
+			x: bankarea.x + 5,
 			y: bankarea.y + 74,
 			w: bankarea.w - 11 - 239,//TODO get exact numbers
 			h: bankarea.h - 78 - 50//TODO
@@ -338,10 +338,10 @@ function BankReader() {
 		var hadempty = false;
 		var bufref = new ImgRefData(buffer, new Rect(0, 0, buffer.width, buffer.height));
 		for (var bankx = 0; bankx < me.pos.columns; bankx++) {
-			var imgx = me.pos.inner.x + bankx * slotsize + 5; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
+			var imgx = me.pos.inner.x + bankx * slotsize + 10; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
 			for (var banky = 0; banky < me.state.rows.length; banky++) {
 				var slot = me.state.slots[bankx + banky * me.pos.columns];
-				var imgy = me.pos.inner.y + me.state.rows[banky].y + 5;
+				var imgy = me.pos.inner.y + me.state.rows[banky].y;
 				slot.readinfo = { x: imgx, y: imgy, readnr: readcount };
 				if (slot.isempty) { continue; }
 				if (slot.imginfo && slot.imginfo.valid) { continue; }

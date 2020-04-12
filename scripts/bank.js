@@ -235,7 +235,6 @@ function BankReader() {
 	}
 
 	var readbuffer = function (img, slot, imgx, imgy, backx, backy) {
-		imgy += 9;
 		var clone = img.toData(backx + imgx, backy + imgy, 34, 34);
 		var data = clone.data;
 		for (var x = 0; x < clone.width; x++) {

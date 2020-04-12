@@ -321,6 +321,7 @@ function BankReader() {
 	}
 
 	this.readItems = function (buffer) {
+		qw("reading Items");
 		qw("Columns: " + me.pos.columns);
 		qw("Rows: " + me.state.rows.length);
 		readcount++;

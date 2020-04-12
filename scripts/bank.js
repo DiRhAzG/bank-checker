@@ -364,7 +364,7 @@ function BankReader() {
 					var y = slot.readinfo.y + me.pos.area.y;
 					var t = me.config.timers.overlay + 500;
 					var backcolor = a1lib.mixcolor(255, 0, 0);
-					alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 60000, 3);
+					alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 60000, 1);
 					// ctx.beginPath();
 					// ctx.rect(imgx, imgy, 34, 34);
 					// ctx.stroke();

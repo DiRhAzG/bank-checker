@@ -114,12 +114,13 @@ function fixPrices() {
 				price.hashattempt = true;
 				reqs.push(req);
 				reqslots.push(slot);
+				console.log(req.imghash);
 			}
 		}
 	}
 
 	if (reqs.length != 0) {
-		dlpagejson(apibase + "pc_getprices.php", reqs, pricesLoaded.bind(null, reqslots), message.b(reqs[0].slot.imghash));
+		dlpagejson(apibase + "pc_getprices.php", reqs, pricesLoaded.bind(null, reqslots), message.b(pibase + "pc_getpriaces.php"));
 	}
 }
 

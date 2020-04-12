@@ -63,6 +63,7 @@ function BankReader() {
 	var backcolorlegacy = [62, 53, 40];
 
 	this.find = function (img) {
+		qw("Version: 1")
 		if (!img) { img = a1lib.bindfullrs(); }
 
 		//==== find bank ====

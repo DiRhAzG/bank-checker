@@ -350,12 +350,15 @@ function BankReader() {
 					else { hadempty = true; }
 				}
 				
-				var x = slot.readinfo.x + me.pos.area.x;
-				var y = slot.readinfo.y + me.pos.area.y;
-				var t = me.config.timers.overlay + 500;
-				var backcolor = a1lib.mixcolor(255, 0, 0);
-				alt1.overLayRect(backcolor, x, y, imgx, imgy, t, 10);
-				qw(x + " | " + y + " | " + imgx + " | " + imgy);
+				if (bankx == 0 && banky == 0)
+				{
+					var x = slot.readinfo.x + me.pos.area.x;
+					var y = slot.readinfo.y + me.pos.area.y;
+					var t = me.config.timers.overlay + 500;
+					var backcolor = a1lib.mixcolor(255, 0, 0);
+					alt1.overLayRect(backcolor, imgx, imgy, 32, 13, t, 2);
+					qw(x + " | " + y + " | " + imgx + " | " + imgy);
+				}
 			}
 		}
 		me.state.allslotsvalid = allvalid;

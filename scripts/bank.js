@@ -238,7 +238,7 @@ function BankReader() {
 		var clone = img.toData(backx + imgx, backy + imgy, 34, 34);
 		var data = clone.data;
 		for (var x = 0; x < clone.width; x++) {
-			for (var y = 0; y < clone.width; y++) {
+			for (var y = 0; y < clone.height; y++) {
 				var i = 4 * x + 4 * clone.width * y;
 				var r = (me.pos.legacy ? backcolorlegacy[0] : backcolor[0]);
 				var g = (me.pos.legacy ? backcolorlegacy[1] : backcolor[1]);

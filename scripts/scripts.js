@@ -121,7 +121,7 @@ function fixPrices() {
 	}
 
 	if (reqs.length != 0) {
-		dlpagejson(apibase + "pc_getprices.php", reqs, pricesLoaded.bind(null, reqslots), message.b(apibase + "pc_getpriaces.php"));
+		dlpagejson(apibase + "pc_getprices.php", reqs, pricesLoaded.bind(null, reqslots), message.b(apibase + "pc_getprices.php"));
 	}
 }
 

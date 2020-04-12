@@ -63,7 +63,6 @@ function BankReader() {
 	var backcolorlegacy = [62, 53, 40];
 
 	this.find = function (img) {
-		qw("Version: 1")
 		if (!img) { img = a1lib.bindfullrs(); }
 
 		//==== find bank ====
@@ -357,11 +356,12 @@ function BankReader() {
 					var y = slot.readinfo.y + me.pos.area.y;
 					var t = me.config.timers.overlay + 500;
 					var backcolor = a1lib.mixcolor(255, 0, 0);
-					alt1.overLayRect(backcolor, imgx, imgy, 32, 13, t, 2);
+					alt1.overLayRect(backcolor, imgx, imgy, 32, 13, t, 10);
 					qw(x + " | " + y + " | " + imgx + " | " + imgy);
 				}
 			}
 		}
+		qw("Version: 1.1")
 		me.state.allslotsvalid = allvalid;
 	}
 

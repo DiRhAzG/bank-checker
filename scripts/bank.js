@@ -996,11 +996,11 @@ function BankReader() {
 		var canvas = document.createElement('canvas'),
 		ctx = canvas.getContext('2d');
 
-		canvas.width = width;
-		canvas.height = height;
+		canvas.width = buffer.width;
+		canvas.height = buffer.height;
 
 		// create imageData object
-		var idata = ctx.createImageData(width, height);
+		var idata = ctx.createImageData(buffer.width, buffer.height);
 
 		// set our buffer as source
 		idata.data.set(buffer);

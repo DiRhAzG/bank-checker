@@ -115,7 +115,7 @@ function fixPrices() {
 				reqs.push(req);
 				reqslots.push(slot);
 				console.log(req.imghash);
-				console.log(req);
+				console.log(JSON.stringify(reqs));
 			}
 		}
 	}

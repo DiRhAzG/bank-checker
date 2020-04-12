@@ -236,7 +236,7 @@ function BankReader() {
 
 	var readbuffer = function (img, slot, imgx, imgy, backx, backy) {
 		imgy += 9;
-		var clone = img.toData(backx + imgx, backy + imgy - 9, 34, 34);
+		var clone = img.toData(backx + imgx, backy + imgy, 34, 34);
 		var data = clone.data;
 		for (var x = 0; x < clone.width; x++) {
 			for (var y = 0; y < clone.width; y++) {
@@ -325,12 +325,13 @@ function BankReader() {
 		qw("reading Items");
 		qw("Columns: " + me.pos.columns);
 		qw("Rows: " + me.state.rows.length);
+		qw("Slot Size: " + slotsize);
 		readcount++;
 		var allvalid = true;
 		var hadempty = false;
 		var bufref = new ImgRefData(buffer, new Rect(0, 0, buffer.width, buffer.height));
 		for (var bankx = 0; bankx < me.pos.columns; bankx++) {
-			var imgx = me.pos.inner.x - me.pos.area.x + bankx * slotsize + 5;
+			var imgx = me.pos.inner.x + bankx * slotsize + 5; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
 			for (var banky = 0; banky < me.state.rows.length; banky++) {
 				var slot = me.state.slots[bankx + banky * me.pos.columns];
 				var imgy = me.pos.inner.y - me.pos.area.y + me.state.rows[banky].y + 5;

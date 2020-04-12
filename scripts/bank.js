@@ -887,7 +887,7 @@ function BankReader() {
 		this.isempty = false;
 	}
 	ItemSlot.prototype.setBuffer = function (buffer) {
-		this.imginfo = getImageInfo(buffer, new Rect(0, 9, 32, 32 - 9));
+		this.imginfo = getImageInfo(buffer, new Rect(0, 0, 34, 34));
 		this.readattempts++;
 		if (!this.imginfo.valid) {
 			if (this.readattempts >= 3) {

@@ -88,8 +88,8 @@ function BankReader() {
 			scrollbar: null,
 		};
 		var bankinner = {
-			x: bankarea.x + 11,
-			y: bankarea.y + 78,
+			x: bankarea.x + 6,
+			y: bankarea.y + 74,
 			w: bankarea.w - 11 - 239,//TODO get exact numbers
 			h: bankarea.h - 78 - 50//TODO
 		};

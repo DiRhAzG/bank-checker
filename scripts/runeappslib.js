@@ -101,8 +101,7 @@ function dlpagepost(url,data,func,errorfunc){
 }
 
 function dlpagejson(url, obj, func, errorfunc) {
-	var req = new XDomainRequest();
-
+	var req = new XMLHttpRequest();
 	req.onload = function () {
 		var obj = jsonDecode(req.responseText);
 		if (obj == null) {
@@ -113,11 +112,11 @@ function dlpagejson(url, obj, func, errorfunc) {
 	}
 	req.onerror = errorfunc;
 	if (obj) {
-		req.open("POST", url);
+		req.open("POST", url, true);
 		req.setRequestHeader("Content-type", "application/json");
 		req.send(jsonEncode(obj));
 	} else {
-		req.open("GET", url);
+		req.open("GET", url, true);
 		req.send();
 	}
 }

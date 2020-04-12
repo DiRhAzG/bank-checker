@@ -326,12 +326,12 @@ function BankReader() {
 		qw("Columns: " + me.pos.columns);
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
-		var c = document.getElementById("myCanvas");
-		var ctx = c.getContext("2d");
+		// var c = document.getElementById("myCanvas");
+		// var ctx = c.getContext("2d");
 		
-		ctx.beginPath();
-		ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-		ctx.stroke();
+		// ctx.beginPath();
+		// ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+		// ctx.stroke();
 
 		readcount++;
 		var allvalid = true;
@@ -364,10 +364,10 @@ function BankReader() {
 					var y = slot.readinfo.y + me.pos.area.y;
 					var t = me.config.timers.overlay + 500;
 					var backcolor = a1lib.mixcolor(255, 0, 0);
-					///alt1.overLayRect(backcolor, imgx, imgy, 32, 13, t, 10);
-					ctx.beginPath();
-					ctx.rect(imgx, imgy, 34, 34);
-					ctx.stroke();
+					alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 500, 3);
+					// ctx.beginPath();
+					// ctx.rect(imgx, imgy, 34, 34);
+					// ctx.stroke();
 				if (bankx == 0 && banky == 0)
 				 {
 					qw(x + " | " + y + " | " + imgx + " | " + imgy);

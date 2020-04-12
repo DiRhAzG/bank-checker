@@ -994,7 +994,7 @@ function BankReader() {
 		}
 		var decoder = new TextDecoder('utf8');
 		var b64encoded = btoa(decoder.decode(buffer.data));
-		qw(b64encoded.toString());
+		console.log(b64encoded.toString());
 		while (anymatch && dx < slotsize) {
 			anymatch = false;
 			for (var a = 0; a < BankReader.itemnumbers.buffers.length; a++) {

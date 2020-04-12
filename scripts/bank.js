@@ -992,8 +992,9 @@ function BankReader() {
 		if (a1lib.simplecompare(buffer, BankReader.placeholderzero, 2, 1) !== false) {
 			return -1;
 		}
+		var u8 = new Uint8Array(buffer);
 		var decoder = new TextDecoder('utf8');
-		var b64encoded = btoa(decoder.decode(buffer));
+		var b64encoded = btoa(decoder.decode(u8));
 		qw(b64encoded.toString());
 		while (anymatch && dx < slotsize) {
 			anymatch = false;

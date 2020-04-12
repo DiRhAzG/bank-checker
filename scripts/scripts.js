@@ -11,7 +11,7 @@ var bankUI = new BankInterface(reader);
 var geItems = [];
 
 //image detect is done on different server to make sure it can't bring other apps with it under high load
-var apibase = "//pc.runeapps.org/apps/ge/";
+var apibase = "https://pc.runeapps.org/apps/ge/";
 //var apibase = "//pc.runeapps.org/apps/ge/";
 
 function start() {

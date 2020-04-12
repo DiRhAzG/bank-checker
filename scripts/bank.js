@@ -357,7 +357,7 @@ function BankReader() {
 					var y = slot.readinfo.y + me.pos.area.y;
 					var t = me.config.timers.overlay + 500;
 					var backcolor = a1lib.mixcolor(255, 0, 0);
-					alt1.overLayRect(backcolor, imgx, imgy, 32, 13, t, 10);
+					//alt1.overLayRect(backcolor, imgx, imgy, 32, 13, t, 10);
 					qw(x + " | " + y + " | " + imgx + " | " + imgy);
 					qw(me.pos.area.x + " | " + me.pos.area.y + " | " + slot.readinfo.x + " | " + slot.readinfo.y);
 				}

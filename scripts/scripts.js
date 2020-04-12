@@ -15,18 +15,18 @@ var apibase = "https://pc.runeapps.org/apps/ge/";
 //var apibase = "//pc.runeapps.org/apps/ge/";
 
 function start() {
-	// a1lib.identifyUrl("appconfig.json");
+	a1lib.identifyUrl("appconfig.json");
 
-	// PasteInput.listen(pasted, message);
+	PasteInput.listen(pasted, message);
 
-	// elput(document.body, bankUI.root);
-	// bankUI.draw();
+	elput(document.body, bankUI.root);
+	bankUI.draw();
 
-	// if (window.alt1) {
-	// 	reader.find();
-	// 	toggleTrack();
-	// }
-	pasteExample("https://i.imgur.com/7Pr3iBY.png");
+	if (window.alt1) {
+		reader.find();
+		toggleTrack();
+	}
+	pasteExample("./images/testbank.png");
 }
 
 function shutdown() {

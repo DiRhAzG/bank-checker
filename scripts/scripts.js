@@ -119,7 +119,7 @@ function fixPrices() {
 	}
 
 	if (reqs.length != 0) {
-		dlpagejson(apibase + "pc_getprices.php", reqs, pricesLoaded.bind(null, reqslots), message.b("failed to load prices."));
+		dlpagejson(apibase + "pc_getprices.php", reqs, pricesLoaded.bind(null, reqslots), message.b(apibase + "pc_getprices.php") + reqs);
 	}
 }
 

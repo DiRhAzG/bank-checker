@@ -77,7 +77,7 @@ function BankReader() {
 		var loc = { x: topleft[0].x + 5, y: topleft[0].y + 5, width: -1, height: -1 };
 		loc.width = botright[0].x + 48 - loc.x;
 		loc.height = botright[0].y + 38 - loc.y;
-		me.message("Bank found at " + loc.x + "," + loc.y);
+		me.message("Bank found at " + loc.x + "," + loc.y  + "," + loc.width  + "," +  loc.height);
 
 		//==== init vars ====
 		var bankarea = {

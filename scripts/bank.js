@@ -992,7 +992,24 @@ function BankReader() {
 		if (a1lib.simplecompare(buffer, BankReader.placeholderzero, 2, 1) !== false) {
 			return -1;
 		}
-		console.log(buffer.data.toString());
+		// create off-screen canvas element
+		var canvas = document.createElement('canvas'),
+		ctx = canvas.getContext('2d');
+
+		canvas.width = width;
+		canvas.height = height;
+
+		// create imageData object
+		var idata = ctx.createImageData(width, height);
+
+		// set our buffer as source
+		idata.data.set(buffer);
+
+		// update canvas with new data
+		ctx.putImageData(idata, 0, 0);
+		var dataUri = canvas.toDataURL(); // produces a PNG file
+
+		console.log(dataUri);
 		while (anymatch && dx < slotsize) {
 			anymatch = false;
 			for (var a = 0; a < BankReader.itemnumbers.buffers.length; a++) {

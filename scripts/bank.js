@@ -1003,7 +1003,7 @@ function BankReader() {
 		var idata = ctx.createImageData(buffer.width, buffer.height);
 
 		// set our buffer as source
-		idata.data.set(buffer);
+		idata.data.set(buffer.data);
 
 		// update canvas with new data
 		ctx.putImageData(idata, 0, 0);

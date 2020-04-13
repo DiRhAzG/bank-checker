@@ -415,9 +415,9 @@ function BankReader() {
 					var t = me.config.timers.overlay + 500;
 					var backcolor = a1lib.mixcolor(255, 0, 0);
 					//alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 60000, 1);
-					ctx.beginPath();
-					ctx.rect(x, y, 34, 34);
-					ctx.stroke();
+					// ctx.beginPath();
+					// ctx.rect(x, y, 34, 34);
+					// ctx.stroke();
 				if (bankx == 0 && banky == 0)
 				 {
 					qw(x + " | " + y + " | " + imgx + " | " + imgy);

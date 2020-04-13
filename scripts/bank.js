@@ -7,7 +7,7 @@
 "use strict";
 
 BankReader.bankinterface = new InterfaceTracker(new Rect(-159, 28, 1, 1), 'data:image/png;base64,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');
-BankReader.itemnumbers = new ImageSet("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAAAJCAYAAAB3wKHKAAABTUlEQVRIS42QUWLDMAxCe/9LZyGYCmTF3QdBPGS72+e6riWYZhesZynCLY2deRZzdaBxYpIHGzPc8uihZxfsnTUgl2ifZ00ZUUw8u87JlIu5vIOTOScTp4PTvVufnx0Z5+LKzmjaX4AXw5VLfrnvnbr8QXnmjZHDvZvOwov3u05vTx3zvCc5u81DL+dcHN53d+4/QAvKziDfhb6Dafo9Nt6f7HOubqH7M90nBudszAP1K5PBdy7mfH8UwjztKu8dxMxuZ/MZqMY627Nr4sUi9PItw5N1+RnDjzrIXcw9c57yxKYdII7VaVZ2nd/5Avc8kA/Bs5ec5aOcyTSrE9/nvYNnT/5+puvtLbk03VEs4ANiednqMkseip0eVabOb1Y3/SGSx+ltKf9RuZfzfkcxg2CEnUk9S9r13pn0313x3vXs0v5pB/K+7566YtfnD8l4/lbi9qaRAAAAAElFTkSuQmCC", [0, 7, 11, 18, 24, 29, 35, 42, 48, 55, 62, 69]);
+BankReader.itemnumbers = new ImageSet("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAAICAIAAAA+4JV/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC8SURBVEhLjYsBDoAwDAL9/6dnDYYR6KoXE+nBLrDWG4iayvgUM21rm8IMN61UUtoA5Kv9s8c8zX8GYCc4jYu2+imtVf9kq4lmkpLGqmGZaNXmQWpVUO5WF6cMzNSZexq07UAlMINNygy2KZpXqk65sJPQI+RMBzYG9mSu8OlpmHlOVX+ywaoCP0UH5JSLoQKUCMPz4j3nqXlwatO3y1aCdqbk2+HJPrPAp5kG2AnmAYxtkpwp9DpoZbHWdQOh12Sq5X4vpQAAAABJRU5ErkJggg==", [0, 7, 11, 18, 24, 29, 35, 42, 48, 55, 62, 69]);
 ImageData.fromBase64(function (i) { BankReader.scrollstart = i }, "iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAYAAAB8ZH1oAAAAkUlEQVQIW2Pk1TT/z/DmEYOIAAtDYaggQ6gpC8PTu88Z1h7/xbD0DBvD+28MDAwicgyMvFrm/xnfPGZozpBgSPPgYWD4+o3h4c0nDJ/efmNYeoKJYf5ZLob/wrIMjCATGd8+Zri5RoNBgOUPisJ3734zhC0XZPgvgqTw5U5tBobvP1EU/vzyi8F7oRCqiYQUAgCDTVcjawB2BwAAAABJRU5ErkJggg==");
 ImageData.fromBase64(function (i) { BankReader.scrollend = i }, "iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAYAAAB8ZH1oAAAAhUlEQVQIW2Pk1TT/z/j2McPLndoMDN9/MjB8/cbw8OYThk9vvzH8/PKLwXuhEMN/YVkGRpjCm2s0GARY/qAofPfuN0PYckESFIogmdicIcGQ5sGDYuKyE0wM885yIUxkePOIQUSAhaEwVJAh1IyV4emdZwxrj/9iWHqGjeH9NwYGBhE5BgC60VYjPg0gygAAAABJRU5ErkJggg==");
 ImageData.fromBase64(function (i) { BankReader.emptycoins = i }, "iVBORw0KGgoAAAANSUhEUgAAACAAAAAcCAIAAACPoCp1AAADDUlEQVRIS7WT3UvTURjHz4Xku5tbuS2U1FDyLXNL8W04dItNc1taiVYKGqZYqRn5UiZehiBZQVdBXXUXdB0F3fQXFN0E3fZn9Pnt0eOv45xeLPhy+O38nvP57HnOpp5t72w9f/mfAlwtrT094TjpPtvorWny1DZnJaAAgl1aXVeLy2u5zrLWWwux2ZXYvSckend31Q/6Y9odnf1TsysAwc4/WlN3Fh7mlnoqIiPnoiN1MSvywKof9Me0Ozr2TYBgpxeX1dTc/VyX93TftfKu/iPjLMg5GKNGAhAscDVxe/qYAljfv7748/O95MenzW8fll9vb6R1iAC4GhufPI4ACjigB/Pl3Uy1q9ioFwFwNTx6Qwt87ZcOCwJh2dHk46ubbzZ7eGvUiwC46h8ezXX7fMGEpzWSISCgC05na6Zpfbx+Pl7JW6MeIFjgKpq8mneq3Nc54Ar0ZYgWAN150EoEPRn0Et4a9QDBAleRwSs8uTsuGxVGQHAHWsAq9GG/m/DWHuoBgu2LD9kELaEM4ZgxIjogXIP9dyW3QrEIwgj6EsMicJ7vzpSCnLcbozhkPoQO5FcrXHvolXqwfHvVm7QErraos6krbYoiJTrC1cMxuAQ0zVEgAuB7AqZ8CDr0K0J44PDvz1NMQDQ4eKYna2Krfpkb+/pWdgXhuHUHCPLbCh2NnSUN7ax2tKZbrFU/dG54rtuDQK5ddlgJm/E6hxYAV6FUB06/JQBUXNdqRwudasaNABDhbgFNBNz7156hg+7U/6C4pReB4Aw6ShHAMgTSltGBXRDiVxSMWx1ogUEvqvUTqmUaxoikA0NgH1FwcEh1J6wOHBd60gtqWoh0oEf0eKBcj4hkGFFKkBpRSUOHIdB07eCw/LlkRFCOvGTgKYG36qBAHAXVTdBl5YwRTJku2Vu118GeIG2gHxbRJLtqCGhpSzYBgv2nA+Pw8SNEHdncF3Qmr4ugkFnXBrIVEQBXHYmxfG9l6cVIaSBsrdkLWOCqPTmaV1ZRcKY+6wELXPljQ83heHMkkf2E4/7Y0F+cv82FFdwxCwAAAABJRU5ErkJggg==");
@@ -19,7 +19,7 @@ ImageData.fromBase64(function (i) { BankReader.tabsep = i }, "iVBORw0KGgoAAAANSU
 ImageData.fromBase64(function (i) { BankReader.topleft = i }, "iVBORw0KGgoAAAANSUhEUgAAAAoAAAALBAMAAAC0QAErAAAAMFBMVEUAAAENGB4NGiETICYTIysWKC4TJjEVKDIaKzIcMTsjMjsrOkItP0kAAAAAAAAAAAAhBG+zAAAAQklEQVQY02PQ8HBqcmFwcVJRUWFwdlJx8WBQUmtR8WBQ6ejqWMWgpLKBgYFBRf0AkFTVAJEiYBENlwlAUqlpAwMDANLTDYb74IU1AAAAAElFTkSuQmCC");
 ImageData.fromBase64(function (i) { BankReader.botright = i }, "iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAIAAAC0Ujn1AAAEx0lEQVRIS7WVW2gcVRjH58zMzuzsbHY3t01iL5sNjZqKtTEptWKstUGhKKlSIdJSUEFSKWhFRB988EURShUq7YPUF21V0tZiWwRFjG2MQptaYwirSYybNMlOstmd285l5+Y3mU1IdpO+NP3zXzjn7Hd+c8433zmDjn5yGLs7Qh8dPXz6F7XQWzvt38ngpuUYtrnmBixumJgJrbU2YHEjj1m2ueYGLG4YgLZWM4RoUlZKjfPjw2BoQBcGi8JKDVgy767aKiR/uWBneWGufWvjM+0HyisiuZyUTCZ/+rX3+hhHhStxknSDHMfUVEMW7LyOCJJkgyQThL8AS7S0bktwEuZA0HLbjiFlO3duP9jZSZBI0xVVkxFh1m+IGvz0+EyOoPxAtjQlHpj9/O36d1958MX2WAWuXOmfxn30fdEI8VDztpG0UAJ2YBXVpP36qy9peu5qb+/xU19c6bvuQ0ZZyB+OMMOJ/wycRgSR59Mnj0RnMuj9E4NSjti/d/vDcfy7nmS8JopbJmDsUhuK3LG7LW9oQ0ODJ76+JFLl4O4fb44Mj0EFPBCvggDHtghLra+hT317q3+KPn75VudbZ1u3bDzQxvJZEbcsSNcKggzWx9ZBHn7r66cilTjlB0Pj75FJyEO0OgwBbpgFW8RwlMcpmgqVj8zhZy/f3Ndemc1kcdvGkG2X2jHyAYbNKWJiYoIkKW8QGlOzsmU4NEVDAIzA8OgI197MmDkJsy2S9v98Y/KeClNVNXfVJXmetw11owI6KyoIJ7xBaKi6ZZoOQpRjWQAoJxWEsGd3sFtqJT07Z6kKaaqWLDgOclcNyV7RwNW0HIYgwPFGgKLogHSrzs5r68j06ffqYzX+73u5T7tq39mjPrWJP/Q0eWNIZAJBomlz6wSfcWOXyNI1NcPVVdEclx74M6GrqiEJnvMSH1sfTk2LQUI8+ebWICl+eXHywwumkOVb4vgjTUwypX5wzqqr2YSef+HQ7+OjBeSC1LnUGy/vYgMhkqRp2q1fXdcUVVA1FZRNC4xjvPbcRkfnPj4zcH4g4GPLbMMwtZxbMz6aDAQfbWjyEgL7XWYoauCybLiiPBouq4R2gAkGmDA8A7hVtAJcJSccOXbtwmCQLosQJOVjWKY8Gqiso0MV0F3MdTEaEARB0pTfT7HhkIv2+wMwyGdysbKZg08GuVTy2LmpvmHbFwghhBdPh8XZGO7eH4tVscQIEe4DSILy+QcHEl+dOd/9zaUG4q+OZj0xOvLZDwobicKBnucWzwUDFlbtIKzY8Kdp6ib8dFWUMz09Vysqa0OhSCotXfvH7P6jLlxV42doqJ2iiYsGLG65CSkxhsERV1RZzgmCmG5uaZJluGewYbmhP3N/dTQKXK8EiycuGLBerlcwFAOUhCjNiRK/IVYt8rOiyN+7eT0b8pMkglNzGy54PteAXklQZAAVpKwgzopShuNmOC4FFxOc8kLEbeWi4ZStJgDBAyRZBu/paNu7b7fHhSVDNuAK8cJWFGBxe8kuFg2FCRTPXqjXBqjH9QRhRRMXDVj0+K6uf/nhQuyCrDx8AAQbvp2rC/dRNBv2vjWlaog0orYnusaEYvSdKx5uXPU13qHmXyOk5i4IsGjHY12F3toKw/4H+ZedbvrMU5QAAAAASUVORK5CYII=");
 ImageData.fromBase64(function (i) { BankReader.placeholderzero = i }, "iVBORw0KGgoAAAANSUhEUgAAAAUAAAAICAYAAAAx8TU7AAAAPElEQVQYV22NUQoAMAhCq4t787XKggYTStGPJ+5eB2gYM5+wmEFZnHBK1dw6P/qXQKetDRhg/hoTQKDIBVugMuDFBvhlAAAAAElFTkSuQmCC");
-
+ImageData.fromBase64(function (i) { BankReader.chisel = i }, "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");
 
 function BankReader() {
 	var me = this;
@@ -89,7 +89,7 @@ function BankReader() {
 		};
 		var bankinner = {
 			x: bankarea.x + 5,
-			y: bankarea.y + 74,
+			y: bankarea.y + 79,
 			w: bankarea.w - 11 - 239,//TODO get exact numbers
 			h: bankarea.h - 78 - 50//TODO
 		};
@@ -237,6 +237,26 @@ function BankReader() {
 	var readbuffer = function (img, slot, imgx, imgy, backx, backy) {
 		var clone = img.toData(backx + imgx, backy + imgy, 34, 34);
 		var data = clone.data;
+
+				// create off-screen canvas element
+				var canvas = document.createElement('canvas'),
+				ctx = canvas.getContext('2d');
+		
+				canvas.width = 34;
+				canvas.height = 34;
+		
+				// create imageData object
+				var idata = ctx.createImageData(34, 34);
+		
+				// set our buffer as source
+				idata.data.set(data);
+		
+				// update canvas with new data
+				ctx.putImageData(idata, 0, 0);
+				var dataUri = canvas.toDataURL(); // produces a PNG file
+		
+				console.log(dataUri);
+
 		for (var x = 0; x < clone.width; x++) {
 			for (var y = 0; y < clone.height; y++) {
 				var i = 4 * x + 4 * clone.width * y;
@@ -337,10 +357,10 @@ function BankReader() {
 		var hadempty = false;
 		var bufref = new ImgRefData(buffer, new Rect(0, 0, buffer.width, buffer.height));
 		for (var bankx = 0; bankx < me.pos.columns; bankx++) {
-			var imgx = me.pos.inner.x + bankx * slotsize + 10; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
+			var imgx = me.pos.inner.x - me.pos.area.x + bankx * slotsize + 10; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
 			for (var banky = 0; banky < me.state.rows.length; banky++) {
 				var slot = me.state.slots[bankx + banky * me.pos.columns];
-				var imgy = me.pos.inner.y + me.state.rows[banky].y + 1;
+				var imgy = me.pos.inner.y - me.pos.area.y + me.state.rows[banky].y + 1;
 				slot.readinfo = { x: imgx, y: imgy, readnr: readcount };
 				if (slot.isempty) { continue; }
 				if (slot.imginfo && slot.imginfo.valid) { continue; }
@@ -351,8 +371,39 @@ function BankReader() {
 					continue;
 				}
 
+					// // create off-screen canvas element
+					// var canvas = document.createElement('canvas'),
+					// ctx = canvas.getContext('2d');
+			
+					// canvas.width = buffer.width;
+					// canvas.height = buffer.height;
+			
+					// // create imageData object
+					// var idata = ctx.createImageData(buffer.width, buffer.height);
+			
+					// // set our buffer as source
+					// idata.data.set(buffer.data);
+			
+					// // update canvas with new data
+					// ctx.putImageData(idata, 0, 0);
+					// var dataUri = canvas.toDataURL(); // produces a PNG file
+			
+					// console.log(dataUri);
+
 				var transbuf = readbuffer(bufref, slot, imgx, imgy, 0, 0);
 				slot.setBuffer(transbuf);
+
+				console.log(slot.imginfo.imghash);
+				
+				const canvas = document.getElementById('myCanvas');
+				const ctx = canvas.getContext('2d');
+
+				const diff = ctx.createImageData(34, 34);
+				var data = pixelmatch(BankReader.chisel.data, slot.buffer.data, diff.data, 34, 34, {threshold: 0.1});
+
+				console.log(data);
+				ctx.putImageData(diff, 0, 0);
+
 				if (!slot.imginfo.valid) {
 					if (!slot.imginfo.empty) { allvalid = false; }
 					else { hadempty = true; }
@@ -365,7 +416,7 @@ function BankReader() {
 					var backcolor = a1lib.mixcolor(255, 0, 0);
 					//alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 60000, 1);
 					ctx.beginPath();
-					ctx.rect(imgx, imgy, 34, 34);
+					ctx.rect(x, y, 34, 34);
 					ctx.stroke();
 				if (bankx == 0 && banky == 0)
 				 {
@@ -895,7 +946,7 @@ function BankReader() {
 			}
 		}
 		else {
-			var amount = readAmount(buffer, 1, 0);
+			var amount = readAmount(buffer, 2, 3);
 			this.amount = (amount == -1 ? 0 : amount || 1);
 			this.buffer = buffer;
 		}
@@ -992,29 +1043,54 @@ function BankReader() {
 		if (a1lib.simplecompare(buffer, BankReader.placeholderzero, 2, 1) !== false) {
 			return -1;
 		}
-		// create off-screen canvas element
-		var canvas = document.createElement('canvas'),
-		ctx = canvas.getContext('2d');
 
-		canvas.width = buffer.width;
-		canvas.height = buffer.height;
+		
+		// // create off-screen canvas element
+		// var canvas = document.createElement('canvas'),
+		// ctx = canvas.getContext('2d');
 
-		// create imageData object
-		var idata = ctx.createImageData(buffer.width, buffer.height);
+		// canvas.width = buffer.width;
+		// canvas.height = buffer.height;
 
-		// set our buffer as source
-		idata.data.set(buffer.data);
+		// // create imageData object
+		// var idata = ctx.createImageData(buffer.width, buffer.height);
 
-		// update canvas with new data
-		ctx.putImageData(idata, 0, 0);
-		var dataUri = canvas.toDataURL(); // produces a PNG file
+		// // set our buffer as source
+		// idata.data.set(buffer.data);
 
-		console.log(dataUri);
+		// // update canvas with new data
+		// ctx.putImageData(idata, 0, 0);
+		// var dataUri = canvas.toDataURL(); // produces a PNG file
+
+		// console.log(dataUri);
+		// console.log(buffer.data.toString());
+
 		while (anymatch && dx < slotsize) {
 			anymatch = false;
 			for (var a = 0; a < BankReader.itemnumbers.buffers.length; a++) {
 				var buf = BankReader.itemnumbers.buffers[a];
 				var match = true;
+
+		// 				// create off-screen canvas element
+		// var canvas = document.createElement('canvas'),
+		// ctx = canvas.getContext('2d');
+
+		// canvas.width = buf.width;
+		// canvas.height = buf.height;
+
+		// // create imageData object
+		// var idata = ctx.createImageData(buf.width, buf.height);
+
+		// // set our buffer as source
+		// idata.data.set(buf.data);
+
+		// // update canvas with new data
+		// ctx.putImageData(idata, 0, 0);
+		// var dataUri = canvas.toDataURL(); // produces a PNG file
+
+		// console.log(dataUri);
+		// // console.log(buffer.data.toString());
+
 				for (var x = 0; x < buf.width; x++) {
 					if (ox + dx + x >= buffer.width && x > 2) {
 						//guess cut off chars that have at least 2 columns already

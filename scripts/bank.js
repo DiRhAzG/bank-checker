@@ -238,24 +238,24 @@ function BankReader() {
 		var clone = img.toData(backx + imgx, backy + imgy, 34, 34);
 		var data = clone.data;
 
-				// create off-screen canvas element
-				var canvas = document.createElement('canvas'),
-				ctx = canvas.getContext('2d');
+				// // create off-screen canvas element
+				// var canvas = document.createElement('canvas'),
+				// ctx = canvas.getContext('2d');
 		
-				canvas.width = 34;
-				canvas.height = 34;
+				// canvas.width = 34;
+				// canvas.height = 34;
 		
-				// create imageData object
-				var idata = ctx.createImageData(34, 34);
+				// // create imageData object
+				// var idata = ctx.createImageData(34, 34);
 		
-				// set our buffer as source
-				idata.data.set(data);
+				// // set our buffer as source
+				// idata.data.set(data);
 		
-				// update canvas with new data
-				ctx.putImageData(idata, 0, 0);
-				var dataUri = canvas.toDataURL(); // produces a PNG file
+				// // update canvas with new data
+				// ctx.putImageData(idata, 0, 0);
+				// var dataUri = canvas.toDataURL(); // produces a PNG file
 		
-				console.log(dataUri);
+				// console.log(dataUri);
 
 		for (var x = 0; x < clone.width; x++) {
 			for (var y = 0; y < clone.height; y++) {
@@ -345,12 +345,12 @@ function BankReader() {
 		qw("Columns: " + me.pos.columns);
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
-		var c = document.getElementById("myCanvas");
-		var ctx = c.getContext("2d");
+		// var c = document.getElementById("myCanvas");
+		// var ctx = c.getContext("2d");
 		
-		ctx.beginPath();
-		ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-		ctx.stroke();
+		// ctx.beginPath();
+		// ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+		// ctx.stroke();
 
 		readcount++;
 		var allvalid = true;
@@ -395,14 +395,14 @@ function BankReader() {
 
 				console.log(slot.imginfo.imghash);
 				
-				const canvas = document.getElementById('myCanvas');
-				const ctx = canvas.getContext('2d');
+				// const canvas = document.getElementById('myCanvas');
+				// const ctx = canvas.getContext('2d');
 
-				const diff = ctx.createImageData(34, 34);
-				var data = pixelmatch(BankReader.chisel.data, slot.buffer.data, diff.data, 34, 34, {threshold: 0.1});
+				// const diff = ctx.createImageData(34, 34);
+				var data = pixelmatch(BankReader.chisel.data, slot.buffer.data, null, 34, 34, {threshold: 0.1});
 
 				console.log(data);
-				ctx.putImageData(diff, 0, 0);
+				// ctx.putImageData(diff, 0, 0);
 
 				if (!slot.imginfo.valid) {
 					if (!slot.imginfo.empty) { allvalid = false; }

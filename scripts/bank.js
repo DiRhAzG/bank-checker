@@ -128,7 +128,7 @@ function BankReader() {
 	this.read = function (img, forceread) {
 		if (window.alt1 && !alt1.rsActive) {
 			me.isopen = false;
-			me.stopOverlay();
+			// me.stopOverlay();
 			return null;
 		}
 		if (!me.pos) { return null; }
@@ -146,14 +146,14 @@ function BankReader() {
 		if (!isopen) {
 			if (isopen != me.isopen) {
 				me.isopen = false;
-				me.stopOverlay();
+				// me.stopOverlay();
 				qw("bank window closed");
 			}
 			return null;
 		}
 		if (isopen != me.isopen) {
 			me.isopen = true;
-			me.startOverlay();
+			// me.startOverlay();
 		}
 
 		//=== find bank state ===
@@ -207,7 +207,7 @@ function BankReader() {
 		}
 
 		if (changed && trackCallback) { trackCallback(me.state); }
-		if (changed) { me.invalidateOverlay(); }
+		// if (changed) { me.invalidateOverlay(); }
 		return me.state;
 	}
 
@@ -693,170 +693,170 @@ function BankReader() {
 	//==========================================================================================
 	//======================================== overlays ========================================
 	//==========================================================================================
-	me.startOverlay = function () {
-		me.stopOverlay();
-		me.overlayState = {
-			timer: 0,
-			lastOverlay: 0,
-			invalidated: true
-		};
-		me.drawOverlay();
-	}
-	me.stopOverlay = function () {
-		if (window.alt1) {
-			alt1.overLayClearGroup("missingslots");
-			alt1.overLayContinueGroup("missingslots");
-			alt1.overLayClearGroup("bankscroll");
-			alt1.overLayContinueGroup("bankscroll");
-		}
-		if (me.overlayState) {
-			clearTimeout(me.overlayState.timer);
-		}
-		me.overlayState = null;
-	}
-	me.invalidateOverlay = function () {
-		if (me.overlayState) {
-			me.overlayState.invalidated = true;
-			me.drawOverlay();
-		}
-	}
-	me.drawOverlay = function () {
-		if (!window.alt1) { return; }
-		if (!me.pos) { return; }
-		if (!me.overlayState) { return; }
-		//fix timing stuff
+	// me.startOverlay = function () {
+	// 	me.stopOverlay();
+	// 	me.overlayState = {
+	// 		timer: 0,
+	// 		lastOverlay: 0,
+	// 		invalidated: true
+	// 	};
+	// 	// me.drawOverlay();
+	// }
+	// me.stopOverlay = function () {
+	// 	if (window.alt1) {
+	// 		alt1.overLayClearGroup("missingslots");
+	// 		alt1.overLayContinueGroup("missingslots");
+	// 		alt1.overLayClearGroup("bankscroll");
+	// 		alt1.overLayContinueGroup("bankscroll");
+	// 	}
+	// 	if (me.overlayState) {
+	// 		clearTimeout(me.overlayState.timer);
+	// 	}
+	// 	me.overlayState = null;
+	// }
+	// me.invalidateOverlay = function () {
+	// 	if (me.overlayState) {
+	// 		me.overlayState.invalidated = true;
+	// 		me.drawOverlay();
+	// 	}
+	// }
+	// me.drawOverlay = function () {
+	// 	if (!window.alt1) { return; }
+	// 	if (!me.pos) { return; }
+	// 	if (!me.overlayState) { return; }
+	// 	//fix timing stuff
 
-		var scrolltimeout = me.state.lastScroll + me.config.overlay.scrolldelay - Date.now();
-		if (scrolltimeout > 0) {
-			clearTimeout(me.overlayState.timer);
-			me.overlayState.timer = setTimeout(me.drawOverlay, scrolltimeout);
-			alt1.overLayClearGroup("missingslots");
-			alt1.overLayRefreshGroup("missingslots");
-			me.overlayState.invalidated = true;
-			return;
-		}
-		if (!me.overlayState.invalidated && me.overlayState.lastOverlay + me.config.timers.overlay * 0.7 > Date.now()) {
-			return;
-		}
-		clearTimeout(me.overlayState.timer);
-		me.overlayState.timer = setTimeout(me.drawOverlay, me.config.timers.overlay);
-		me.overlayState.lastOverlay = Date.now();
+	// 	var scrolltimeout = me.state.lastScroll + me.config.overlay.scrolldelay - Date.now();
+	// 	if (scrolltimeout > 0) {
+	// 		clearTimeout(me.overlayState.timer);
+	// 		me.overlayState.timer = setTimeout(me.drawOverlay, scrolltimeout);
+	// 		alt1.overLayClearGroup("missingslots");
+	// 		alt1.overLayRefreshGroup("missingslots");
+	// 		me.overlayState.invalidated = true;
+	// 		return;
+	// 	}
+	// 	if (!me.overlayState.invalidated && me.overlayState.lastOverlay + me.config.timers.overlay * 0.7 > Date.now()) {
+	// 		return;
+	// 	}
+	// 	clearTimeout(me.overlayState.timer);
+	// 	me.overlayState.timer = setTimeout(me.drawOverlay, me.config.timers.overlay);
+	// 	me.overlayState.lastOverlay = Date.now();
 
-		me.drawScrollOverlay();
+	// 	me.drawScrollOverlay();
 
-		//draw stuff
-		alt1.overLaySetGroup("missingslots");
-		alt1.overLayFreezeGroup("missingslots");
-		alt1.overLayClearGroup("missingslots");
-		for (var a = 0; a < me.state.rows.length; a++) {
-			var row = me.state.rows[a];
-			var y = me.pos.inner.y + row.y;
-			for (var b = 0; b < row.slots.length; b++) {
-				var slot = row.slots[b];
-				var x = me.pos.inner.x + slotsize * b;
-				me.drawItemOverlayInner(slot, x, y);
-			}
-		}
-		var tab = me.state.tabs[me.state.tab];
-		var tabvalue = me.getSlotsValue(me.allTabSlots(tab));
-		var valuestr = smallu(tabvalue.avg, true) + (tabvalue.maxdif != 0 ? " \u00B1 " + smallu(tabvalue.maxdif, true) : "");
-		alt1.overLayText("Tab: " + valuestr, a1lib.mixcolor(255, 203, 5), 12, me.pos.area.x + 6, me.pos.area.y + 5, 10 * 1000);
+	// 	//draw stuff
+	// 	alt1.overLaySetGroup("missingslots");
+	// 	alt1.overLayFreezeGroup("missingslots");
+	// 	alt1.overLayClearGroup("missingslots");
+	// 	for (var a = 0; a < me.state.rows.length; a++) {
+	// 		var row = me.state.rows[a];
+	// 		var y = me.pos.inner.y + row.y;
+	// 		for (var b = 0; b < row.slots.length; b++) {
+	// 			var slot = row.slots[b];
+	// 			var x = me.pos.inner.x + slotsize * b;
+	// 			me.drawItemOverlayInner(slot, x, y);
+	// 		}
+	// 	}
+	// 	var tab = me.state.tabs[me.state.tab];
+	// 	var tabvalue = me.getSlotsValue(me.allTabSlots(tab));
+	// 	var valuestr = smallu(tabvalue.avg, true) + (tabvalue.maxdif != 0 ? " \u00B1 " + smallu(tabvalue.maxdif, true) : "");
+	// 	alt1.overLayText("Tab: " + valuestr, a1lib.mixcolor(255, 203, 5), 12, me.pos.area.x + 6, me.pos.area.y + 5, 10 * 1000);
 
-		//PC.TooltipReader.drawOverlay(me.tooltipState,true);
-		alt1.overLayRefreshGroup("missingslots");
-		alt1.overLaySetGroup("");
-	}
-	me.drawScrollOverlay = function () {
-		if (!window.alt1) { return; }
-		alt1.overLaySetGroup("bankscroll");
-		alt1.overLayFreezeGroup("bankscroll");
-		alt1.overLayClearGroup("bankscroll");
-		var scrollbar = me.state.scrollbar;
-		if (!scrollbar) {
-			alt1.overLayRefreshGroup("bankscroll");
-			return;
-		}
-		var tab = me.state.tabs[me.state.tab];
-		if (!tab) { return; }
-		var rows = tab.rows.concat(tab.tabspaces).sort(function (a, b) { return a.scrolly - b.scrolly; });
+	// 	//PC.TooltipReader.drawOverlay(me.tooltipState,true);
+	// 	alt1.overLayRefreshGroup("missingslots");
+	// 	alt1.overLaySetGroup("");
+	// }
+	// me.drawScrollOverlay = function () {
+	// 	if (!window.alt1) { return; }
+	// 	alt1.overLaySetGroup("bankscroll");
+	// 	alt1.overLayFreezeGroup("bankscroll");
+	// 	alt1.overLayClearGroup("bankscroll");
+	// 	var scrollbar = me.state.scrollbar;
+	// 	if (!scrollbar) {
+	// 		alt1.overLayRefreshGroup("bankscroll");
+	// 		return;
+	// 	}
+	// 	var tab = me.state.tabs[me.state.tab];
+	// 	if (!tab) { return; }
+	// 	var rows = tab.rows.concat(tab.tabspaces).sort(function (a, b) { return a.scrolly - b.scrolly; });
 
-		var drawgap = function (start, end, col) {
-			alt1.overLayRect(col, scrollbar.x, Math.round(scrollbar.y + start / scrollh * scrollbar.raillength), 5, Math.round((end - start) / scrollh * scrollbar.raillength), t, 4);
-		}
+	// 	var drawgap = function (start, end, col) {
+	// 		alt1.overLayRect(col, scrollbar.x, Math.round(scrollbar.y + start / scrollh * scrollbar.raillength), 5, Math.round((end - start) / scrollh * scrollbar.raillength), t, 4);
+	// 	}
 
-		var t = me.config.timers.overlay + 500;
-		var scrollh = scrollbar.scrollheight;
-		var lasty = 0;
-		for (var a = 0; a < rows.length; a++) {
-			var row = rows[a];
-			if (row.scrolly > lasty + 0.5 * slotsize) {
-				drawgap(lasty, row.scrolly, a1lib.mixcolor(255, 0, 0));
-			}
-			var pricelessitem = false;
-			var missingitem = false;
-			if (row.slots) {
-				for (var b in row.slots) {
-					var slot = row.slots[b];
-					if ((!slot.price || !slot.price.selected) && !slot.isempty && slot.amount > 0) {
-						if (slot.price && slot.price.nameattempts.length != 0 && !slot.price.selected && !slot.loading) {
-							pricelessitem = true;;
-						} else {
-							missingitem = true;
-						}
-					}
-				}
-			}
-			if (missingitem) {
-				drawgap(row.scrolly, row.scrolly + slotsize, a1lib.mixcolor(255, 100, 0));
-			}
-			else if (pricelessitem) {
-				drawgap(row.scrolly, row.scrolly + slotsize, a1lib.mixcolor(255, 255, 0));
-			}
+	// 	var t = me.config.timers.overlay + 500;
+	// 	var scrollh = scrollbar.scrollheight;
+	// 	var lasty = 0;
+	// 	for (var a = 0; a < rows.length; a++) {
+	// 		var row = rows[a];
+	// 		if (row.scrolly > lasty + 0.5 * slotsize) {
+	// 			drawgap(lasty, row.scrolly, a1lib.mixcolor(255, 0, 0));
+	// 		}
+	// 		var pricelessitem = false;
+	// 		var missingitem = false;
+	// 		if (row.slots) {
+	// 			for (var b in row.slots) {
+	// 				var slot = row.slots[b];
+	// 				if ((!slot.price || !slot.price.selected) && !slot.isempty && slot.amount > 0) {
+	// 					if (slot.price && slot.price.nameattempts.length != 0 && !slot.price.selected && !slot.loading) {
+	// 						pricelessitem = true;;
+	// 					} else {
+	// 						missingitem = true;
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 		if (missingitem) {
+	// 			drawgap(row.scrolly, row.scrolly + slotsize, a1lib.mixcolor(255, 100, 0));
+	// 		}
+	// 		else if (pricelessitem) {
+	// 			drawgap(row.scrolly, row.scrolly + slotsize, a1lib.mixcolor(255, 255, 0));
+	// 		}
 
-			lasty = row.scrolly + slotsize;
-		}
-		if (scrollbar.scrollheight > lasty + 0.5 * slotsize) {
-			drawgap(lasty, scrollbar.scrollheight, a1lib.mixcolor(255, 0, 0));
-		}
-		//PC.TooltipReader.drawOverlay(me.tooltipState, true);
-		alt1.overLayRefreshGroup("bankscroll");
-		alt1.overLaySetGroup("");
-	}
+	// 		lasty = row.scrolly + slotsize;
+	// 	}
+	// 	if (scrollbar.scrollheight > lasty + 0.5 * slotsize) {
+	// 		drawgap(lasty, scrollbar.scrollheight, a1lib.mixcolor(255, 0, 0));
+	// 	}
+	// 	//PC.TooltipReader.drawOverlay(me.tooltipState, true);
+	// 	alt1.overLayRefreshGroup("bankscroll");
+	// 	alt1.overLaySetGroup("");
+	// }
 
-	me.drawItemOverlay = function (slot) {
-		alt1.overLaySetGroup("missingslots");
-		me.drawItemOverlayInner(slot);
-		alt1.overLayRefreshGroup("missingslots");
-	}
-	me.drawItemOverlayInner = function (slot) {
-		if (!slot.imginfo || !slot.imginfo.valid || slot.readinfo.readnr != readcount) { return; }
-		var x = slot.readinfo.x + me.pos.area.x;
-		var y = slot.readinfo.y + me.pos.area.y;
-		var t = me.config.timers.overlay + 500;
+	// me.drawItemOverlay = function (slot) {
+	// 	alt1.overLaySetGroup("missingslots");
+	// 	me.drawItemOverlayInner(slot);
+	// 	alt1.overLayRefreshGroup("missingslots");
+	// }
+	// me.drawItemOverlayInner = function (slot) {
+	// 	if (!slot.imginfo || !slot.imginfo.valid || slot.readinfo.readnr != readcount) { return; }
+	// 	var x = slot.readinfo.x + me.pos.area.x;
+	// 	var y = slot.readinfo.y + me.pos.area.y;
+	// 	var t = me.config.timers.overlay + 500;
 
-		var tx = x
-		var ty = y + 24;
-		var backcolor = 0;
-		if ((slot.price && slot.price.selected) || slot.amount <= 0) {
-			backcolor = a1lib.mixcolor(1, 0, 0);
-		} else if (slot.price && slot.price.nameattempts.length != 0 && !slot.price.selected && !slot.loading) {
-			backcolor = a1lib.mixcolor(255, 128, 0);
-		} else {
-			backcolor = a1lib.mixcolor(255, 0, 0);
-		}
-		if (backcolor != 0) {
-			alt1.overLayRect(backcolor, tx, ty, 32, 13, t, 10);
-		}
+	// 	var tx = x
+	// 	var ty = y + 24;
+	// 	var backcolor = 0;
+	// 	if ((slot.price && slot.price.selected) || slot.amount <= 0) {
+	// 		backcolor = a1lib.mixcolor(1, 0, 0);
+	// 	} else if (slot.price && slot.price.nameattempts.length != 0 && !slot.price.selected && !slot.loading) {
+	// 		backcolor = a1lib.mixcolor(255, 128, 0);
+	// 	} else {
+	// 		backcolor = a1lib.mixcolor(255, 0, 0);
+	// 	}
+	// 	if (backcolor != 0) {
+	// 		alt1.overLayRect(backcolor, tx, ty, 32, 13, t, 10);
+	// 	}
 
-		if (slot.price && slot.price.selected) {
-			alt1.overLayText(smallu(slot.price.selected.value * slot.amount), a1lib.mixcolor(255, 255, 255), 8, tx, ty, t);
-		}
+	// 	if (slot.price && slot.price.selected) {
+	// 		alt1.overLayText(smallu(slot.price.selected.value * slot.amount), a1lib.mixcolor(255, 255, 255), 8, tx, ty, t);
+	// 	}
 
-		if (!me.config.overlay.notext) {
-			if (slot.item) { alt1.overLayText(slot.item.name.slice(0, 4), a1lib.mixcolor(255, 255, 255), 12, x, y + 8, t); }
-			else { alt1.overLayText(slot.matches.length + "", a1lib.mixcolor(255, 255, 255), 12, x, y + 8, t); }
-		}
-	}
+	// 	if (!me.config.overlay.notext) {
+	// 		if (slot.item) { alt1.overLayText(slot.item.name.slice(0, 4), a1lib.mixcolor(255, 255, 255), 12, x, y + 8, t); }
+	// 		else { alt1.overLayText(slot.matches.length + "", a1lib.mixcolor(255, 255, 255), 12, x, y + 8, t); }
+	// 	}
+	// }
 	//==========================================================================================
 	//======================================== tracking ========================================
 	//==========================================================================================
@@ -926,9 +926,9 @@ function BankReader() {
 					var name = tooltip.readBankItem();
 					if (row.slots[colnr].nameread != name) {
 						hoverwaiting.push({ slot: row.slots[colnr], nameread: name });
-						if (window.alt1) {
-							me.drawItemOverlay(slot);
-						}
+						// if (window.alt1) {
+						// 	me.drawItemOverlay(slot);
+						// }
 						break;
 					}
 				}

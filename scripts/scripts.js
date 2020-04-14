@@ -19,8 +19,8 @@ function start() {
 	loadImages();
 	PasteInput.listen(pasted, message);
 
-	elput(document.body, bankUI.root);
-	bankUI.draw();
+	// elput(document.body, bankUI.root);
+	// bankUI.draw();
 
 	if (window.alt1) {
 		reader.find();

@@ -1,10 +1,14 @@
-
-<!DOCTYPE html>
 <html>
+
 <head>
-	<link rel="stylesheet" type="text/css" href="https://runeapps.org/nis/nis.css" />
-	<link rel="stylesheet" type="text/css" href="https://runeapps.org/nis/alt1-currentskin/skinstyle.css"/>
-	<link rel="stylesheet" type="text/css" href="https://runeapps.org/runeappslib.css" />
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://runeapps.org/nis/nis.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://runeapps.org/runeappslib.css">
+
 	<script type="text/javascript" src="scripts/tooltip.bundle.js"></script>
 	<script type="text/javascript" src="scripts/runeappslib.js"></script>
 	<script type="text/javascript" src="scripts/imagedetect.js"></script>
@@ -12,55 +16,89 @@
 	<script type="text/javascript" src="scripts/tooltip.js"></script>
 	<script type="text/javascript" src="scripts/bank.js"></script>
 	<script type="text/javascript" src="scripts/scripts.js"></script>
-	<script type="text/javascript" src="scripts/pixelmatch.js"></script>"
-	<style type="text/css">
-		body{overflow-y:auto !important;}
-
-		.nisbutton{float:left;}
-
-		#bankstate{display:flex; flex-flow:column nowrap;}
-			.flexline{display:flex; flex-flow:row nowrap;}
-			.flexlabel{line-height:21px; padding:0px 2px;}
-
-		.itemselectrow{display:flex; flex-flow:row nowrap;}
-			.itemselectdif{width:80px; text-align:right;}
-			.itemselect{width:140px; flex-grow:1;}
-			.itemselectrow>canvas{}
-
-		.itemrow{height:32px;}
-			.itemrowimg{float:left; width:32px; height:32px; vertical-align:middle;}
-			.itemrowname{}
-			.itemrowvalue{}
-
-		.bankstate{position:absolute; height:100%; width:100%; overflow:hidden; display:flex; flex-flow:column;}
-		.bank{}
-			.bank-tabs{display:flex;}
-				.bank-tab{}
-				.bank-tab.active{-webkit-filter:saturate(3);}
-			.bank-body{background:rgba(255,255,255,0.2); overflow-y:auto; flex:1 1 0; padding-top:20px;}
-				.bank-gap{height:8px; background:#ccc; margin:3px;}
-				.bank-row{display:inline;}
-					.bank-slot{float:left; zoom:1; width:34px; height:46px; image-rendering:pixelated; position:relative;}
-						.bank-slotvalue{font-size:11px; text-align:center; margin:-6px 0px 3px; color:#ddd;}
-				.bank-tabspace{color:black; text-align:center; background:#fff; margin:3px; border-bottom:2px solid #000; clear:both;}
-			.crty-header{font-size:120%; background:rgba(216,217,255,0.2); text-align:center; padding:2px 5px;}
-			.crty-story{padding:2px 5px;}
-			.crty-unknown{display:flex; flex-direction:row; align-items:center;}
-				.crty-wrapper{position:relative; flex:1;}
-					.crty-iteminput{width:100%; box-sizing:border-box; }
-
-		.slotdropdown{position:absolute; background:#142732; border:1px solid rgba(255,255,255,0.3); z-index:1;}
-			.item-opt{border-top:1px solid #333; cursor:pointer; height:17px; line-height:17px; white-space:nowrap; overflow:hidden; display:flex; flex-direction:row; padding:1px 4px; position:relative;}
-			.item-opt:hover::after{position:absolute; top:0px; left:0px; right:0px; bottom:0px; background:rgba(255,255,255,0.2); content:"";}
-			.item-optsource-exact{}
-			.item-optsource-partial{background-color:rgba(0,0,0,0.2); color:#666;}
-				.item-optname{flex:1; overflow:hidden; text-overflow:ellipsis; margin-right:8px;}
-				.item-optvalue{flex:0;}
-	</style>
+	<script type="text/javascript" src="scripts/pixelmatch.js"></script>
+	<script type="text/javascript" src="scripts/artefacts.js"></script>
 </head>
-<body class="nis" onload="start();">
-    <!-- <div style="background-image: url('http://localhost:8080/images/testbank.png');"> 
-        <canvas id="myCanvas" width="2000" height="2000"></canvas>
-    </div> -->
+
+<body class="nis">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button class="nisbutton" onclick="start();">
+                    Start
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="menu" class="menu">
+                    <div class="row">
+                        <div class="col header" title="When checked, will only show materials with a Quantity greater than 0">
+                            <h6>Filter Mats</h6>
+                        </div>
+                        <div class="col">
+                            <input type="checkbox" class="filter" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col header" title="When checked, allows you to edit the values for each material.">
+                            <h6>Edit Mode</h6>
+                        </div>
+                        <div class="col">
+                            <input type="checkbox" class="edit" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col header" title="When checked, Shows the goals column.">
+                            <h6>Enable Goals</h6>
+                        </div>
+                        <div class="col">
+                            <input type="checkbox" class="goals" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col header" title="Clears material Qty column.">
+                            <button class="clear nisbutton" data-type="qty" name='qty'>
+                                    ClearQty
+                                </button>
+                        </div>
+                        <div class="col header" title="Clears material Goals column.">
+                            <button class="clear nisbutton" data-type="goal" name="goals">
+                                    ClearGoals
+                                </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col header" title="Exports the current data as a CSV file.">
+                            <button class='nisbutton export'>
+                                    CSV Export
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container matSection">
+        <div class="row matHeader">
+            <div class="col hide">Hide</div>
+            <div class="col-6 sort" data-sort='level'>
+                Mats
+            </div>
+            <div class="col sort" data-sort='qty'>
+                Qty
+            </div>
+            <div class="col sort goalCol" data-sort='goal'>
+                Goal
+            </div>
+        </div>
+        <div class="row scroll">
+            <div class="col mats">
+            </div>
+        </div>
+    </div>
 </body>
+<script src="scripts/data.js"></script>
+<script src="scripts/script.js"></script>
+
 </html>

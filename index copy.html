@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://runeapps.org/nis/nis.css" />
+	<link rel="stylesheet" type="text/css" href="https://runeapps.org/nis/alt1-currentskin/skinstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="https://runeapps.org/runeappslib.css" />
+	<script type="text/javascript" src="scripts/tooltip.bundle.js"></script>
+	<script type="text/javascript" src="scripts/runeappslib.js"></script>
+	<script type="text/javascript" src="scripts/imagedetect.js"></script>
+	<script type="text/javascript" src="scripts/alt1lib.js"></script>
+	<script type="text/javascript" src="scripts/tooltip.js"></script>
+	<script type="text/javascript" src="scripts/bank.js"></script>
+	<script type="text/javascript" src="scripts/scripts.js"></script>
+	<script type="text/javascript" src="scripts/pixelmatch.js"></script>"
+	<script type="text/javascript" src="scripts/artefacts.js"></script>"
+	<style type="text/css">
+		body{overflow-y:auto !important;}
+
+		.nisbutton{float:left;}
+
+		#bankstate{display:flex; flex-flow:column nowrap;}
+			.flexline{display:flex; flex-flow:row nowrap;}
+			.flexlabel{line-height:21px; padding:0px 2px;}
+
+		.itemselectrow{display:flex; flex-flow:row nowrap;}
+			.itemselectdif{width:80px; text-align:right;}
+			.itemselect{width:140px; flex-grow:1;}
+			.itemselectrow>canvas{}
+
+		.itemrow{height:32px;}
+			.itemrowimg{float:left; width:32px; height:32px; vertical-align:middle;}
+			.itemrowname{}
+			.itemrowvalue{}
+
+		.bankstate{position:absolute; height:100%; width:100%; overflow:hidden; display:flex; flex-flow:column;}
+		.bank{}
+			.bank-tabs{display:flex;}
+				.bank-tab{}
+				.bank-tab.active{-webkit-filter:saturate(3);}
+			.bank-body{background:rgba(255,255,255,0.2); overflow-y:auto; flex:1 1 0; padding-top:20px;}
+				.bank-gap{height:8px; background:#ccc; margin:3px;}
+				.bank-row{display:inline;}
+					.bank-slot{float:left; zoom:1; width:34px; height:46px; image-rendering:pixelated; position:relative;}
+						.bank-slotvalue{font-size:11px; text-align:center; margin:-6px 0px 3px; color:#ddd;}
+				.bank-tabspace{color:black; text-align:center; background:#fff; margin:3px; border-bottom:2px solid #000; clear:both;}
+			.crty-header{font-size:120%; background:rgba(216,217,255,0.2); text-align:center; padding:2px 5px;}
+			.crty-story{padding:2px 5px;}
+			.crty-unknown{display:flex; flex-direction:row; align-items:center;}
+				.crty-wrapper{position:relative; flex:1;}
+					.crty-iteminput{width:100%; box-sizing:border-box; }
+
+		.slotdropdown{position:absolute; background:#142732; border:1px solid rgba(255,255,255,0.3); z-index:1;}
+			.item-opt{border-top:1px solid #333; cursor:pointer; height:17px; line-height:17px; white-space:nowrap; overflow:hidden; display:flex; flex-direction:row; padding:1px 4px; position:relative;}
+			.item-opt:hover::after{position:absolute; top:0px; left:0px; right:0px; bottom:0px; background:rgba(255,255,255,0.2); content:"";}
+			.item-optsource-exact{}
+			.item-optsource-partial{background-color:rgba(0,0,0,0.2); color:#666;}
+				.item-optname{flex:1; overflow:hidden; text-overflow:ellipsis; margin-right:8px;}
+				.item-optvalue{flex:0;}
+	</style>
+</head>
+<body class="nis" onload="start();">
+    <div style="background-image: url('http://localhost:8080/images/shanabank1.png');"> 
+        <canvas id="myCanvas" width="2000" height="2000"></canvas>
+    </div>
+</body>
+</html>

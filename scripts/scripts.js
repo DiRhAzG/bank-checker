@@ -209,7 +209,7 @@ function clickSlot(slot, el, container) {
 function toggleTrack() {
 	if (reader.tracking) {
 		reader.stopTrack();
-		reader.stopOverlay();
+		// reader.stopOverlay();
 	}
 	else {
 		if (window.alt1) {
@@ -220,7 +220,7 @@ function toggleTrack() {
 				}
 			}
 			reader.track(readUpdated);
-			reader.startOverlay();
+			// reader.startOverlay();
 		}
 		else {
 			message("This feature is only available in Alt1.");
@@ -280,85 +280,85 @@ function BankInterface(reader) {
 		}
 
 		if (me.activemode == 0) { elput(els.body, me.drawItems(tab)); }
-		if (me.activemode == 1) { elput(els.body, me.drawCertainty(tab)); }
-		if (me.activemode == 2) { elput(els.body, me.drawHelp()); }
+		// if (me.activemode == 1) { elput(els.body, me.drawCertainty(tab)); }
+		// if (me.activemode == 2) { elput(els.body, me.drawHelp()); }
 	}
-	this.drawHelp = function () {
-		var frag = elfrag(
-			eldiv("crty-header", ["Still learning"]),
-			eldiv("crty-story", ["Items are recognized using an AI on the RuneApps server. This AI learns automatically from user input and will improve over time. The more you use this app you will notice that it will start recognizing the items in your bank."]),
-			eldiv("crty-story", ["Unknown items have a red overlay. You can simply hover over them in-game and Alt1 will read the cursor tooltip and add the item to the database to recognize it instantly. You can click the \"Certainty\" tab to see any problems it has with unrecognized items."]),
-			eldiv("crty-story", ["This app is still in beta. You can leave feedback and issues you have with it on ", eldiv(":a", { href: "http://runeapps.org/forums/viewtopic.php?id=552" }, ["this thread"]), " on the forums."])
-		);
-		return frag;
-	}
-	this.drawCertainty = function (tab) {
-		var allslots = reader.allTabSlots(tab);
-		var unknownslots = [];
-		var variationslots = [];
-		for (var a in allslots) {
-			var slot = allslots[a];
-			if (!slot.imginfo || slot.imginfo.empty || slot.amount <= 0) { continue; }
-			var price = slot.price;
-			if (price && !price.loading) {
-				if (price.options.length == 0) { unknownslots.push(slot); }
-				else if (price && !price.userconfirmed) {
-					var min = Infinity;
-					var max = -Infinity;
-					for (var b in price.options) {
-						min = Math.min(min, price.options[b].value);
-						max = Math.max(max, price.options[b].value);
-					}
-					var d = (max - min) * slot.amount;
-					if (!isFinite(d) || d == 0) { continue; }
-					variationslots.push({ d: d, price: price, slot: slot });
-				}
-			}
-		}
-		var frag = elfrag();
+	// this.drawHelp = function () {
+	// 	var frag = elfrag(
+	// 		eldiv("crty-header", ["Still learning"]),
+	// 		eldiv("crty-story", ["Items are recognized using an AI on the RuneApps server. This AI learns automatically from user input and will improve over time. The more you use this app you will notice that it will start recognizing the items in your bank."]),
+	// 		eldiv("crty-story", ["Unknown items have a red overlay. You can simply hover over them in-game and Alt1 will read the cursor tooltip and add the item to the database to recognize it instantly. You can click the \"Certainty\" tab to see any problems it has with unrecognized items."]),
+	// 		eldiv("crty-story", ["This app is still in beta. You can leave feedback and issues you have with it on ", eldiv(":a", { href: "http://runeapps.org/forums/viewtopic.php?id=552" }, ["this thread"]), " on the forums."])
+	// 	);
+	// 	return frag;
+	// }
+	// this.drawCertainty = function (tab) {
+	// 	var allslots = reader.allTabSlots(tab);
+	// 	var unknownslots = [];
+	// 	var variationslots = [];
+	// 	for (var a in allslots) {
+	// 		var slot = allslots[a];
+	// 		if (!slot.imginfo || slot.imginfo.empty || slot.amount <= 0) { continue; }
+	// 		var price = slot.price;
+	// 		if (price && !price.loading) {
+	// 			if (price.options.length == 0) { unknownslots.push(slot); }
+	// 			else if (price && !price.userconfirmed) {
+	// 				var min = Infinity;
+	// 				var max = -Infinity;
+	// 				for (var b in price.options) {
+	// 					min = Math.min(min, price.options[b].value);
+	// 					max = Math.max(max, price.options[b].value);
+	// 				}
+	// 				var d = (max - min) * slot.amount;
+	// 				if (!isFinite(d) || d == 0) { continue; }
+	// 				variationslots.push({ d: d, price: price, slot: slot });
+	// 			}
+	// 		}
+	// 	}
+	// 	var frag = elfrag();
 
-		if (unknownslots.length != 0) {
-			frag.appendChild(eldiv("crty-header", ["Unknown items"]));
-			frag.appendChild(eldiv("crty-story", ["These items are not in the runeapps database. Please hover over them with your mouse in-game to read the names, or type the names manually."]));
-			for (var a in unknownslots) {
-				var slot = unknownslots[a];
-				var textbox = itemAutocompletebox();
-				textbox.firstChild.value = slot.nameread || "";
+	// 	if (unknownslots.length != 0) {
+	// 		frag.appendChild(eldiv("crty-header", ["Unknown items"]));
+	// 		frag.appendChild(eldiv("crty-story", ["These items are not in the runeapps database. Please hover over them with your mouse in-game to read the names, or type the names manually."]));
+	// 		for (var a in unknownslots) {
+	// 			var slot = unknownslots[a];
+	// 			var textbox = itemAutocompletebox();
+	// 			textbox.firstChild.value = slot.nameread || "";
 
-				var confirm = function (t, s) {
-					s.nameread = t.firstChild.value;
-					fixPrices();
-				}.b(textbox, slot);
-				var resetimg = function (s) {
-					s.reset();
-					me.reader.read(null, true);
-				}.b(slot);
-				textbox.firstChild.onkeydown = function (confirm, e) { if (e.keyCode == 13) { confirm(); } }.bind(null, confirm);
+	// 			var confirm = function (t, s) {
+	// 				s.nameread = t.firstChild.value;
+	// 				fixPrices();
+	// 			}.b(textbox, slot);
+	// 			var resetimg = function (s) {
+	// 				s.reset();
+	// 				me.reader.read(null, true);
+	// 			}.b(slot);
+	// 			textbox.firstChild.onkeydown = function (confirm, e) { if (e.keyCode == 13) { confirm(); } }.bind(null, confirm);
 
-				var img = getSlotImg(unknownslots[a]);
-				frag.appendChild(eldiv("crty-unknown", [
-					img,
-					textbox,
-					eldiv("nisbutton2", { onclick: confirm }, ["Confirm"]),
-					eldiv("nisbutton2", { onclick: resetimg, title: "Click to discard this image and read this item again" }, ["Bad image"])
-				]));
-			}
-		}
-		if (variationslots.length != 0) {
-			frag.appendChild(eldiv("crty-header", ["Uncertain matches"]));
-			frag.appendChild(eldiv("crty-story", ["These items match multiple ge prices. To increase the accuracy of your price check please select the right price."]))
-			variationslots = variationslots.sort(function (a, b) { return b.d - a.d; });
-			for (var a = 0; a < variationslots.length; a++) {
-				frag.appendChild(slotDiv(variationslots[a].slot, els.body));
-			}
-		}
-		if (unknownslots.length == 0 && variationslots.length == 0) {
-			frag.appendChild(eldiv("crty-header", ["All good"]));
-			frag.appendChild(eldiv("crty-story", ["There are no unrecognized items."]));
-		}
+	// 			var img = getSlotImg(unknownslots[a]);
+	// 			frag.appendChild(eldiv("crty-unknown", [
+	// 				img,
+	// 				textbox,
+	// 				eldiv("nisbutton2", { onclick: confirm }, ["Confirm"]),
+	// 				eldiv("nisbutton2", { onclick: resetimg, title: "Click to discard this image and read this item again" }, ["Bad image"])
+	// 			]));
+	// 		}
+	// 	}
+	// 	if (variationslots.length != 0) {
+	// 		frag.appendChild(eldiv("crty-header", ["Uncertain matches"]));
+	// 		frag.appendChild(eldiv("crty-story", ["These items match multiple ge prices. To increase the accuracy of your price check please select the right price."]))
+	// 		variationslots = variationslots.sort(function (a, b) { return b.d - a.d; });
+	// 		for (var a = 0; a < variationslots.length; a++) {
+	// 			frag.appendChild(slotDiv(variationslots[a].slot, els.body));
+	// 		}
+	// 	}
+	// 	if (unknownslots.length == 0 && variationslots.length == 0) {
+	// 		frag.appendChild(eldiv("crty-header", ["All good"]));
+	// 		frag.appendChild(eldiv("crty-story", ["There are no unrecognized items."]));
+	// 	}
 
-		return frag;
-	}
+	// 	return frag;
+	// }
 	this.drawItems = function (tab) {
 		var rows = (tab ? tab.rows.concat(tab.tabspaces).sort(function (a, b) { return a.scrolly - b.scrolly; }) : []);
 		var frag = elfrag();

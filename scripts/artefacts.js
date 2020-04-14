@@ -217,21 +217,3 @@ let calculateMats = () => {
 
     buildTable();
 }
-
-let artefactInput = {}
-if(localStorage.artefactInput)
-    artefactInput = JSON.parse(localStorage.artefactInput);
-console.log(artefactInput)    
-artefactsList.forEach(item => {
-    $(".main").append(`
-    <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-3">
-            ${item.name}    
-        </div>
-        <div class="col-sm-1">
-            <input class="artefactInput" type='number' data-name='${item.name}' value=${artefactInput[item.name] || 0}>
-        </div>
-        <div class="col-sm-4"></div>
-    </div>`)
-});

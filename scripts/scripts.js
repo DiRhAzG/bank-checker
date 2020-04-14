@@ -10,13 +10,11 @@ var reader = new BankReader();
 var bankUI = new BankInterface(reader);
 var geItems = [];
 
-let blnRefresh = false;
 //image detect is done on different server to make sure it can't bring other apps with it under high load
 // var apibase = "https://pc.runeapps.org/apps/ge/";
 //var apibase = "//pc.runeapps.org/apps/ge/";
 
 function start() {
-	blnRefresh = true;
 	a1lib.identifyUrl("appconfig.json");
 	loadImages();
 	PasteInput.listen(pasted, message);
@@ -26,7 +24,7 @@ function start() {
 
 	if (window.alt1) {
 		reader.find();
-		toggleTrack();
+		// toggleTrack();
 	} else {
 		pasteExample("http://localhost:8080/images/shanabank1.png");
 	}
@@ -51,11 +49,9 @@ function pasted(image) {
 	var imgref = new ImgRefCtx(image);
 	reader.find(imgref);
 	if (reader.pos) {
-		reader.read(imgref, blnRefresh);
+		reader.read(imgref, true);
 		// readUpdated();
 		calculateMats();
-
-		blnRefresh = false;
 	}
 }
 

@@ -10,11 +10,13 @@ var reader = new BankReader();
 var bankUI = new BankInterface(reader);
 var geItems = [];
 
+let blnRefresh = false;
 //image detect is done on different server to make sure it can't bring other apps with it under high load
-var apibase = "https://pc.runeapps.org/apps/ge/";
+// var apibase = "https://pc.runeapps.org/apps/ge/";
 //var apibase = "//pc.runeapps.org/apps/ge/";
 
 function start() {
+	blnRefresh = true;
 	a1lib.identifyUrl("appconfig.json");
 	loadImages();
 	PasteInput.listen(pasted, message);
@@ -25,9 +27,9 @@ function start() {
 	if (window.alt1) {
 		reader.find();
 		toggleTrack();
+	} else {
+		pasteExample("http://localhost:8080/images/shanabank1.png");
 	}
-	
-	//  pasteExample("http://localhost:8080/images/shanabank1.png");
 }
 
 function shutdown() {
@@ -49,9 +51,11 @@ function pasted(image) {
 	var imgref = new ImgRefCtx(image);
 	reader.find(imgref);
 	if (reader.pos) {
-		reader.read(imgref);
+		reader.read(imgref, blnRefresh);
 		readUpdated();
 		calculateMats();
+
+		blnRefresh = false;
 	}
 }
 
@@ -123,9 +127,9 @@ function fixPrices() {
 		}
 	}
 
-	if (reqs.length != 0) {
-		dlpagejson(apibase + "pc_getprices.php", reqs, pricesLoaded.bind(null, reqslots), message.b(apibase + "pc_getprices.php"));
-	}
+	// if (reqs.length != 0) {
+	// 	dlpagejson(apibase + "pc_getprices.php", reqs, pricesLoaded.bind(null, reqslots), message.b(apibase + "pc_getprices.php"));
+	// }
 }
 
 function pricesLoaded(targetslots, obj) {
@@ -226,7 +230,7 @@ function toggleTrack() {
 			message("This feature is only available in Alt1.");
 		}
 	}
-	bankUI.drawButtons();
+	// bankUI.drawButtons();
 }
 
 function BankInterface(reader) {
@@ -247,42 +251,42 @@ function BankInterface(reader) {
 		els.body = eldiv("bank-body")
 	]);
 
-	this.drawButtons = function () {
-		els.toggletrack.innerText = "Track: " + (me.reader.tracking ? "on" : "off");
-	}
+	// this.drawButtons = function () {
+	// 	els.toggletrack.innerText = "Track: " + (me.reader.tracking ? "on" : "off");
+	// }
 
-	this.draw = function () {
-		//draw tabs
-		var frag = elfrag(
-			eldiv("bank-tab contenttab lefttab" + (me.activemode == 2 ? " activetab" : ""), { onclick: function () { me.activemode = 2; me.draw(); } }, ["About"]),
-			eldiv("bank-tab contenttab lefttab" + (me.activemode == 0 ? " activetab" : ""), { onclick: function () { me.activemode = 0; me.draw(); } }, ["View items"]),
-			eldiv("bank-tab contenttab lefttab" + (me.activemode == 1 ? " activetab" : ""), { onclick: function () { me.activemode = 1; me.draw(); } }, ["Certainty"])
-		);
-		/*
-		for (var a in me.bank.tabs) {
-			if (!me.bank.tabs[a]) { continue; }
-			var el = eldiv("bank-tab contenttab" + (a == me.activetab ? " activetab" : ""), { onclick: function (a) { me.activetab = a; me.draw(); }.b(a) }, [me.bank.tabs[a].name]);
-			frag.appendChild(el);
-		}*/
-		elput(els.tabroot, frag);
+	// this.draw = function () {
+	// 	//draw tabs
+	// 	var frag = elfrag(
+	// 		eldiv("bank-tab contenttab lefttab" + (me.activemode == 2 ? " activetab" : ""), { onclick: function () { me.activemode = 2; me.draw(); } }, ["About"]),
+	// 		eldiv("bank-tab contenttab lefttab" + (me.activemode == 0 ? " activetab" : ""), { onclick: function () { me.activemode = 0; me.draw(); } }, ["View items"]),
+	// 		eldiv("bank-tab contenttab lefttab" + (me.activemode == 1 ? " activetab" : ""), { onclick: function () { me.activemode = 1; me.draw(); } }, ["Certainty"])
+	// 	);
+	// 	/*
+	// 	for (var a in me.bank.tabs) {
+	// 		if (!me.bank.tabs[a]) { continue; }
+	// 		var el = eldiv("bank-tab contenttab" + (a == me.activetab ? " activetab" : ""), { onclick: function (a) { me.activetab = a; me.draw(); }.b(a) }, [me.bank.tabs[a].name]);
+	// 		frag.appendChild(el);
+	// 	}*/
+	// 	elput(els.tabroot, frag);
 
-		var tab = me.bank && me.bank.tabs[me.activetab];
+	// 	var tab = me.bank && me.bank.tabs[me.activetab];
 
-		//var bankvalue = reader.getSlotsValue(allSlots(me.bank));
-		//els.bankvalue.innerText = smallu(bankvalue.avg, true) + (bankvalue.maxdif != 0 ? " \u00B1 " + smallu(bankvalue.maxdif, true) : "");
-		if (tab) {
-			var tabvalue = reader.getSlotsValue(reader.allTabSlots(tab));
-			var valuestr = smallu(tabvalue.avg, true) + (tabvalue.maxdif != 0 ? " \u00B1 " + smallu(tabvalue.maxdif, true) : "");
-			els.tabvalue.innerText = valuestr;
-		}
-		else {
-			els.tabvalue.innerText = "-";
-		}
+	// 	//var bankvalue = reader.getSlotsValue(allSlots(me.bank));
+	// 	//els.bankvalue.innerText = smallu(bankvalue.avg, true) + (bankvalue.maxdif != 0 ? " \u00B1 " + smallu(bankvalue.maxdif, true) : "");
+	// 	if (tab) {
+	// 		var tabvalue = reader.getSlotsValue(reader.allTabSlots(tab));
+	// 		var valuestr = smallu(tabvalue.avg, true) + (tabvalue.maxdif != 0 ? " \u00B1 " + smallu(tabvalue.maxdif, true) : "");
+	// 		els.tabvalue.innerText = valuestr;
+	// 	}
+	// 	else {
+	// 		els.tabvalue.innerText = "-";
+	// 	}
 
-		if (me.activemode == 0) { elput(els.body, me.drawItems(tab)); }
-		// if (me.activemode == 1) { elput(els.body, me.drawCertainty(tab)); }
-		// if (me.activemode == 2) { elput(els.body, me.drawHelp()); }
-	}
+	// 	if (me.activemode == 0) { elput(els.body, me.drawItems(tab)); }
+	// 	// if (me.activemode == 1) { elput(els.body, me.drawCertainty(tab)); }
+	// 	// if (me.activemode == 2) { elput(els.body, me.drawHelp()); }
+	// }
 	// this.drawHelp = function () {
 	// 	var frag = elfrag(
 	// 		eldiv("crty-header", ["Still learning"]),
@@ -458,7 +462,7 @@ function itemAutocompletebox() {
 			return;
 		}
 		lock = true;
-		dlpage(apibase + "autocomplete.php?q=" + encodeURIComponent(scope.originalword), loaded, failed);
+		// dlpage(apibase + "autocomplete.php?q=" + encodeURIComponent(scope.originalword), loaded, failed);
 	}
 
 	var scope = bindAutoComplete(el, getsuggests);

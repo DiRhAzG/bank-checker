@@ -223,7 +223,7 @@ function toggleTrack() {
 					return;
 				}
 			}
-			// reader.track(readUpdated);
+			reader.track();
 			// reader.startOverlay();
 		}
 		else {

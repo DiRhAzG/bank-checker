@@ -187,6 +187,7 @@ function BankReader() {
 			qw(new Date().toLocaleTimeString(), "reading bank images");
 			if (me.readInner(buffer, scrollbar, tab)) {
 				me.readItems(buffer);
+				calculateMats();
 				changed = true;
 			}
 		// }

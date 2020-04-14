@@ -52,7 +52,6 @@ function pasted(image) {
 	if (reader.pos) {
 		reader.read(imgref, true);
 		// readUpdated();
-		calculateMats();
 	}
 }
 

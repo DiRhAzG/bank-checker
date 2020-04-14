@@ -52,7 +52,7 @@ function pasted(image) {
 	reader.find(imgref);
 	if (reader.pos) {
 		reader.read(imgref, blnRefresh);
-		readUpdated();
+		// readUpdated();
 		calculateMats();
 
 		blnRefresh = false;
@@ -64,12 +64,12 @@ function pasteExample(url) {
 	img.onload = function () { pasted(img); };
 }
 
-function readUpdated() {
-	bankUI.bank = reader.state;
-	bankUI.activetab = reader.state.tab;
-	bankUI.draw();
-	// fixPrices();
-}
+// function readUpdated() {
+// 	bankUI.bank = reader.state;
+// 	bankUI.activetab = reader.state.tab;
+// 	bankUI.draw();
+// 	// fixPrices();
+// }
 
 function allSlots(bank) {
 	var slots = [];
@@ -160,7 +160,7 @@ function pricesLoaded(targetslots, obj) {
 			price.selected = price.options[0];
 		}
 	}
-	bankUI.draw(reader.state);
+	// bankUI.draw(reader.state);
 	if (window.alt1) {
 		alt1.overLayRefreshGroup("missingslots");
 		//reader.drawScrollOverlay();
@@ -181,7 +181,7 @@ function clickSlot(slot, el, container) {
 		opt.onclick = function (slot, item) {
 			slot.price.userconfirmed = true;
 			slot.price.selected = item;
-			bankUI.draw();
+			// bankUI.draw();
 			menu.remove();
 		}.b(slot, slot.price.options[a]);
 		menu.appendChild(opt);
@@ -223,7 +223,7 @@ function toggleTrack() {
 					return;
 				}
 			}
-			reader.track(readUpdated);
+			// reader.track(readUpdated);
 			// reader.startOverlay();
 		}
 		else {

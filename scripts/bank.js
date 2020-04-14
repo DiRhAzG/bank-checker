@@ -182,14 +182,14 @@ function BankReader() {
 		me.state.rawscrolltop = (scrollbar && scrollbar.scrolltop) || 0;
 
 		//check if the state changed enough to read the items again
-		if (forceread || tabchanged || scrollchanged || loadretry || !me.state.allslotsvalid) {
+		// if (forceread || tabchanged || scrollchanged || loadretry || !me.state.allslotsvalid) {
 			var buffer = img.toData(me.pos.area.x, me.pos.area.y, me.pos.area.w, me.pos.area.h);
 			qw(new Date().toLocaleTimeString(), "reading bank images");
 			if (me.readInner(buffer, scrollbar, tab)) {
 				me.readItems(buffer);
 				changed = true;
 			}
-		}
+		// }
 		//scroll didnt change, add reads that needed this confirmation
 		if (me.state && !tabchanged && !scrollchanged) {
 			for (var a = hoverwaiting.length - 1; a >= 0; a--) {

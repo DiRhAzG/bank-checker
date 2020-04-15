@@ -364,7 +364,13 @@ function BankReader() {
 				var imgy = me.pos.inner.y - me.pos.area.y + me.state.rows[banky].y + 1;
 				slot.readinfo = { x: imgx, y: imgy, readnr: readcount };
 				if (slot.isempty) { continue; }
-				if (slot.imginfo && slot.imginfo.valid) { continue; }
+				if (slot.imginfo && slot.imginfo.valid) {
+					let itemName = compareItems(slot);
+
+					console.log(itemName);
+
+					continue;
+				}
 
 				//check if we hit a tooltip
 				if (me.tooltipIntersect(slot, me.state.tooltip, 5)) {

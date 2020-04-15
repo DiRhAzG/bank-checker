@@ -24,7 +24,7 @@ function start() {
 
 	if (window.alt1) {
 		reader.find();
-		reader.read();
+		// reader.read();
 		// toggleTrack();
 	} else {
 		pasteExample("http://localhost:8080/images/shanabank1.png");

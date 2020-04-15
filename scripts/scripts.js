@@ -31,7 +31,7 @@ function start() {
 		reader.read();
 		// toggleTrack();
 	} else {
-		pasteExample("http://localhost:8080/images/shanabank1.png");
+		pasteExample("http://localhost:8080/images/testbank10.png");
 	}
 }
 

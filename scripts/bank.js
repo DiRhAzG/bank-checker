@@ -258,28 +258,28 @@ function BankReader() {
 		
 				console.log(dataUri);
 
-		for (var x = 0; x < clone.width; x++) {
-			for (var y = 0; y < clone.height; y++) {
-				var i = 4 * x + 4 * clone.width * y;
-				var r = (me.pos.legacy ? backcolorlegacy[0] : backcolor[0]);
-				var g = (me.pos.legacy ? backcolorlegacy[1] : backcolor[1]);
-				var b = (me.pos.legacy ? backcolorlegacy[2] : backcolor[2]);
-				var colmargin = 0;
-				if (slot.hasborder) {
-					var islot = 4 * (x + 4) + 4 * BankReader.slotoutline.width * (y + 3);
-					var aslot = BankReader.slotoutline.data[islot + 3] / 255;
-					var aback = 1 - aslot;
-					r = aback * r + aslot * BankReader.slotoutline.data[islot + 0];
-					g = aback * g + aslot * BankReader.slotoutline.data[islot + 1];
-					b = aback * b + aslot * BankReader.slotoutline.data[islot + 2];
-					colmargin = 10;
-				}
-				var d = Math.abs(r - data[i + 0]) + Math.abs(g - data[i + 1]) + Math.abs(b - data[i + 2]);
-				if (d <= colmargin) {
-					data[i + 0] = data[i + 1] = data[i + 2] = data[i + 3] = 0;
-				}
-			}
-		}
+		// for (var x = 0; x < clone.width; x++) {
+		// 	for (var y = 0; y < clone.height; y++) {
+		// 		var i = 4 * x + 4 * clone.width * y;
+		// 		var r = (me.pos.legacy ? backcolorlegacy[0] : backcolor[0]);
+		// 		var g = (me.pos.legacy ? backcolorlegacy[1] : backcolor[1]);
+		// 		var b = (me.pos.legacy ? backcolorlegacy[2] : backcolor[2]);
+		// 		var colmargin = 0;
+		// 		if (slot.hasborder) {
+		// 			var islot = 4 * (x + 4) + 4 * BankReader.slotoutline.width * (y + 3);
+		// 			var aslot = BankReader.slotoutline.data[islot + 3] / 255;
+		// 			var aback = 1 - aslot;
+		// 			r = aback * r + aslot * BankReader.slotoutline.data[islot + 0];
+		// 			g = aback * g + aslot * BankReader.slotoutline.data[islot + 1];
+		// 			b = aback * b + aslot * BankReader.slotoutline.data[islot + 2];
+		// 			colmargin = 10;
+		// 		}
+		// 		var d = Math.abs(r - data[i + 0]) + Math.abs(g - data[i + 1]) + Math.abs(b - data[i + 2]);
+		// 		if (d <= colmargin) {
+		// 			data[i + 0] = data[i + 1] = data[i + 2] = data[i + 3] = 0;
+		// 		}
+		// 	}
+		// }
 		return clone;
 	}
 
@@ -398,6 +398,25 @@ function BankReader() {
 					// console.log(dataUri);
 
 				var transbuf = readbuffer(bufref, slot, imgx, imgy, 0, 0);
+				// // create off-screen canvas element
+				// 	var canvas = document.createElement('canvas'),
+				// 	ctx = canvas.getContext('2d');
+			
+				// 	canvas.width = 34;
+				// 	canvas.height = 34;
+			
+				// 	// create imageData object
+				// 	var idata = ctx.createImageData(34, 34);
+			
+				// 	// set our buffer as source
+				// 	idata.data.set(transbuf.data);
+			
+				// 	// update canvas with new data
+				// 	ctx.putImageData(idata, 0, 0);
+				// 	var dataUri = canvas.toDataURL(); // produces a PNG file
+			
+				// 	console.log(dataUri);
+																 
 				slot.setBuffer(transbuf);
 				
 				// const canvas = document.getElementById('myCanvas');
@@ -417,6 +436,7 @@ function BankReader() {
 				// }
 				// console.log(data);
 				// ctx.putImageData(diff, 0, 0);
+
 
 				let itemName = compareItems(slot);
 

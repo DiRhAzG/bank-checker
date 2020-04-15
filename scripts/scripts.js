@@ -14,7 +14,7 @@ var geItems = [];
 // var apibase = "https://pc.runeapps.org/apps/ge/";
 //var apibase = "//pc.runeapps.org/apps/ge/";
 
-window.onload() = () => {
+window.onload = () => {
 	loadImages();
 };
 

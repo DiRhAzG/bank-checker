@@ -174,10 +174,6 @@ let loadImages = () => {
     }
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-    reader.read();
- }, false);
-
 let compareItems = (slot) => {
     for (let artefact of artefactsList) {
         if (artefact.image != undefined) {

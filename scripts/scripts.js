@@ -14,9 +14,13 @@ var geItems = [];
 // var apibase = "https://pc.runeapps.org/apps/ge/";
 //var apibase = "//pc.runeapps.org/apps/ge/";
 
+window.onload() = () => {
+	loadImages();
+};
+
 function start() {
 	a1lib.identifyUrl("appconfig.json");
-	loadImages();
+	
 	PasteInput.listen(pasted, message);
 
 	// elput(document.body, bankUI.root);
@@ -24,7 +28,7 @@ function start() {
 
 	if (window.alt1) {
 		reader.find();
-		// reader.read();
+		reader.read();
 		// toggleTrack();
 	} else {
 		pasteExample("http://localhost:8080/images/shanabank1.png");

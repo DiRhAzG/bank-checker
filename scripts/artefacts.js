@@ -158,10 +158,13 @@ let artefactsList = [
 let loadImages = () => {
     for (let artefact of artefactsList) {
         if (artefact.imageData != undefined && artefact.imageData != "") {
-            let artefactImage = new Image(34, 34);
-            artefactImage.src = artefact.imageData;
+            // let artefactImage = new Image(34, 34);
+            // artefactImage.src = artefact.imageData;
             
-            artefact.image = artefactImage;
+            ImageData.fromBase64Alt(function (i) {
+                artefact.image = i;
+            }, artefact.imageData);
+
             // artefactsCount.push({
             //     name: art.name,
             //     image: artefactImg,
@@ -174,7 +177,7 @@ let loadImages = () => {
 let compareItems = (slot) => {
     for (let artefact of artefactsList) {
         if (artefact.image != undefined) {
-            let imgToCompare = artefact.image.toBuffer();
+            let imgToCompare = artefact.image;
 
             let diff = pixelmatch(imgToCompare.data, slot.buffer.data, null, 34, 34, {threshold: 0.05});
         

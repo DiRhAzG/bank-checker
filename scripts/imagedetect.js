@@ -505,6 +505,15 @@ ImageData.fromBase64 = function (callback, data) {
 	img.src = "data:image/png;base64," + data;
 }
 
+ImageData.fromBase64Alt = function (callback, data) {
+	var img;
+	img = new Image();
+	img.onload = function () {
+		callback(img.toBuffer());
+	}
+	img.src = data;
+}
+
 //mostly a debug function to show arrays as image
 ImageData.fromArray = function (array,w,h) {
 	if (array.length != w * h) { throw "Invalid array size"; }

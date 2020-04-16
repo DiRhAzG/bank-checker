@@ -35,8 +35,8 @@ function start() {
 		matreader.read();
 		// toggleTrack();
 	} else {
-		pasteExample("http://localhost:8080/images/shanabank1.png");
-		//matImageFromFile("http://localhost:8080/images/chrismats2.png");
+		//pasteExample("http://localhost:8080/images/shanabank1.png");
+		matImageFromFile("http://localhost:8080/images/chrismats2.png");
 	}
 }
 

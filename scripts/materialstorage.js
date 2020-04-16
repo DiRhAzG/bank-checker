@@ -135,7 +135,7 @@ function MaterialsReader() {
 		}
 		var changed = false;
 		//can not have a tooltip, added benifit of ignoring it when user is searching
-        var searchbuf = img.toData(me.pos.area.x + me.pos.area.w - 7, me.pos.area.y + me.pos.area.h - 13, MaterialsReader.botright.width, MaterialsReader.botright.height);
+        var searchbuf = img.toData(me.pos.area.x + me.pos.area.w - 48, me.pos.area.y + me.pos.area.h - 38, MaterialsReader.botright.width, MaterialsReader.botright.height);
         
 		var isopen = a1lib.simplecompare(searchbuf, MaterialsReader.botright, 0, 0) !== false;
 		if (!isopen) {

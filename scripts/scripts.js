@@ -15,9 +15,7 @@ window.onload = () => {
 	loadArtefacts();
 	loadMaterials();
 	
-	setTimeout(3000);
-
-	start();
+	setTimeout(start(), 3000);
 };
 
 function start() {

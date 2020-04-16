@@ -287,14 +287,17 @@ function MaterialsReader() {
 		qw("reading Items");
 		qw("Columns: " + me.pos.columns);
 		qw("Rows: " + me.state.rows.length);
-		qw("Slot Size: " + slotsize);
-		var c = document.getElementById("myCanvas");
-		var ctx = c.getContext("2d");
-		
-        ctx.beginPath();
-        ctx.strokeStyle = "red";
-		ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-		ctx.stroke();
+        qw("Slot Size: " + slotsize);
+        
+        if (!window.alt1) {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            
+            ctx.beginPath();
+            ctx.strokeStyle = "red";
+            ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+            ctx.stroke();
+        }
 
 		readcount++;
 		var allvalid = true;

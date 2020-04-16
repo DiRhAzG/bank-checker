@@ -82,7 +82,7 @@ let artefactsList = [
     { name: "Exsanguinate Spell Scroll", mats: [{ name: "Vellum", qty: 40 }, { name: "Blood of Orcus", qty: 36  }], imageData: "" },
     { name: "High Priest Crozier", mats: [{ name: "Mark of the Kyzaj", qty: 26 }, { name: "Malachite green", qty: 24 }, { name: "Goldrune", qty: 28  }], imageData: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAFEUlEQVRYR41Y70tbVxh+brSTLVayUmvnTBbcxLExvAuUQQmlaFoRcbTsw/6Djv13g36tZbSDIWE2TlYWmnVZzAxXQ7wYnaa2yXjPue+555ycxJwP7c09P97nPO/z/rh6ab/QAw361xNP7nHZvNpFh8gj4+F6p033AE8A0Y3Yz7ReB8g2bNBOoLzIBsYg4vkYCBu8DIjNlwVgr/RUrEj7K9FKDYQNVruUl14q9PjGtRdPkPELggF61kfm68JAr7FxWvBDrovnBzN4WT9E2l+2XK65yAIlGUFs2PM8cRsCQs/6SC/JW+7tyFvzeOR3sXM2J36ORS/D04sYDC90uTUCpIAwGBuIojjaQLfPfTYrjr7CVjVQ+isDzBC3CFWoqIlYEUCWVlArxa5hd7GoGQwD2SrvGwzdXpRAaTiZETOmkAcCoXV7pU2xpdfrQWhE053pHr5uzP1gMBoAQ6ycR3RGlOLlrWK9DI7ZmVQXQZhAemlZacgFxtTcsvzpWXmEDbJY9Qgily1/9QnaZ29xYyqJg1aIYvUQ3+e/xG+v9sR5leBY/F8o5JHAGbrNI7TCtrL98XRKPT8vlhEigYy/AkpkKo8YmohClUOY3CLd5GE9t6AOax6HyN68oYDQRPaj6+heu4nxRAfNSs0Jgl4yEPI3adLQCGuCFnK08Lv491Os5eaFgQTGMPnBewLI1PsThmCnsp+i0ThAufzaeE8/Nm4t4HHxlSgFAoTnOVK82hbrQaSTSI+9nhQxg/n1dQXzqRm1a7t6KJ43NgqoVv/B7q40aA55oMhLkRmZWSPBuGoOoSXjPAgURRGFcH4xI17XwxDVSB+M+LuHa/jr7xpKpT+kUSsAbJq8tH+vZyA2Eo+EK/HHaAhc7cUmsrcWUK0FyKdS+KVMeojj8eGDVew3AmxtlSIgVCJcxU+ebmhEWB1UXbU5yiGp3Cwmz8dRf8mCpFvLekSuW19fRqPRxPb275Yb3C1BBMSq85z/4RlMMJ3kFsFGIwDqFLISPdFPc99uFBAcNB1sDGgLVD9iCFSnxKZHauPO3LTY8ewkAMKE0VXdv38HR0chisWICdKGcreDjciE2zUDOjUCsZadRevsAkGng2rIbHhYXb2LVisE0BUgDSB9AaxHh5yM+xFnh2WeQEBuz01jHMD+SQeVCAi7xPc/FxtKpT/7I8Vyt2e5PWZEF7RKHBoQyh870i3BSQfvKKVrQOjgWlQk3eE6pG0UGtHziGaXbk8FjBMOs1G7fhXJahNlDYTaJsBuGolqYD/MUagSmlZ9OXTp5gV/Hk9KZnp+8M0Cfvo3wEw9RAASKUVKVEFH0IFzSfTS6RoGom+cnBjDRTtE+00HzyqyylJmpUSmMycmBulNf29IQbQB93oihwuKZHiRG4gRNUgQAP57c46EkGo8OKNelsIVQDZj0WMyooUtd+brfgZvE+PonJ4jOXaBo3dXxBEMyADSx8QlH1YamP48orHyYz6D3RbwYXIC7eNTXJ1Kimy6K7IpD62guRpkV7Bo7LMbh0ZN/gtZXXUgB4cBtqpxWhddnFUUh4mS3W9rSfvA6m9qSbTUxBAbNH5W3bpd1l3fpC44g3OJ0QaIbMfNR0QfVdK7i7MRiLi4xWZolxz9H9HDudFnHRrpbwWkcM2OSpOI9pE+hJlLSojWBrjbOeNOo+SHUUhwiNrNiDhMDz0rDEcokEOTmg1Wfdc4byF9r7eIQ/+YMwpbQ7q//wF1SJFd6TpBjwAAAABJRU5ErkJggg==" },
     { name: "High Priest Mitre", mats: [{ name: "Mark of the Kyzaj", qty: 26 }, { name: "Malachite green", qty: 24 }, { name: "Samite silk", qty: 28  }], imageData: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAFnElEQVRYR41Y+2sUVxT+ZiZuNCGSopKqTSppttGNW7dFfxF/atJC6QOqqYIkofRfs1j8odW2FBFURIoQpOmKbexWjWuyamMUk6zJZnfm3innPmbuvHa9ELKPM/d89zvfedy1BksTPjotsrCUkbbW7zOetWBBmmZsb+5J2wsgcUdxJ7GHQt9kqBxl2nQ6pfxeAumwlsrXMVj6uJNZ9vdvADIBZPHPq2LDodKECAeBKA5w3F22DTAGE5r9gMVYDN8ARMiIMiYQQx9OYKl8Db7vCzBLd67jy2N5PFysYH7ZFiBT2Ylox4JlQezxRss3NLJYDkEMHhlXbFzDYGlcsPJZaVjsuVB9gMqqYqftaU3W1Os29kFoiA3LsoJTEDN6mUCazBMfX7+7iMEjSjfaZ4dMiiRFjKoIEK2NpTthaLROiBHbdrDdaaK+4eHxuotKbSWTeWJS4svKqqjOEoxIDYxDM0SvKU6km1PHD4IxgHMGf6UJDg8cEH89fTsFKMdx8OLFc9yorUS0JNk260o09RNApGOEQJRe6DMK0VfH8rBfNcHf6sbis2Uc2DmAxjv7wTgH5x68los9a3WsvHqJmzEwCfoMzViDR8I6QoLVS2ePAKbYpQw6NTIElusG75WWL9Y3xP++d0cEGM/jaLWaGKhv4OLdf0Rwgj3aaEgCMVKf9KGXZkezcXp0GC3HgTUygh21O3jt9KK2soy9h46Ccw7mKyBbDbguw+ztsgRisJolqozKakL3RUg+HdiDnl396Do0isajitKD3JZCtL94FB6BYRQeD43GVjqQjF7VocRLQRGQs6PD2HQc5Aqj4MyH73Opi2cLAZi9xaNgrgfP87DV2MStWcWI0l1misle84mf2SGVQKcLw6jDQU+xAOb78BkJU4JxnzwI9idmBgoluJ4U7c3fb4caEVZm+Y+nrxarWZQMNRMbM4U8Np0cnMJ7cOAoNnxwn8NnLAAz27eK5n9NHF5fFW43dxcxV/67c8MUJd4EEuEuDMvp0hhyhffBiTvO4di2Eqdkh3Ef+2q/4lx3v9jhQK1b/O/ZN4Rbt/5IYSXWg4JeYwIwxERsfFfIYyOXQ+7wKHyqXJBM2JYTaGX3o4tih3N2P+AA/Q+BkeIHaLU8NJVo244RCUZMoCqcBOZMaQw7igVwKtgUDg5w0grnsGBj18KPWMCoAMOp9MLB4+ereHskj3qtCtdzUa6alTY5RiRDkzKtERha3858I50RCMoaxgQoy7bFa+YybDz+V9jQwLC20cT2XJdoBbbThavlhaRe1OHD9BUAYkiNkFGvCVUPzExPitNr3ZAp85gAtPawgu5tDnLbHMw/eYpKbV3tZBS3xMyaJdZE4dHi1ZXXwvTUSfhcaoY4WKv8BQ4GzoEd3ZRfDlwwVKrLqCwTmLQqKzUQHZ7jzgPU8SFHHpBY0mAa1XvY3Grh8pwscLQmjx+EpzRzr/pUgBGiTamusdCooTyjpkSyWxUnAjN19iQa1XkRlkuz940rRNgqPv8oLx7/be5+al1JB6I9Jrpl8vpAQp48MQbPZejLF4R4vz//U+BMakuQn9SJcbJkr9HhSGSPMXcaQAnI6RNj6B0+LDKp5dEoyXH+h58VmHCQJlBmRxfbKD+hRuIsmFmUBi44pWyKes1MTaLptnDhwi9GRc3OxsBt2PRi9xHDUeAlcwqnUVIPVRbOnvkajeYmLl66EtNDyn1IBy5602uD3BzrxL02/c4iQjX5Ber117h85UaYsoFM0n20aXpGBql5PNRWUrTmVSEMlRoTDS1E8Isg6DpijormA2RAY3eQORlsxcOl3ieEGRe/mUiRghb7wlR0eFojc9JrnJGqRtWKHMjIFCPE6T9LxEG1vVoG5SE5gIF+JTEuWZrxlENH0zfS9GJ1IytEZmpnsZr2uVHM6OX/nvsmaiEKMzMAAAAASUVORK5CYII=" },
-    { name: "High Priest Orb", mats: [{ name: "Mark of the Kyzaj", qty: 26 }, { name: "Malachite green", qty: 24 }, { name: "Goldrune", qty: 28  }], imageData: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAEsUlEQVRYR42Y32scVRTHv7NGF0ISFho7NDbTUAj6ImxaQ0sJNVrXF/HNFx99EfyLfPQf8M0HH9p9EKr9ATYrSCDEwJiGyNYVr01IM9mZXTn3zrlzZube2Q608+vO3M98z/ecezbBarc3DQBMYTY6pk2e83F+y7urPisHBvkk8l2leQmk9EAOwS+VUK5xfG3WB8hJnR8sQaqT01dMHXK4vs4lk4SrglRhAgahgX/u3LfvizZ6jZFgGJdiVVBfyEqgDHK4cx80+fPBA+OR6RTXNnrWK7P8wV/o8kBTWPieVYRAgiBA1P1Ez0nq0Plqfl4FqRncYcaSf8R9l58sCD3EqvCxC6TmI2nugN7R1/Ovdu/VRPQlAF3XIPLrCMZ+iVDEZTYdDjE5nX91awXfPTkC0HLDSGVEMpQUYQDyCXlEhspXS54P+vj8/beBDJgA+Hl3CKVf1NJaUajpWZdhpeFLIHIwe4Y94jLc4aCPL2+saIDpBPgpPkKiUAKRHvOpqpWtFjR2f5NZSQXavti8bsP4eP8PjIEaCJu/VLldVdYFIkPE0hbX+gg3I336Ieb0/un+CCkUTpdDIAVUmkBTDV8iItM2ZJT1Y7TRm3Kx4Fj61hlSIrxlICge2y0D8mRvBBW2zfUMQJpAvWJ56qZ1ZU+psvoWpJIad9f1bB8nRXY+IpC1BSAbAwRAICmsKmTakldktnD6R91ebTmRpmI/0LRXt9e1EqT6vZQ+HfjlYKT36koOkgGKbmUJcE4wChi2dIiq2SOVCVwg9GIG+GYrwmRuPs+MzGZIOsn0ix8ejLCy2MbuwptGkRqI8UpVlUJPc+SpI318dmMd0bzRP5ub15NOJwYkpf8mpme5PN4jf2Kcmeu0/+0k1M89Q2JC5QHRiuSyeNOXagRvX2+/Z0FI9ZfpG/betfGuDlWWAeMchKL2H0IkGXCWJTg7B54dkSqwIZKKOEu8HMArMWF37kZop3NYf3GC8PIlO+yvF//g5tLQqDIBCOIiA04Q4hWBJAnOKKVPFT5YC/H94G/9bHUtsmuNCVTRCHFTxGtJZytCe2LSdQtvWZBfD46h3lnQoXpXkTam1NO22E5wngAnKfDvqcLtNRMy2ghIwpTSl2H0flr0rWTczp0I7byA3REgOwLEmvUi0YWN/nXziQd5aArFi5S2oZHh8B1rmM0Vffuj1pIdthMXihCIupCpWxS14rPMo9U1qGZWX29JGcIwVZB4kapqrgLNQmrQlpf5ptS1FtD9iFh2Xcs9D3aC7B0jXhYgFsIUslkQbAFniXd176wUwXzavW77i714hHhZqNBQ2qthL7WbzjbA8zOCX0QwVHFp++H3WO+PVAsdTKB0Q2TcHm2Y/rfUgbtagMBTWXlC388ACfLjvkKaKJzqhsiEQprR16dKdUpZY9u2GWrQCxiEIK5e6mD/OMZQNfvBlY1c4mnVLTwyo92XJmaQbx8eiveXl3pfGaDrJW/kA52rb3VgNZMIZC1cQpwvZtW64DJl1So1oKZWsQnItAl+FUrPvk6r2AQiTev7KcljXvdPF76QuduAGYa1fYRYj1w/N1zh8IJQhyYfkE6uxtGrkKc2yKbc9yxf/x/6foGQbwLTfQAAAABJRU5ErkJggg==" },
+    { name: "High Priest Orb", mats: [{ name: "Mark of the Kyzaj", qty: 26 }, { name: "Malachite green", qty: 24 }, { name: "Goldrune", qty: 28  }], imageData: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAFOElEQVRYR4VYTWskVRQ91ZmZhmGMLdE0RLtnEIZxI4kjMZsoIZnBheBScOtG8Ae59Ae4dOFKBxej44COESUSYqSZhGC0B8okJKl0fcj9qrr1qnpSkHSnqt5755177rn3JRos3itAV8S/p1wRUBTyDr3t3+W/9XnbPP59e5dXkWXlihANlhRIbQFd0e6Fk9mC9bmqeS8b5wDI18IBoW3arkNebMGQkWlA/PgGIxULBoLIEUb8QhanMBSX7TIM2fPC7MOi46rQlIyYABTd1B2FOyOGdUzJnJ/Lbjp5uMcRi7UUX6DYtlBNAxay6hiMOpFi9LGsC78uVhZhwIgJPLzdyByZeO/XB0zVYHG9yi7SQEcHFEScMVclRTRYui93Q1rbUtHyNxCvLU5DPllZwBeP9wF0MFhar2dSGU0XJktgAyKP3Ao+LG1C1Qn2Nh/gwzdfQZEBOYDvtw4R87MOzzhY2hD5RxQeoqPNs7yPmFgbGpxuZgTi47sLPCLPge9G+0hi1IEsbnCIGEgemmIV70qspeu1oA6ESADo+mj5dQEB4MedPzEBmkCYkcCjAlYI5BRnVVpCty0KFmN/ecgvrHWu8Ofj7TFSxDjp94EMiM8TMKrDIw0NJWbkQm8ZYwAvs3gLkwIiJvorAoJoWFcgj0ZjxHNdBsE/aYI4BXBCcepUGVTTmmURhYuAmI803NXluQeydhvIM2zQQnr9sDtG/OoNIJ8AJw6IsuJFKxnqBSuANDRBkXNM+NR8bZ1AAJMcuJ/S1oGHu2P+LIEoK/FFApwDmMTAoaZyCaA1fbX6ljVeUJggP1sdorh2nbMiR4aCP4E0z3hjj3bGmH+hi63Zq8KIB0KsnYlWhJV7FY1mFc1awwTxAALxwfJt3OwmwuS168hyeiJAUkKi2TI/2ea/J5ncp2j8FvcZzxMkARDxlDI0jiFx1rCmOKumcZ+uv8EADEiczpQ7u5ltMQCKFIWMABGYI/RxfgGcZglOz4En+8SKs34fpoL7kQCI+gmVnKe/fKMLRuitDdG9uII7z44xPzdXAvn7n2d4+6VDAWCAMuC/mT7OLoDzJMFJCsQnMd651ceXm/8KIPaXyrPq1Te0X80kEmzvvSG6qfjGu7hWAvlp9wDx8AZr484RcUECEh292AVOkwTHKXCsQGwgAfK1yPUjgY5cdSXN9FaH6OYCZNUB+dkBMbHGZwmDoZ8lGpICmxqaapWqDkmHVutHHJig0jIrK1JXNmZmyxdDIDFlSaZA6DsXHymA/rJiaLej4VvSBkgX4F4mt7P7KmZmZnkBG1frQEY9clXJMGOCv08ztBKRL3omVnqoxwLpqILip5nUALJ1gFFfgWg4BIQYGfsHVWCeXxG0uHhQ9HybLsoVVrR8I8Le5rd4/65UXVrmj7/GGL2sCxiQ5zHR2o+YRoyqWq8bNL4BGHJcur76fcSf+3EHPeSIGZ6E+XImKqtvHica3ZhjicEIKwbk650YaRJLodWujGCQnVcHQI1FOLdjpzK0Moa+ILUfJUm0BIRADOd62D4Y4VAzg7OhpnlqzzS8bZtUpjlrrG+uW31YkatQGZDPHz51GWlFza8miVgdJ4LMdNlTdfEa1+qk7YUjW7S+kzzlVn8WI62qHArtTatewwvfEtIrte4r9ZNeCaatQtbbO+lT1B0DEpr/LQizwTFTtgGNk16hrb++rEUwdMamKbQcJW390DcaWvGH8CnHVNldWxde7zlrQFsMy4nJsrv2f5YqfRse4mdz8fTNDOGzs4rXYXCErskvRKTz/Q90Fu1lgYWl9gAAAABJRU5ErkJggg==" },
     { name: "Pandemonium Tapestry", mats: [{ name: "White oak", qty: 12 }, { name: "Samite silk", qty: 12 }, { name: "Vellum", qty: 12 }, { name: "Cadmium red", qty: 42  }], imageData: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAADe0lEQVRYR61XTYsTQRB9Y5AIuwtzWPAUD15ykh28BBbxsB//2t2jCKJmUYQgeHC8eMvBy7IkI9XVNVNdXT0TFptAkv6q169eVVdXi+aqQ7FVAPRwhaqq0HV7XiFDMo2+odbQeOhTTfr0Wpq2OItA9IJ+g3xTBtJZfPzfAtFg7WHNGauUEUHToV3flol6xMiyabBZr8PKRXORHaR60VwHksIp44na9Q1erc6BGTB7uMd8Psfm2w8A98B2C9R1AuXlcomfm83QR3Ok1TXq01OcHB9jt9th9/QZNp8/YXF2kezBrrF+RAUCc/72DXZ74OToCG37G5vvXxEgaBxkk/4r22JBul6vVnQmYDbDx/cfgrgWzeUAhDiwGqlQoUMXRPnry41xwj7YnNeBm8y4YArjWz38JFGrBREkLhoRAMMKpqldv4tdFWpwtIihKakMJBEQDpMEhBKzEasTZnFye3fbA7EAhAnrkmEeA/GYEFkEsZIrhvALRJn8QcxQFLFrdNPSEKnkkolAzi6LeWWImrC7zjYpGA+Io8+CtwwQmwjp6MIIiZOJ4VmkGfpQVLNWSLgDIxZEIXAiMOOaNFmzvUVz3REG8Y6ISoCJDymCSKw2ImwkCyXSz4ALQFTaiGIdLgv+FSErT4lYrSbIjBarz9QIIxKT7qVnLiR2DUcNMfJHJ86CeEcZUWHbRw0BCTmkT/H+rSpAhAFtPzXKI6lmnPA1YNI84jAhBjWQEhid7V1GvPAtusarIZRrxnKIF7uTYo2HL6d4U1+UGNFJTIDk4i24RhaES69UoSXM8G38HHu+7FSz6d2ykjFSYNwpjEzoxp01I/rSc4EopbqucXx4ICND+HontvdPPkdcc5XdYTK3zEi/G6c4qxFPmAeJ1UnvtK7MiNn1vwHR+aOn42Cx+q6ZcxWL/jtWZnmIT0TNKCNG3ZaR4xp42MaSUVmm/r/qCpgUa7Tja8QJMQtEWLC6sP1FINkDq/jSKxdGZIwaucW7jXMwj3KNed0FSbNhXaWlhTGNpmWkjHNKGQFiU3xCsa0YVVIjg9zkiSCTveqN5tD8QvGcF0YTWUFppvwU9RgZASJhHMH4eaRwHwhcrl+Vz8LvRwBR58+B2JpkBFTKjrhMszvBiEztb98JBoqO64D2zmNHWYhvpOyFZzYdGLFg3GrNPLyypJe+laeMayz/AMKMv0cK2g+yAAAAAElFTkSuQmCC" },
     { name: "Torment Metal Sculpture", mats: [{ name: "Eye of Dagon", qty: 20 }, { name: "Third Age iron", qty: 20 }, { name: "Hellfire metal", qty: 38  }], imageData: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAE60lEQVRYR41Yz28bRRT+dm2nNk5C0kAN1LGsNpVLoiimHHqpUNVa4gSCE38jEkgVN1AaVb31AqmqRgL1YDkJiV0QURz/iu01ejPzZmdnZp28Qzfe2Zn3zfe+N+9Ng/WdxgwBpM2A1L9pnL6jb2zj+Z6heE01medbcwIBxLR5izJYBsXzzA34wJjvrgXkqp3ZAEwgPgD2ejabxniwXo8Zaf2xq5er1BvXD4XDSIDD/edYrz9J58eaI4HMgNb+LipfNMQCIgKzmfjtaMLcZYqmDvf38PXDCL++CpNg5oRQAyHnh69pF08FEGInCMirP17ubqUYCcT3jyPMIiAC8MtLC4ytF7V8LFbDH4Gg0BCwjepdZLILyGSADP2j7M3BW/EXASLnbN88ihCEQGEBmEbA5eQKMGpiQiNuiAJs1raQL+SRQYjhZT8R8+kUOPjzrWAgEwIhgG4PGEdALgdMx8DlFHjxO43MNNvxInFKx0AsnazvPMXh6z1s17aQIyBhiOGwD3J+c20NzdY7LBdXxZoExrbHDyIFQOY8h1xrzjlHPGLlSUT5g/qXwBTI5EL0en30e12UK1W875ygN+wJ/1lk0TxqGaddgO++ivDspYeJFMFqRszU5d3JLNrDRvUOMjcWBBBggmplQ3xy1HqH0q3baHfa4jeBYc2kArHFSr8DwMkaN/EDwUrv4j+cdbtiuHb3c/FsdzpYWV5KAOE6MZcR24kG4nrXbzg80XSKweBcgKndU0BOJZDm8TEKOTM8ntCkHO3sKJk1UleJwkeCrW/XNbDlD1ckG6enGE36KN0sXQ1kR55NwoRIjQKozxElVl1ZLTUTI34gx1hZlqCuxYjNetoRr9FaFBKQ2sYdMVz6pCyPS6GPEwGEQJBdGRoTiF0aiCOuNY5MFDMSyD2IHCaHhUXxPOuepYRFUp8Qqx2aBBvSUQwkpQUwgZx1h2LSrbWPxLPz7z8OG3wQOkC4qTKfxu5dsVoUklhLpY/V25wG4gVBBXNGxXPPZWRe1daMaOdmLxhXUxsIf066EGJVpyqxQaInFr3niH2qGnqU1TcRFqOBVbubB8QGcS1GeCcJINyheZTMuyuXK46WiQuzvjAb9KGXEbNNtIkXoWFGPMWIFtys3ce5qDFU3JImgfgtDk08vr7zJNl+GoebEqt1T1CgZMbcB1Q/xG1Rv9cXbHDItiuy6Jm2WAAuBvLNm1ZJPNvt99BgxJvYr9MYmXrRQNiDQjLq9TEYSy8+EPw5A+DfBMRpkNSmU9I3oO5ZpGG5/BmK+SI0LQBGwz42Pm3qnSa5kCluW7v9twLRiPsWLYfAOlmNhGHmiBUCY9t4nKYO+b5QkIoaDCYAxiIsZCI0bP57jaUTpf6HmxGKeeCv4zLAmyUQOYDAsENee0J+EzZBdfUIoynEOrJ/lU23aUZokkC4M//2UYQL1TOHSiNyKeDgpCqeZjYxjq3bTTFG7E/GwHAM0PzVRWA0Bn6jOw9nkbfoqZORrgXZEMhkgXNqzEL3hsOAlpaAbrLBl0hlnUSxCHHP+fkFz5AQdUPtADFIIaH6jG5wpt3IAYU8NGu+OYsfSCA086c9q6F2ssZzQebrZ3Jxt0z/0Ijw4665W+8e1MsZxCnM5nRoNKB9uMI1l3YBzv/enCvCwWnrrTVJDbv/IzO3+fUBMd75qq51VPwPXreSX/xyocwAAAAASUVORK5CYII=" },
     { name: "Prototype Gravimeter", mats: [{ name: "Quintessence", qty: 34 }, { name: "Leather scraps", qty: 20 }, { name: "Third Age iron", qty: 26  }], imageData: "" },
@@ -155,33 +155,47 @@ let artefactsList = [
     { name: "Da Boss Man Sculpture", mats: [{ name: "Yu'biusk clay", qty: 50 }, { name: "Malachite green", qty: 44 }, { name: "Soapstone", qty: 44 }], imageData: "data:image/png;base64,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" }
 ]
 
-let loadImages = () => {
+let loadArtefacts = () => {
     for (let artefact of artefactsList) {
         if (artefact.imageData != undefined && artefact.imageData != "") {
-            // let artefactImage = new Image(34, 34);
-            // artefactImage.src = artefact.imageData;
-            
             ImageData.fromBase64Alt(function (i) {
                 artefact.image = i;
+                artefact.slicedImage = i.data.slice(sliceRows * 4 * 34, i.data.length);
             }, artefact.imageData);
-
-            // artefactsCount.push({
-            //     name: art.name,
-            //     image: artefactImg,
-            //     qty: 0
-            // });
         }
     }
-};
+}
 
-let compareItems = (slot) => {
+let compareArtefacts = (slot) => {
+    let slicedImg = slot.buffer.data.slice(sliceRows * 4 * 34, slot.buffer.data.length);
+
+          // create off-screen canvas element
+		var canvas = document.createElement('canvas'),
+		ctx = canvas.getContext('2d');
+
+		canvas.width = 36;
+		canvas.height = 32 - sliceRows;
+
+		// create imageData object
+		var idata = ctx.createImageData(34, 34 - sliceRows);
+
+		// set our buffer as source
+		idata.data.set(slicedImg);
+
+		// update canvas with new data
+		ctx.putImageData(idata, 0, 0);
+        var dataUri = canvas.toDataURL(); // produces a PNG file
+        console.log(dataUri);
+
     for (let artefact of artefactsList) {
         if (artefact.image != undefined) {
-            let imgToCompare = artefact.image;
+            let imgToCompare = artefact.slicedImage;
 
-            let diff = pixelmatch(imgToCompare.data, slot.buffer.data, null, 34, 34, {threshold: 0.05});
-        
-            if (diff < 50) {
+            let diff = pixelmatch(imgToCompare, slicedImg, null, 34, 34 - sliceRows, {threshold: 0.07});
+            
+            if (diff < 90) {
+                // console.log("Diff: " + diff);
+                console.log(diff + ' ' + artefact.name)
                 artefactsCount.push({
                     name: artefact.name,
                     qty: slot.amount
@@ -190,31 +204,32 @@ let compareItems = (slot) => {
             }
         }
     }
-};
+}
 
 let calculateMats = () => {
-    let mats = {};
-
+    let goalMats = {};
+    
     artefactsCount.forEach(art => {
         let artefact = artefactsList.find(o => o.name === art.name);
 
         if (artefact != undefined) {
             artefact.mats.forEach(mat => {
-                if (mats[mat.name] === undefined){
-                    mats[mat.name] = parseInt(mat.qty) * parseInt(art.qty)
-                }
-                else{
-                    mats[mat.name] =+ mats[mat.name] + (parseInt(mat.qty) * parseInt(art.qty))
-                }
+                goalMats[mat.name] = parseInt(mat.qty) * parseInt(art.qty)
             })
         }
-    })
+    });
 
     materials.forEach((mat, i) => {
-        if (mats[mat.name] == undefined) {
-            mats.goal = 0;
+        if (goalMats[mat.name] == undefined) {
+            mat.goal = 0;
         } else {
-            mat.goal = parseInt(mats[mat.name])
+            mat.goal = parseInt(goalMats[mat.name])
+        }
+
+        if (materialsCount[mat.name] == undefined) {
+            mat.qty = 0;
+        } else {
+            mat.goal = parseInt(materialsCount[mat.name])
         }
     });
 

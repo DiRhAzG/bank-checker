@@ -7,15 +7,17 @@
 
 window.onbeforeunload = shutdown;
 var reader = new BankReader();
+var matreader = new MaterialsReader();
 var bankUI = new BankInterface(reader);
 var geItems = [];
 
-//image detect is done on different server to make sure it can't bring other apps with it under high load
-// var apibase = "https://pc.runeapps.org/apps/ge/";
-//var apibase = "//pc.runeapps.org/apps/ge/";
-
 window.onload = () => {
-	loadImages();
+	loadArtefacts();
+	loadMaterials();
+	
+	setTimeout(1000);
+
+	start();
 };
 
 function start() {
@@ -29,9 +31,12 @@ function start() {
 	if (window.alt1) {
 		reader.find();
 		reader.read();
+		matreader.find();
+		matreader.read();
 		// toggleTrack();
 	} else {
-		pasteExample("http://localhost:8080/images/testbank10.png");
+		pasteExample("http://localhost:8080/images/shanabank1.png");
+		//matImageFromFile("http://localhost:8080/images/chrismats2.png");
 	}
 }
 
@@ -64,12 +69,26 @@ function pasteExample(url) {
 	img.onload = function () { pasted(img); };
 }
 
+function parseMatImage(image) {
+	var imgref = new ImgRefCtx(image);
+	matreader.find(imgref);
+	if (matreader.pos) {
+		matreader.read(imgref, true);
+		// readUpdated();
+	}
+}
+
+function matImageFromFile(url) {
+	var img = eldiv(":img", { src: url });
+	img.onload = function () { parseMatImage(img); };
+}
 // function readUpdated() {
 // 	bankUI.bank = reader.state;
 // 	bankUI.activetab = reader.state.tab;
 // 	bankUI.draw();
 // 	// fixPrices();
 // }
+
 
 function allSlots(bank) {
 	var slots = [];

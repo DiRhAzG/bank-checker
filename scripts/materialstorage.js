@@ -135,7 +135,7 @@ function MaterialsReader() {
 		}
 		var changed = false;
 		//can not have a tooltip, added benifit of ignoring it when user is searching
-        var searchbuf = img.toData(me.pos.area.x + me.pos.area.w - 7, me.pos.area.y + me.pos.area.h - 13, MaterialsReader.botright.width, MaterialsReader.botright.height);
+        var searchbuf = img.toData(me.pos.area.x + me.pos.area.w, me.pos.area.y + me.pos.area.h, MaterialsReader.botright.width, MaterialsReader.botright.height);
         
               // create off-screen canvas element
 		var canvas = document.createElement('canvas'),

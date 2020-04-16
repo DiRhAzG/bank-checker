@@ -135,7 +135,7 @@ function MaterialsReader() {
 		}
 		var changed = false;
 		//can not have a tooltip, added benifit of ignoring it when user is searching
-        var searchbuf = img.toData(me.pos.area.x + me.pos.area.w, me.pos.area.y + me.pos.area.h, MaterialsReader.topleft.width, MaterialsReader.topleft.height);
+        var searchbuf = img.toData(me.pos.area.x, me.pos.area.y, MaterialsReader.topleft.width, MaterialsReader.topleft.height);
         
               // create off-screen canvas element
 		var canvas = document.createElement('canvas'),
@@ -288,13 +288,13 @@ function MaterialsReader() {
 		qw("Columns: " + me.pos.columns);
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
-		var c = document.getElementById("myCanvas");
-		var ctx = c.getContext("2d");
+		// var c = document.getElementById("myCanvas");
+		// var ctx = c.getContext("2d");
 		
-        ctx.beginPath();
-        ctx.strokeStyle = "red";
-		ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-		ctx.stroke();
+        // ctx.beginPath();
+        // ctx.strokeStyle = "red";
+		// ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+		// ctx.stroke();
 
 		readcount++;
 		var allvalid = true;

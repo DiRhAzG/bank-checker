@@ -82,9 +82,9 @@ function MaterialsReader() {
 			scrollbar: null,
 		};
 		var storageinner = {
-			x: storagearea.x + 4,
-			y: storagearea.y + 5,
-			w: storagearea.w - 27,
+			x: storagearea.x + 15,
+			y: storagearea.y + 22,
+			w: storagearea.w - 12,
 			h: storagearea.h - 80
 		};
 
@@ -288,13 +288,13 @@ function MaterialsReader() {
 		qw("Columns: " + me.pos.columns);
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
-		// var c = document.getElementById("myCanvas");
-		// var ctx = c.getContext("2d");
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
 		
-        // ctx.beginPath();
-        // ctx.strokeStyle = "red";
-		// ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-		// ctx.stroke();
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+		ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+		ctx.stroke();
 
 		readcount++;
 		var allvalid = true;

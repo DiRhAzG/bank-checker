@@ -15,7 +15,7 @@ window.onload = () => {
 	loadArtefacts();
 	loadMaterials();
 	
-	setTimeout(1000);
+	setTimeout(3000);
 
 	start();
 };
@@ -36,7 +36,7 @@ function start() {
 		// toggleTrack();
 	} else {
 		//pasteExample("http://localhost:8080/images/testbank14.png");
-		matImageFromFile("http://localhost:8080/images/testbank13.png");
+		matImageFromFile("http://localhost:8080/images/mats1.png");
 	}
 }
 

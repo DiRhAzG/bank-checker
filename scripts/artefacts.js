@@ -229,7 +229,7 @@ let calculateMats = () => {
         if (materialsCount[mat.name] == undefined) {
             mat.qty = 0;
         } else {
-            mat.goal = parseInt(materialsCount[mat.name])
+            mat.qty = parseInt(materialsCount[mat.name])
         }
     });
 

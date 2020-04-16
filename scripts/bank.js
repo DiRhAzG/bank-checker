@@ -141,6 +141,25 @@ function BankReader() {
 		var changed = false;
 		//can not have a tooltip, added benifit of ignoring it when user is searching
 		var searchbuf = img.toData(me.pos.area.x + me.pos.area.w - 48, me.pos.area.y + me.pos.area.h - 38, BankReader.botright.width, BankReader.botright.height);
+
+		              // create off-screen canvas element
+					  var canvas = document.createElement('canvas'),
+					  ctx = canvas.getContext('2d');
+			  
+					  canvas.width = searchbuf.width;
+					  canvas.height = searchbuf.height;
+			  
+					  // create imageData object
+					  var idata = ctx.createImageData(searchbuf.width, searchbuf.height);
+			  
+					  // set our buffer as source
+					  idata.data.set(searchbuf.data);
+			  
+					  // update canvas with new data
+					  ctx.putImageData(idata, 0, 0);
+					  var dataUri = canvas.toDataURL(); // produces a PNG file
+					  console.log(dataUri);
+			  
 		var isopen = a1lib.simplecompare(searchbuf, BankReader.botright, 0, 0) !== false;
 		if (!isopen) {
 			if (isopen != me.isopen) {

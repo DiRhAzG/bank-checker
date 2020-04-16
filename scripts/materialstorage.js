@@ -135,7 +135,7 @@ function MaterialsReader() {
 		}
 		var changed = false;
 		//can not have a tooltip, added benifit of ignoring it when user is searching
-        var searchbuf = img.toData(me.pos.area.x + me.pos.area.w, me.pos.area.y + me.pos.area.h, MaterialsReader.botright.width, MaterialsReader.botright.height);
+        var searchbuf = img.toData(me.pos.area.x + me.pos.area.w, me.pos.area.y + me.pos.area.h, MaterialsReader.topleft.width, MaterialsReader.topleft.height);
         
               // create off-screen canvas element
 		var canvas = document.createElement('canvas'),
@@ -155,7 +155,7 @@ function MaterialsReader() {
         var dataUri = canvas.toDataURL(); // produces a PNG file
         console.log(dataUri);
 
-		var isopen = a1lib.simplecompare(searchbuf, MaterialsReader.botright, 0, 0) !== false;
+		var isopen = a1lib.simplecompare(searchbuf, MaterialsReader.topleft, 0, 0) !== false;
 		if (!isopen) {
 			if (isopen != me.isopen) {
 				me.isopen = false;

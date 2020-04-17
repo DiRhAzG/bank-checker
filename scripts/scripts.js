@@ -621,7 +621,7 @@ $(function () {
 				materialsCount = {};
 				matreader.clearSlots();
 			} else if (type == "goal") {
-				artefactsCount = {};
+				artefactsCount = [];
 				reader.clearSlots();
 			}
 			buildTable()

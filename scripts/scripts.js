@@ -234,7 +234,7 @@ function toggleTrack() {
 		if (window.alt1) {
 			if (!matreader.pos) {
 				if (!matreader.find()) {
-					message("Could not find your material storage. Please make sure you're that not using legacy mode and that capture is working correctly in the alt1 settings.");
+					// message("Could not find your material storage. Please make sure you're that not using legacy mode and that capture is working correctly in the alt1 settings.");
 					return;
 				}
 			}

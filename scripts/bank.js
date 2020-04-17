@@ -141,24 +141,6 @@ function BankReader() {
 		var changed = false;
 		//can not have a tooltip, added benifit of ignoring it when user is searching
 		var searchbuf = img.toData(me.pos.area.x + me.pos.area.w - 48, me.pos.area.y + me.pos.area.h - 38, BankReader.botright.width, BankReader.botright.height);
-
-		              // create off-screen canvas element
-					  var canvas = document.createElement('canvas'),
-					  ctx = canvas.getContext('2d');
-			  
-					  canvas.width = searchbuf.width;
-					  canvas.height = searchbuf.height;
-			  
-					  // create imageData object
-					  var idata = ctx.createImageData(searchbuf.width, searchbuf.height);
-			  
-					  // set our buffer as source
-					  idata.data.set(searchbuf.data);
-			  
-					  // update canvas with new data
-					  ctx.putImageData(idata, 0, 0);
-					  var dataUri = canvas.toDataURL(); // produces a PNG file
-					  console.log(dataUri);
 			  
 		var isopen = a1lib.simplecompare(searchbuf, BankReader.botright, 0, 0) !== false;
 		if (!isopen) {
@@ -257,24 +239,24 @@ function BankReader() {
 		var clone = img.toData(backx + imgx, backy + imgy, 34, 34);
 		var data = clone.data;
 
-				// create off-screen canvas element
-				var canvas = document.createElement('canvas'),
-				ctx = canvas.getContext('2d');
+				// // create off-screen canvas element
+				// var canvas = document.createElement('canvas'),
+				// ctx = canvas.getContext('2d');
 		
-				canvas.width = 34;
-				canvas.height = 34;
+				// canvas.width = 34;
+				// canvas.height = 34;
 		
-				// create imageData object
-				var idata = ctx.createImageData(34, 34);
+				// // create imageData object
+				// var idata = ctx.createImageData(34, 34);
 		
-				// set our buffer as source
-				idata.data.set(data);
+				// // set our buffer as source
+				// idata.data.set(data);
 		
-				// update canvas with new data
-				ctx.putImageData(idata, 0, 0);
-				var dataUri = canvas.toDataURL(); // produces a PNG file
+				// // update canvas with new data
+				// ctx.putImageData(idata, 0, 0);
+				// var dataUri = canvas.toDataURL(); // produces a PNG file
 		
-				console.log(dataUri);
+				// console.log(dataUri);
 
 		// for (var x = 0; x < clone.width; x++) {
 		// 	for (var y = 0; y < clone.height; y++) {
@@ -364,12 +346,12 @@ function BankReader() {
 		qw("Columns: " + me.pos.columns);
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
-		// var c = document.getElementById("myCanvas");
-		// var ctx = c.getContext("2d");
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
 		
-		// ctx.beginPath();
-		// ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-		// ctx.stroke();
+		ctx.beginPath();
+		ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+		ctx.stroke();
 
 		readcount++;
 		var allvalid = true;
@@ -475,9 +457,9 @@ function BankReader() {
 					var t = me.config.timers.overlay + 500;
 					var backcolor = a1lib.mixcolor(255, 0, 0);
 					//alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 60000, 1);
-					// ctx.beginPath();
-					// ctx.rect(x, y, 34, 34);
-					// ctx.stroke();
+					ctx.beginPath();
+					ctx.rect(x, y, 34, 34);
+					ctx.stroke();
 				// if (bankx == 0 && banky == 0)
 				//  {
 				// 	qw(x + " | " + y + " | " + imgx + " | " + imgy);
@@ -494,11 +476,40 @@ function BankReader() {
 			raillength: me.pos.inner.h - 29,
 			start: -1,
 			end: -1,
-			x: me.pos.inner.x + me.pos.inner.w + 1,
+			x: me.pos.inner.x + me.pos.inner.w + 11,
 			y: me.pos.inner.y + 16
 		};
 
+		        
+        if (!window.alt1) {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            
+            ctx.beginPath();
+            ctx.strokeStyle = "red";
+            ctx.rect(bar.x, bar.y, 2, bar.raillength);
+            ctx.stroke();
+        }
+
 		var buffer = img.toData(bar.x + 5, bar.y, 3, bar.raillength);
+
+		// // create off-screen canvas element
+		// var canvas = document.createElement('canvas'),
+		// ctx = canvas.getContext('2d');
+
+		// canvas.width = buffer.width;
+		// canvas.height = buffer.height;
+
+		// // create imageData object
+		// var idata = ctx.createImageData(buffer.width, buffer.height);
+
+		// // set our buffer as source
+		// idata.data.set(buffer.data);
+
+		// // update canvas with new data
+		// ctx.putImageData(idata, 0, 0);
+		// var dataUri = canvas.toDataURL(); // produces a PNG file
+		// console.log(dataUri);
 
 		//==== find bar imgs ====
 		var isbar = function (y) {

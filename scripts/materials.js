@@ -83,7 +83,7 @@ let compareMats = (slot) => {
             //     console.log(diff + ' ' + material.name)
             // }
             if (diff < 50) {
-                console.log(diff + ' ' + material.name)
+                // console.log(diff + ' ' + material.name)
                 // console.log("Diff: " + diff);
                 materialsCount[material.name] = slot.amount;
 

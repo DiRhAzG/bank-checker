@@ -15,7 +15,7 @@ window.onload = () => {
 	loadArtefacts();
 	loadMaterials();
 	
-	setTimeout(start(), 3000);
+	start()
 };
 
 function start() {
@@ -31,15 +31,15 @@ function start() {
 		reader.read();
 		matreader.find();
 		matreader.read();
-		// toggleTrack();
+		toggleTrack();
 	} else {
-		//pasteExample("http://localhost:8080/images/testbank14.png");
+		//pasteExample("http://localhost:8080/images/1.png");
 		matImageFromFile("http://localhost:8080/images/mats1.png");
 	}
 }
 
 function shutdown() {
-	reader.stopOverlay();
+	//reader.stopOverlay();
 }
 
 var messagebox = null;
@@ -228,19 +228,19 @@ function clickSlot(slot, el, container) {
 }
 
 function toggleTrack() {
-	if (reader.tracking) {
-		reader.stopTrack();
+	if (matreader.tracking) {
+		matreader.stopTrack();
 		// reader.stopOverlay();
 	}
 	else {
 		if (window.alt1) {
-			if (!reader.pos) {
-				if (!reader.find()) {
-					message("Could not find your bank. Please make sure you're that not using legacy mode and that capture is working correctly in the alt1 settings.");
+			if (!matreader.pos) {
+				if (!matreader.find()) {
+					message("Could not find your material storage. Please make sure you're that not using legacy mode and that capture is working correctly in the alt1 settings.");
 					return;
 				}
 			}
-			reader.track();
+			matreader.track();
 			// reader.startOverlay();
 		}
 		else {

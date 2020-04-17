@@ -147,7 +147,7 @@ function BankReader() {
 			if (isopen != me.isopen) {
 				me.isopen = false;
 				// me.stopOverlay();
-				qw("bank window closed");
+				qw("Bank window closed");
 			}
 			return null;
 		}
@@ -1195,5 +1195,9 @@ function BankReader() {
 		if (m = str.match(/^(\d+)K$/)) { amount = m[1] * 1000; }
 		if (m = str.match(/^(\d+)M$/)) { amount = m[1] * 1000 * 1000; }
 		return amount;
+	}
+
+	this.clearSlots = function() {
+		me.slots = [];
 	}
 }

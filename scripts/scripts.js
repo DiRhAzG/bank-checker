@@ -619,10 +619,10 @@ $(function () {
 
 			if (type == "qty") {
 				materialsCount = {};
-				matreader.state.slots = [];
+				matreader.clearSlots();
 			} else if (type == "goal") {
 				artefactsCount = {};
-				reader.state.slots = [];
+				reader.clearSlots();
 			}
 			buildTable()
 			// sbox.frame.close();

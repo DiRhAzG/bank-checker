@@ -142,7 +142,7 @@ function MaterialsReader() {
 			if (isopen != me.isopen) {
 				me.isopen = false;
 				// me.stopOverlay();
-				qw("bank window closed");
+				qw("Material storage closed");
 			}
 			return null;
 		}
@@ -195,7 +195,7 @@ function MaterialsReader() {
 						changed = true;
 					}
 					else {
-						qw("bank changed");
+						qw("Material storage changed");
 					}
 					hoverwaiting.splice(a, 1);
 				}
@@ -1112,5 +1112,9 @@ function MaterialsReader() {
 		if (m = str.match(/^(\d+)K$/)) { amount = m[1] * 1000; }
 		if (m = str.match(/^(\d+)M$/)) { amount = m[1] * 1000 * 1000; }
 		return amount;
+    }
+    
+    this.clearSlots = function() {
+		me.slots = [];
 	}
 }

@@ -70,7 +70,7 @@ function BankReader() {
 		var botright = a1lib.findsubimg(img, BankReader.botright);
 		var topleft = a1lib.findsubimg(img, BankReader.topleft);
 		if (botright.length == 0 || topleft.length == 0) {
-			me.message("Couldn't find bank interface");
+			// me.message("Couldn't find bank interface");
 			return false;
 		}
 		var loc = { x: topleft[0].x + 5, y: topleft[0].y + 5, width: -1, height: -1 };

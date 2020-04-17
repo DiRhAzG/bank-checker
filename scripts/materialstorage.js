@@ -65,7 +65,7 @@ function MaterialsReader() {
 		var botright = a1lib.findsubimg(img, MaterialsReader.botright);
 		var topleft = a1lib.findsubimg(img, MaterialsReader.topleft);
 		if (botright.length == 0 || topleft.length == 0) {
-			me.message("Couldn't find Material Storage interface");
+			// me.message("Couldn't find Material Storage interface");
 			return false;
 		}
 		var loc = { x: topleft[0].x, y: topleft[0].y, width: -1, height: -1 };

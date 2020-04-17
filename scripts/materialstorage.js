@@ -1115,6 +1115,7 @@ function MaterialsReader() {
     }
     
     this.clearSlots = function() {
-		me.state.slots = [];
+        me.state.slots = [];
+        me.state.tabs = [];
 	}
 }

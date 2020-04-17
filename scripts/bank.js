@@ -1199,5 +1199,6 @@ function BankReader() {
 
 	this.clearSlots = function() {
 		me.state.slots = [];
+		me.state.tabs = [];
 	}
 }

@@ -440,7 +440,7 @@ function MaterialsReader() {
 		var isbar = function (y) {
 			var i1 = 4 * 0 + 4 * buffer.width * y;
 			var i2 = 4 * 2 + 4 * buffer.width * y;
-			return coldiff(231, 175, 50, buffer.data[i1], buffer.data[i1 + 1], buffer.data[i1 + 2]) < 20
+			return coldiff(239, 181, 51, buffer.data[i1], buffer.data[i1 + 1], buffer.data[i1 + 2]) < 20
 				&& coldiff(121, 83, 19, buffer.data[i2], buffer.data[i2 + 1], buffer.data[i2 + 2]) < 20;
 		}
 		var israil = function (y) {

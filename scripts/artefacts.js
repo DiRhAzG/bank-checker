@@ -196,7 +196,7 @@ let calculateMats = () => {
 
         if (artefact != undefined) {
             artefact.mats.forEach(mat => {
-                if (mats[mat.name] === undefined){
+                if (goalMats[mat.name] === undefined){
                     goalMats[mat.name] = parseInt(mat.qty) * parseInt(art.qty)
                     }
                 else{

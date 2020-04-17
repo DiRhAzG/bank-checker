@@ -31,7 +31,7 @@ function start() {
 		reader.read();
 		matreader.find();
 		matreader.read();
-		//toggleTrack();
+		toggleTrack();
 	} else {
 		//pasteExample("http://localhost:8080/images/1.png");
 		matImageFromFile("http://localhost:8080/images/testmats1.png");

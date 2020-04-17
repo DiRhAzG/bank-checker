@@ -679,7 +679,7 @@ function BankReader() {
 			for (var imgy = 0; imgy < me.pos.inner.h - 10; imgy++) {
 				var yellow = 0;
 				for (var imgdx = 0; imgdx < 5; imgdx++) {
-					var i = 4 * (me.pos.inner.x - me.pos.area.x + bankx * 46 + 10 + imgdx) + 4 * buffer.width * (imgy + me.pos.inner.y - me.pos.area.y);
+					var i = 4 * (me.pos.inner.x - me.pos.area.x + bankx * 44 + 5 + imgdx) + 4 * buffer.width * (imgy + me.pos.inner.y - me.pos.area.y);
 					if (isNumberCol(buffer.data, i)) { yellow++; }
 				}
 
@@ -689,7 +689,7 @@ function BankReader() {
 				}
 				previousyellow = yellow;
 
-				var amount = readAmount(buffer, me.pos.inner.x - me.pos.area.x + bankx * 46 + 10, me.pos.inner.y - me.pos.area.y + imgy - 8);
+				var amount = readAmount(buffer, me.pos.inner.x - me.pos.area.x + bankx * 44 + 6, me.pos.inner.y - me.pos.area.y + imgy - 8);
 				if (amount) { return imgy - 8 - 5; }
 			}
 		}

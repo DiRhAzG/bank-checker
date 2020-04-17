@@ -418,23 +418,23 @@ function MaterialsReader() {
 
 		var buffer = img.toData(bar.x, bar.y, 3, bar.raillength);
 
-        //         		// create off-screen canvas element
-		// var canvas = document.createElement('canvas'),
-		// ctx = canvas.getContext('2d');
+        // create off-screen canvas element
+		var canvas = document.createElement('canvas'),
+		ctx = canvas.getContext('2d');
 
-		// canvas.width = buffer.width;
-		// canvas.height = buffer.height;
+		canvas.width = buffer.width;
+		canvas.height = buffer.height;
 
-		// // create imageData object
-		// var idata = ctx.createImageData(buffer.width, buffer.height);
+		// create imageData object
+		var idata = ctx.createImageData(buffer.width, buffer.height);
 
-		// // set our buffer as source
-		// idata.data.set(buffer.data);
+		// set our buffer as source
+		idata.data.set(buffer.data);
 
-		// // update canvas with new data
-		// ctx.putImageData(idata, 0, 0);
-        // var dataUri = canvas.toDataURL(); // produces a PNG file
-        // console.log(dataUri);
+		// update canvas with new data
+		ctx.putImageData(idata, 0, 0);
+        var dataUri = canvas.toDataURL(); // produces a PNG file
+        console.log(dataUri);
 
 		//==== find bar imgs ====
 		var isbar = function (y) {

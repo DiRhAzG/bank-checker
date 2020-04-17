@@ -1198,6 +1198,6 @@ function BankReader() {
 	}
 
 	this.clearSlots = function() {
-		me.slots = [];
+		me.state.slots = [];
 	}
 }

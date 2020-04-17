@@ -239,24 +239,24 @@ function BankReader() {
 		var clone = img.toData(backx + imgx, backy + imgy, 34, 34);
 		var data = clone.data;
 
-				// // create off-screen canvas element
-				// var canvas = document.createElement('canvas'),
-				// ctx = canvas.getContext('2d');
+				// create off-screen canvas element
+				var canvas = document.createElement('canvas'),
+				ctx = canvas.getContext('2d');
 		
-				// canvas.width = 34;
-				// canvas.height = 34;
+				canvas.width = 34;
+				canvas.height = 34;
 		
-				// // create imageData object
-				// var idata = ctx.createImageData(34, 34);
+				// create imageData object
+				var idata = ctx.createImageData(34, 34);
 		
-				// // set our buffer as source
-				// idata.data.set(data);
+				// set our buffer as source
+				idata.data.set(data);
 		
-				// // update canvas with new data
-				// ctx.putImageData(idata, 0, 0);
-				// var dataUri = canvas.toDataURL(); // produces a PNG file
+				// update canvas with new data
+				ctx.putImageData(idata, 0, 0);
+				var dataUri = canvas.toDataURL(); // produces a PNG file
 		
-				// console.log(dataUri);
+				console.log(dataUri);
 
 		// for (var x = 0; x < clone.width; x++) {
 		// 	for (var y = 0; y < clone.height; y++) {
@@ -370,9 +370,9 @@ function BankReader() {
 				if (slot.imginfo && slot.imginfo.valid) {
 					let itemName = compareArtefacts(slot);
 
-					console.log(itemName);
-
-					continue;
+					if (itemName != undefined) {
+						continue;
+					}
 				}
 
 				//check if we hit a tooltip

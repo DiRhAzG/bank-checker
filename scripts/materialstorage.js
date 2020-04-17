@@ -295,9 +295,9 @@ function MaterialsReader() {
 				if (slot.imginfo && slot.imginfo.valid) {
 					let itemName = compareMats(slot);
 
-					console.log(itemName);
-
-					continue;
+                    if (itemName != undefined) {
+						continue;
+					}
 				}
 
 				//check if we hit a tooltip

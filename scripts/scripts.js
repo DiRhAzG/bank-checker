@@ -14,6 +14,10 @@ var geItems = [];
 window.onload = () => {
 	loadArtefacts();
 	loadMaterials();
+
+	if (!window.alt1) {
+		start();
+	}
 };
 
 function start() {
@@ -31,8 +35,8 @@ function start() {
 		matreader.read();
 		toggleTrack();
 	} else {
-		//pasteExample("http://localhost:8080/images/1.png");
-		matImageFromFile("http://localhost:8080/images/testmats1.png");
+		pasteExample("http://localhost:8080/images/1.png");
+		//matImageFromFile("http://localhost:8080/images/testmats1.png");
 	}
 }
 
@@ -566,7 +570,6 @@ $(function () {
 			$(".row .qty").attr("tabindex", "1");
 			$(".row .goal").attr("tabindex", "2");
 
-
 			document.querySelectorAll(".col-6").forEach(row => {
 				row.classList.remove("col-6")
 				row.classList.add("col-4")
@@ -609,9 +612,16 @@ $(function () {
 		]);
 		sbox.confirm.onclick = function () {
 			let type = e.target.dataset.type;
+
 			materials.forEach(mat => {
 				mat[type] = 0;
 			})
+
+			if (type == "qty") {
+				materialsCount = {};
+			} else if (type == "goal") {
+				artefactsCount = {};
+			}
 			buildTable()
 			sbox.frame.close();
 		}
@@ -697,3 +707,38 @@ $(function () {
 	})
 
 })
+
+let calculateMats = () => {
+    let goalMats = {};
+    
+    artefactsCount.forEach(art => {
+        let artefact = artefactsList.find(o => o.name === art.name);
+
+        if (artefact != undefined) {
+            artefact.mats.forEach(mat => {
+                if (goalMats[mat.name] === undefined){
+                    goalMats[mat.name] = parseInt(mat.qty) * parseInt(art.qty)
+                    }
+                else{
+                    goalMats[mat.name] =+ goalMats[mat.name] + (parseInt(mat.qty) * parseInt(art.qty))
+                }
+            })
+        }
+    });
+
+    materials.forEach((mat, i) => {
+        if (goalMats[mat.name] == undefined) {
+            mat.goal = 0;
+        } else {
+            mat.goal = parseInt(goalMats[mat.name])
+        }
+
+        if (materialsCount[mat.name] == undefined) {
+            mat.qty = 0;
+        } else {
+            mat.qty = parseInt(materialsCount[mat.name])
+        }
+    });
+
+    buildTable();
+}

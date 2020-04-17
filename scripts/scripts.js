@@ -604,13 +604,13 @@ $(function () {
 	let tracking;
 
 	$(".clear").click(function (e) {
-		var sbox = promptbox2({ width: document.body.offsetWidth, title: `Clear ${e.target.name}`, style: "nis" }, [
-			{ t: "text", text: `Are you sure you want to clear ${e.target.name}?` },
-			{ t: "h/11" },
-			{ t: "button:confirm", text: "Confirm" },
-			{ t: "button:cancel", text: "Cancel" }
-		]);
-		sbox.confirm.onclick = function () {
+		// var sbox = promptbox2({ width: document.body.offsetWidth, title: `Clear ${e.target.name}`, style: "nis" }, [
+		// 	{ t: "text", text: `Are you sure you want to clear ${e.target.name}?` },
+		// 	{ t: "h/11" },
+		// 	{ t: "button:confirm", text: "Confirm" },
+		// 	{ t: "button:cancel", text: "Cancel" }
+		// ]);
+		// sbox.confirm.onclick = function () {
 			let type = e.target.dataset.type;
 
 			materials.forEach(mat => {
@@ -623,9 +623,9 @@ $(function () {
 				artefactsCount = {};
 			}
 			buildTable()
-			sbox.frame.close();
-		}
-		sbox.cancel.onclick = sbox.frame.close.b();
+			// sbox.frame.close();
+		// }
+		// sbox.cancel.onclick = sbox.frame.close.b();
 	});
 
 	$(".sort").click(e => {

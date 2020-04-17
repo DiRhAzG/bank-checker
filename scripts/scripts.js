@@ -14,8 +14,6 @@ var geItems = [];
 window.onload = () => {
 	loadArtefacts();
 	loadMaterials();
-	
-	start()
 };
 
 function start() {

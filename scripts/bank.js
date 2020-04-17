@@ -1197,8 +1197,10 @@ function BankReader() {
 		return amount;
 	}
 
-	this.clearSlots = function() {
-		me.state.slots = [];
-		me.state.tabs = [];
+    this.clearSlots = function() {
+        if (me.state != null) {
+            me.state.slots = [];
+            me.state.tabs = [];
+        }
 	}
 }

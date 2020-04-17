@@ -205,7 +205,7 @@ let calculateMats = () => {
         if (goalMats[mat.name] == undefined) {
             mat.goal = 0;
         } else {
-            mat.goal = parseInt(goalMats[mat.name])
+            mat.goal += parseInt(goalMats[mat.name])
         }
 
         if (materialsCount[mat.name] == undefined) {

@@ -234,24 +234,24 @@ function MaterialsReader() {
 		var clone = img.toData(backx + imgx, backy + imgy, 36, 32);
 		var data = clone.data;
 
-				// // create off-screen canvas element
-				// var canvas = document.createElement('canvas'),
-				// ctx = canvas.getContext('2d');
+				// create off-screen canvas element
+				var canvas = document.createElement('canvas'),
+				ctx = canvas.getContext('2d');
 		
-				// canvas.width = 36;
-				// canvas.height = 32;
+				canvas.width = 36;
+				canvas.height = 32;
 		
-				// // create imageData object
-				// var idata = ctx.createImageData(36, 32);
+				// create imageData object
+				var idata = ctx.createImageData(36, 32);
 		
-				// // set our buffer as source
-				// idata.data.set(data);
+				// set our buffer as source
+				idata.data.set(data);
 		
-				// // update canvas with new data
-				// ctx.putImageData(idata, 0, 0);
-				// var dataUri = canvas.toDataURL(); // produces a PNG file
+				// update canvas with new data
+				ctx.putImageData(idata, 0, 0);
+				var dataUri = canvas.toDataURL(); // produces a PNG file
 		
-				// console.log(dataUri);
+				console.log(dataUri);
 
 		return clone;
 	}
@@ -509,7 +509,9 @@ function MaterialsReader() {
 		else if (!me.state.scrollbar) { me.state.pxoffset = 4; }
 		else {
 			var a = me.getRowOffset(buffer);
-			if (a != null) { me.state.pxoffset = a % slotsize; }
+			if (a != null) {
+                me.state.pxoffset = (a % slotsize) + 4;
+            }
 			else { me.message("Need at least one item with a stack amount in the screen to be able to read the icons"); return false; }
 		}
 

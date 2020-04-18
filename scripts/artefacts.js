@@ -181,18 +181,14 @@ let compareArtefacts = (slot) => {
                 if (artefact.name.match(/.*Spell Scroll.*/)) {
                     if (diff < 10) {
                         console.log(diff + ' ' + artefact.name)
-                        artefactsCount.push({
-                            name: artefact.name,
-                            qty: slot.amount
-                        });
+
+                        artefactsCount[artefact.name] = slot.amount;
                         return artefact.name;
                     }
                 } else {
                     console.log(diff + ' ' + artefact.name)
-                    artefactsCount.push({
-                        name: artefact.name,
-                        qty: slot.amount
-                    });
+                    
+                    artefactsCount[artefact.name] = slot.amount;
                     return artefact.name;
                 }
 

@@ -365,7 +365,7 @@ function BankReader() {
 		var hadempty = false;
 		var bufref = new ImgRefData(buffer, new Rect(0, 0, buffer.width, buffer.height));
 
-		artefactsCount = [];
+		artefactsCount = {};
 
 		for (var bankx = 0; bankx < me.pos.columns; bankx++) {
 			var imgx = me.pos.inner.x - me.pos.area.x + bankx * slotsize + 10; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row

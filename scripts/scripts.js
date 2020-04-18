@@ -514,7 +514,7 @@ function buildTable() {
 						${mat.goal}
 					</div>
 					<div class="col diff">
-						${mat.qty - mat.goal}
+						${mat.diff}
 				</div>
 				</div>
 			`);
@@ -608,6 +608,7 @@ $(function () {
 				let name = mat.name.replace("'", "");
 				mat.qty = parseInt($(`[data-name='${name}'] .qty`).text());
 				mat.goal = parseInt($(`[data-name='${name}'] .goal`).text());
+				mat.diff = mat.qty - mat.goal;
 			})
 			buildTable();
 		}
@@ -761,7 +762,9 @@ let calculateMats = () => {
             mat.qty = 0;
         } else {
             mat.qty = parseInt(materialsCount[mat.name])
-        }
+		}
+		
+		mat.diff = mat.qty - mat.goal;
     });
 
     buildTable();

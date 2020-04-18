@@ -783,7 +783,8 @@ $(function () {
 	$(".filter").change(function () {
 		if (!$(".edit").is(":checked")) {
 			localStorage.filter = $(this).is(":checked");
-			$(".mats .row .damaged .repairable").show();
+			$(".mats .row").show();
+			$(".arts .row").show();
 			tidyTable();
 		}
 	})

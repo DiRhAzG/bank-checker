@@ -882,18 +882,11 @@ let calculateMats = () => {
 }
 
 if (localStorage.getItem("mats") != null) {
-    if (JSON.parse(localStorage.mats)[0].goal === undefined) {
-		materials = JSON.parse(localStorage.mats);
-		
-        materials.forEach(mat => {
-            if (mat.goal === undefined)
-                mat.goal = 0
-        })
-        localStorage.mats = JSON.stringify(materials);
-        location.reload();
-    } else {
-        materials = JSON.parse(localStorage.mats);
-    }
+    materials = JSON.parse(localStorage.mats);
+}
+
+if (localStorage.getItem("artefacts") != null) {
+   	artefactsList = JSON.parse(localStorage.artefacts);
 }
 
 function settab(tabnr) {

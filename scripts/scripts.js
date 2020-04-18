@@ -908,14 +908,14 @@ if (localStorage.getItem("mats") != null) {
 
 	matArr = JSON.parse(localStorage.mats);
 	
-	materials.forEach(mat => {
-		let material = matArr.find(m => m.name = mat.name);
-
-		if (material != undefined) {
-			mat.qty = material.qty;
-			mat.goal = material.goal;
-			mat.diff = material.diff;
-			mat.hide = material.hide;
+	materials.forEach(material => {
+		for (let mat of matArr) {
+			if (material.name === mat.name) {
+				material.qty = mat.qty;
+				material.goal = mat.goal;
+				material.diff = mat.diff;
+				material.hide = mat.hide;
+			}
 		}
 	});
 }
@@ -925,13 +925,13 @@ if (localStorage.getItem("artefacts") != null) {
 
 	artArr = JSON.parse(localStorage.artefacts);
 	
-	artefactsList.forEach(art => {
-		let artefact = artArr.find(a => a.name = art.name);
-
-		if (artefact != undefined) {
-			art.damaged = artefact.damaged;
-			art.repairable = artefact.repairable;
-			art.hide = artefact.hide;
+	artefactsList.forEach(artefact => {
+		for (let art of artArr) {
+			if (artefact.name === art.name) {
+				artefact.damaged = art.damaged;
+				artefact.repairable = art.repairable;
+				artefact.hide = art.hide;
+			}
 		}
 	});
    	

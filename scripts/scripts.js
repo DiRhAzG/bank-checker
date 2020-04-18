@@ -501,6 +501,7 @@ function buildTable() {
 				<div class='row' data-name="${name}">
 				<div class="col hide"><input type="checkbox" class="hideMe" ${mat.hide ? "checked=checked" : ""}/></div>
 				<div class='col-6' title="\nLevel: ${mat.level}\nFaction: ${mat.faction}\nLocation(s):\n${mat.location}">
+				<img src="${mat.imageData}" />
 				${mat.name}
 				</div>
 				<div class="col qty">

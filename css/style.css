@@ -153,3 +153,23 @@ body.nis:not(.artefact) {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
+
+#tabcontainer {
+    display:flex;
+    max-width:100%;
+    padding-bottom: 2em;
+}
+
+.nisseperators {
+    width:100%;
+    height:0px;
+    border-top:1px solid #000;
+    border-bottom:1px solid #41555F;
+    position:absolute;
+}
+
+.tab-menu {
+    padding-bottom: 25px;
+    padding-top: 3px;
+}
+/* .contenttab, .contenttableft{float:right; width:90px; height:20px; line-height:20px; text-align:center; color:#BBB; cursor:pointer; background:url('/nis/alt1-currentskin/tabback.png') 0 0 / 100% 100%; position:relative; margin-left:-14px; z-index:11; margin-top:-1px;} */

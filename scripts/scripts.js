@@ -11,6 +11,7 @@ var matreader = new MaterialsReader();
 var bankUI = new BankInterface(reader);
 var geItems = [];
 var sortList = [];
+var currenttab = 0;
 
 window.onload = () => {
 	loadArtefacts();
@@ -667,10 +668,10 @@ $(function () {
 	})
 
 	$(".export").click(function () {
-		var str = 'Material,Quantity,Goal\n'; // column headers
+		var str = 'Material,Quantity,Goal,Diff\n'; // column headers
 		materials.forEach(mat => {
 			let name = mat.name.replace("'", "");
-			str = `${str}${name},${mat.qty},${mat.goal}\n`;
+			str = `${str}${name},${mat.qty},${mat.goal},${mat.diff}\n`;
 		})
 		var blob = new Blob([str], { type: 'text/csv;charset=utf-8;' });
 		if (navigator.msSaveBlob) { // IE 10+
@@ -782,4 +783,18 @@ if (localStorage.getItem("mats") != null) {
     } else {
         materials = JSON.parse(localStorage.mats);
     }
+}
+
+function settab(tabnr) {
+	var el;
+	var els = elcl("contenttab");
+	for (var a = 0; a < els.length; a++) { els[a].classList.remove("activetab"); }
+	var els = elcl("tabcontent");
+	for (var a = 0; a < els.length; a++) {
+		els[a].style.display = "none";
+	}
+	if (el = elid("contenttab" + tabnr)) { el.classList.add("activetab"); }
+	if (el = elid("tabcontent" + tabnr)) { el.style.display = "block"; }
+
+	currenttab = tabnr;
 }

@@ -26,9 +26,6 @@
 <body class="nis">
     <div class="container">
         <div class="row">
-
-        </div>
-        <div class="row">
             <div class="col">
                 <div id="menu" class="menu">
                     <div class="row">
@@ -65,29 +62,63 @@
 
                         <div class="col header" title="Exports the current data as a CSV file.">
                             <button class='nisbutton export'>
-                                    Export
+                                Export
                             </button>
                         </div>
                         <div class="col header" title="Clears material Qty column.">
                             <button class="clear nisbutton" data-type="qty" name='qty'>
-                                    ClearQty
-                                </button>
+                                ClearQty
+                            </button>
                         </div>
                         <div class="col header" title="Clears material Goals column.">
                             <button class="clear nisbutton" data-type="goal" name="goals">
-                                    ClearGoals
-                                </button>
+                                ClearGoals
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container matSection">
+    <div class="container tab-menu">
+        <div class="row">
+            <div class="col">
+                <div class="nisseperators">
+                    <div id="tabcontainer">
+                        <div onclick="settab(0);" id="contenttab0" class="contenttab">Materials</div>
+                        <div onclick="settab(1);" id="contenttab1" class="contenttab">Artefacts</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container matSection tabcontent" id="tabcontent0" style="display:none;">
         <div class="row matHeader">
             <div class="col hide col-header">Hide</div>
             <div class="col-5 sort col-header" data-sort='level'>
                 Materials
+            </div>
+            <div class="mat-col col-header"></div>
+            <div class="col sort col-header" data-sort='qty'>
+                Qty
+            </div>
+            <div class="col sort col-header" data-sort='goal'>
+                Goal
+            </div>
+            <div class="col sort col-header" data-sort='diff'>
+                Diff
+            </div>
+        </div>
+        <div class="row scroll">
+            <div class="col mats">
+            </div>
+        </div>
+    </div>
+    <div class="container matSection tabcontent" id="tabcontent1" style="display:none;">
+        <div class="row matHeader">
+            <div class="col-5 sort col-header" data-sort='level'>
+                Artefacts
             </div>
             <div class="mat-col col-header"></div>
             <div class="col sort col-header" data-sort='qty'>

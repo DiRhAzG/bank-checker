@@ -792,11 +792,12 @@ let calculateMats = () => {
     
     artefactsList.forEach(art => {
         if (artefactsCount[art.name] != undefined) {
+			art.damaged = artefactsCount[art.name];
+			
             art.mats.forEach(mat => {
                 if (goalMats[mat.name] == undefined){
                     goalMats[mat.name] = parseInt(mat.qty) * parseInt(artefactsCount[art.name])
-                    }
-                else{
+                } else{
                     goalMats[mat.name] =+ goalMats[mat.name] + (parseInt(mat.qty) * parseInt(artefactsCount[art.name]))
                 }
             })

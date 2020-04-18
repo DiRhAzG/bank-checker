@@ -351,14 +351,14 @@ function BankReader() {
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
 
-		if (!window.alt1) {
-			var c = document.getElementById("myCanvas");
-			var ctx = c.getContext("2d");
+		// if (!window.alt1) {
+		// 	var c = document.getElementById("myCanvas");
+		// 	var ctx = c.getContext("2d");
 			
-			ctx.beginPath();
-			ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-			ctx.stroke();
-		}
+		// 	ctx.beginPath();
+		// 	ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+		// 	ctx.stroke();
+		// }
 
 		readcount++;
 		var allvalid = true;
@@ -468,11 +468,11 @@ function BankReader() {
 					var backcolor = a1lib.mixcolor(255, 0, 0);
 					//alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 60000, 1);
 
-					if (!window.alt1) {
-						ctx.beginPath();
-						ctx.rect(x, y, 34, 34);
-						ctx.stroke();
-					}
+					// if (!window.alt1) {
+					// 	ctx.beginPath();
+					// 	ctx.rect(x, y, 34, 34);
+					// 	ctx.stroke();
+					// }
 				// if (bankx == 0 && banky == 0)
 				//  {
 				// 	qw(x + " | " + y + " | " + imgx + " | " + imgy);
@@ -492,17 +492,16 @@ function BankReader() {
 			x: me.pos.inner.x + me.pos.inner.w + 11,
 			y: me.pos.inner.y + 16
 		};
-
 		        
-        if (!window.alt1) {
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
+        // if (!window.alt1) {
+        //     var c = document.getElementById("myCanvas");
+        //     var ctx = c.getContext("2d");
             
-            ctx.beginPath();
-            ctx.strokeStyle = "red";
-            ctx.rect(bar.x, bar.y, 2, bar.raillength);
-            ctx.stroke();
-        }
+        //     ctx.beginPath();
+        //     ctx.strokeStyle = "red";
+        //     ctx.rect(bar.x, bar.y, 2, bar.raillength);
+        //     ctx.stroke();
+        // }
 
 		var buffer = img.toData(bar.x + 5, bar.y, 3, bar.raillength);
 

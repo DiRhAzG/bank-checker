@@ -16,6 +16,7 @@ var currenttab = 0;
 window.onload = () => {
 	loadArtefacts();
 	loadMaterials();
+	settab(0);
 
 	if (!window.alt1) {
 		start();
@@ -37,7 +38,7 @@ function start() {
 		matreader.read(undefined, true);
 		toggleTrack();
 	} else {
-		pasteExample("http://localhost:8080/images/1.png");
+		// pasteExample("http://localhost:8080/images/1.png");
 		//matImageFromFile("http://localhost:8080/images/testmats1.png");
 	}
 }
@@ -495,14 +496,15 @@ var count, mats, index;
 
 function buildTable() {
 	$(".mats > .row").remove();
+
 	materials.forEach(mat => {
 		if (mat.name != "Blank Slot") {
 			let name = mat.name.replace("'", "");
 
 			$(".mats").append(`
 				<div class='row' data-name="${name}">
-					<div class="col hide"><input type="checkbox" class="hideMe" ${mat.hide ? "checked=checked" : ""}/></div>
-					<div class='col-5' title="\nLevel: ${mat.level}\nFaction: ${mat.faction}\nLocation(s):\n${mat.location}">
+					<div class="col hide"><input type="checkbox" class="hideMats" ${mat.hide ? "checked=checked" : ""}/></div>
+					<div class="col-5" title="\nLevel: ${mat.level}\nFaction: ${mat.faction}\nLocation(s):\n${mat.location}">
 						${mat.name}
 					</div>
 					<div class="mat-col">
@@ -520,8 +522,34 @@ function buildTable() {
 				</div>
 			`);
 		}
-
 	})
+
+	$(".arts > .row").remove();
+
+	artefactsList.forEach(art => {
+		if (art.name != "Blank Slot") {
+			let name = art.name.replace("'", "");
+
+			$(".arts").append(`
+				<div class='row' data-name="${name}">
+					<div class="col hide"><input type="checkbox" class="hideArtefacts" ${art.hide ? "checked=checked" : ""}/></div>
+					<div class="col-5" title="\nLevel: ${art.level}">
+						${art.name}
+					</div>
+					<div class="img-col">
+						<img src="${art.imageData}" alt="${art.name}" class="artefact-image">
+					</div>
+					<div class="col damaged">
+						${art.damaged}
+					</div>
+					<div class="col repairable">
+						${art.repairable}
+					</div>
+				</div>
+			`);
+		}
+	})
+
 	if (localStorage.getItem("filter") === "true") {
 		$(".filter").prop("checked", true)
 	}
@@ -536,8 +564,11 @@ function buildTable() {
 
 function tidyTable(name) {
 	localStorage.mats = JSON.stringify(materials);
+	// localStorage.artefacts = JSON.stringify(artefactsList);
+
 	$(`[data-name="${name}"]`).removeClass('normal complete')
 	$(`[data-name="${name}"]`).addClass("getMat")
+
 	materials.forEach(mat => {
 		let name = mat.name.replace("'", "");
 		$("[data-name='" + name + "'] > .qty").text(mat.qty);
@@ -570,12 +601,24 @@ $(function () {
 	$("button, input, select, body").attr("tabindex", "-1");
 
 	$(".edit").change(function () {
-		document.querySelectorAll(".hideMe").forEach((row, i) => {
-			if (row.checked === true)
-				materials[i].hide = true
-			else
-				materials[i].hide = false
+		document.querySelectorAll(".hideMats").forEach((row, i) => {
+			if (row.checked === true) {
+				materials[i].hide = true;
+			}
+			else {
+				materials[i].hide = false;
+			}
 		})
+
+		document.querySelectorAll(".hideArtefacts").forEach((row, i) => {
+			if (row.checked === true) {
+				artefactsList[i].hide = true;
+			}
+			else {
+				artefactsList[i].hide = false;
+			}
+		})
+
 		if ($(this).is(':checked')) {
 			$(".filter, .clear").prop("disabled", true)
 
@@ -583,34 +626,44 @@ $(function () {
 			$(".row .qty").attr("tabindex", "1");
 			$(".row .goal").attr("tabindex", "2");
 
-			document.querySelectorAll(".col-6").forEach(row => {
-				row.classList.remove("col-6")
+			document.querySelectorAll(".col-5").forEach(row => {
+				row.classList.remove("col-5")
 				row.classList.add("col-4")
 			})
-			if ($(".tracker").text() == "Stop") {
-				$(".tracker").click();
-			}
+			// if ($(".tracker").text() == "Stop") {
+			// 	$(".tracker").click();
+			// }
 			$(".row:hidden, .hide").show();
-			$(".qty, .goal").attr('contenteditable', 'true').on("focus", function () { document.execCommand('selectAll', false, null); });
+			$(".qty, .goal, .damaged, .repairable").attr('contenteditable', 'true').on("focus", function () { document.execCommand('selectAll', false, null); });
 			$(".qty:first").focus();
 		} else {
-			if ($(".tracker").text() == "Start") {
-				$(".tracker").click();
-			}
+			// if ($(".tracker").text() == "Start") {
+			// 	$(".tracker").click();
+			// }
 			$(".filter, .clear").prop("disabled", false);
-			$(".row .qty,.row .goal").removeAttr("tabindex");
+			$(".row .qty, .row .goal, .row .damaged, .row .repairable").removeAttr("tabindex");
 			document.querySelectorAll(".col-4").forEach(row => {
 				row.classList.remove("col-4")
-				row.classList.add("col-6")
+				row.classList.add("col-5")
 			})
 			$(".hide").hide();
 			$(".qty, .goal").removeAttr('contenteditable');
+
 			materials.forEach(mat => {
 				let name = mat.name.replace("'", "");
+
 				mat.qty = parseInt($(`[data-name='${name}'] .qty`).text());
 				mat.goal = parseInt($(`[data-name='${name}'] .goal`).text());
 				mat.diff = mat.qty - mat.goal;
 			})
+
+			artefactsList.forEach(art => {
+				let artName = art.name.replace("'", "");
+
+				art.damaged = parseInt($(`[data-name='${artName}'] .damaged`).text());
+				art.repairable = parseInt($(`[data-name='${artName}'] .repairable`).text());
+			})
+
 			buildTable();
 		}
 	});
@@ -710,43 +763,41 @@ $(function () {
 	// 	}
 	// })
 
-	$("button.tracker").click();
+	// $("button.tracker").click();
 
 	$("#menu").on("shown.bs.collapse", function () { $("body").addClass("expand") })
 	$("#menu").on("hide.bs.collapse", function () { $("body").removeClass("expand"), buildTable() })
 
-	localStorage.removeItem("goalMats")
-	function onStorageEvent(storageEvent) {
-		if (storageEvent.key === "goalMats") {
-			var mats = JSON.parse(storageEvent.newValue)
-			materials.forEach((mat, i) => {
-				mat.goal = parseInt(mats[mat.name])
-			})
-			buildTable()
-		}
-	}
+	// localStorage.removeItem("goalMats")
+	// function onStorageEvent(storageEvent) {
+	// 	if (storageEvent.key === "goalMats") {
+	// 		var mats = JSON.parse(storageEvent.newValue)
+	// 		materials.forEach((mat, i) => {
+	// 			mat.goal = parseInt(mats[mat.name])
+	// 		})
+	// 		buildTable()
+	// 	}
+	// }
 
-	window.addEventListener('storage', onStorageEvent, false);
+	// window.addEventListener('storage', onStorageEvent, false);
 
-	$(".openImport").click(function () {
-		window.open("/arch-mats/artefacts.html", "", "width=400")
-	})
+	// $(".openImport").click(function () {
+	// 	window.open("/arch-mats/artefacts.html", "", "width=400")
+	// })
 
 })
 
 let calculateMats = () => {
     let goalMats = {};
     
-    artefactsCount.forEach(art => {
-        let artefact = artefactsList.find(o => o.name == art.name);
-
-        if (artefact != undefined) {
-            artefact.mats.forEach(mat => {
+    artefactsList.forEach(art => {
+        if (artefactsCount[art.name] != undefined) {
+            art.mats.forEach(mat => {
                 if (goalMats[mat.name] == undefined){
-                    goalMats[mat.name] = parseInt(mat.qty) * parseInt(art.qty)
+                    goalMats[mat.name] = parseInt(mat.qty) * parseInt(artefactsCount[art.name])
                     }
                 else{
-                    goalMats[mat.name] =+ goalMats[mat.name] + (parseInt(mat.qty) * parseInt(art.qty))
+                    goalMats[mat.name] =+ goalMats[mat.name] + (parseInt(mat.qty) * parseInt(artefactsCount[art.name]))
                 }
             })
         }

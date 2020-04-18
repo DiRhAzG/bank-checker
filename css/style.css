@@ -6,19 +6,24 @@
     text-align: center;
 }
 
-.matHeader {
+.mat-header,
+.art-header {
     border-top: white solid .5px;
 }
 
 .mats>.row,
-.matHeader * {
+.arts>.row,
+.mat-header *,
+.art-header * {
     border-bottom: white solid .5px;
     border-right: white solid .5px;
     border-collapse: collapse;
 }
 
-.matHeader,
-.mats>.row * {
+.mat-header,
+.art-header,
+.mats>.row *,
+.arts>.row * {
     border-left: white solid .5px;
 }
 
@@ -134,7 +139,7 @@ body.nis:not(.artefact) {
     text-align: left;
 }
 
-.mat-col {
+.img-col {
     width: 29px;
 }
 
@@ -143,6 +148,10 @@ body.nis:not(.artefact) {
     height: 20px;
 }
 
+.artefact-image {
+    width: 29px;
+    height: 29px;
+}
 .col-header {
     background-color: rgb(27, 146, 175);
     cursor: pointer;

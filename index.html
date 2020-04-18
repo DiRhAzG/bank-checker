@@ -15,11 +15,11 @@
 	<script type="text/javascript" src="scripts/alt1lib.js"></script>
 	<script type="text/javascript" src="scripts/tooltip.js"></script>
 	<script type="text/javascript" src="scripts/bank.js"></script>
+    <script type="text/javascript" src="scripts/artefacts.js"></script>
 	<script type="text/javascript" src="scripts/materials.js"></script>
 	<script type="text/javascript" src="scripts/materialstorage.js"></script>
 	<script type="text/javascript" src="scripts/scripts.js"></script>
 	<script type="text/javascript" src="scripts/pixelmatch.js"></script>
-    <script type="text/javascript" src="scripts/artefacts.js"></script>
     
 </head>
 
@@ -36,14 +36,14 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="checkbox-header" title="When checked, will only show materials with a Quantity greater than 0">
-                            Filter Mats
+                        <div class="checkbox-header" title="Show materials/artefacts with a quantity greater than 0">
+                            Filter
                         </div>
                         <div class="checkbox">
                             <input type="checkbox" class="filter" />
                         </div>
                    
-                        <div class="checkbox-header" title="When checked, allows you to edit the values for each material.">
+                        <div class="checkbox-header" title="Edit the values for each material/artefact">
                             Edit Mode
                         </div>
                         <div class="checkbox">
@@ -94,12 +94,14 @@
         </div>
     </div>
     <div class="container matSection tabcontent" id="tabcontent0" style="display:none;">
-        <div class="row matHeader">
+        <div class="row mat-header">
             <div class="col hide col-header">Hide</div>
-            <div class="col-5 sort col-header" data-sort='level'>
+            <div class="col-5 sort col-header" data-sort='materials'>
                 Materials
             </div>
-            <div class="mat-col col-header"></div>
+            <div class="img-col col-header">
+                 
+            </div>
             <div class="col sort col-header" data-sort='qty'>
                 Qty
             </div>
@@ -116,23 +118,22 @@
         </div>
     </div>
     <div class="container matSection tabcontent" id="tabcontent1" style="display:none;">
-        <div class="row matHeader">
-            <div class="col-5 sort col-header" data-sort='level'>
+        <div class="row art-header">
+            <div class="col-5 sort col-header" data-sort='artefacts'>
                 Artefacts
             </div>
-            <div class="mat-col col-header"></div>
-            <div class="col sort col-header" data-sort='qty'>
-                Qty
+            <div class="img-col col-header">
+                 
             </div>
-            <div class="col sort col-header" data-sort='goal'>
-                Goal
+            <div class="col sort col-header" data-sort='damaged'>
+                Damaged
             </div>
-            <div class="col sort col-header" data-sort='diff'>
-                Diff
+            <div class="col sort col-header" data-sort='reoair'>
+                Repairable
             </div>
         </div>
         <div class="row scroll">
-            <div class="col mats">
+            <div class="col arts">
             </div>
         </div>
     </div>

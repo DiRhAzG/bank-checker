@@ -671,7 +671,7 @@ $(function () {
 				row.classList.add("col-5")
 			})
 			$(".hide").hide();
-			$(".qty, .goal").removeAttr('contenteditable');
+			$(".qty, .goal, .damaged, .repairable").removeAttr('contenteditable');
 
 			materials.forEach(mat => {
 				let name = mat.name.replace("'", "");
@@ -783,7 +783,7 @@ $(function () {
 	$(".filter").change(function () {
 		if (!$(".edit").is(":checked")) {
 			localStorage.filter = $(this).is(":checked");
-			$(".mats .row").show();
+			$(".mats .row .damaged .repairable").show();
 			tidyTable();
 		}
 	})

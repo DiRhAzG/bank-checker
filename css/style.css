@@ -69,11 +69,6 @@ body.nis:not(.artefact) {
     transition: background-color 500ms;
 }
 
-.goal,
-.goalCol {
-    display: none;
-}
-
 .expand {
     margin-bottom: 17em !important;
 }

@@ -523,10 +523,10 @@ function buildTable() {
 	if (localStorage.getItem("filter") === "true") {
 		$(".filter").prop("checked", true)
 	}
-	if (localStorage.getItem("goals") === "true") {
-		$(".goals").prop("checked", true)
-		$(".goal, .goalCol").show();
-	}
+	// if (localStorage.getItem("goals") === "true") {
+	// 	$(".goals").prop("checked", true)
+	// 	$(".goal, .goalCol").show();
+	// }
 	if ($(".edit").is(":checked"))
 		$(".hide").show();
 	tidyTable();
@@ -539,7 +539,7 @@ function tidyTable(name) {
 	materials.forEach(mat => {
 		let name = mat.name.replace("'", "");
 		$("[data-name='" + name + "'] > .qty").text(mat.qty);
-		if ((mat.qty >= 0 && mat.goal >= 0) && mat.qty >= mat.goal && localStorage.goals === "true") {
+		if ((mat.qty >= 0 && mat.goal >= 0) && mat.qty >= mat.goal) { //&& localStorage.goals === "true") {
 			$(`[data-name="${name}"]`).removeClass('getMat normal')
 			$(`[data-name="${name}"]`).addClass("complete")
 		} else {
@@ -685,16 +685,16 @@ $(function () {
 		}
 	})
 
-	$(".goals").change(function () {
-		localStorage.goals = $(this).is(":checked");
-		if (localStorage.goals === "true") {
-			$(".goal, .goalCol").show();
-			tidyTable();
-		} else {
-			$(".goal, .goalCol").hide();
-			tidyTable();
-		}
-	})
+	// $(".goals").change(function () {
+	// 	localStorage.goals = $(this).is(":checked");
+	// 	if (localStorage.goals === "true") {
+	// 		$(".goal, .goalCol").show();
+	// 		tidyTable();
+	// 	} else {
+	// 		$(".goal, .goalCol").hide();
+	// 		tidyTable();
+	// 	}
+	// })
 
 	$("button.tracker").click();
 

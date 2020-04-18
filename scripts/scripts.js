@@ -726,7 +726,7 @@ $(function () {
 	$(".sort").click(e => {
 		if (!$(".edit").is(":checked")) {
 			let sort = e.target.dataset.sort;
-			let type = e.tartget.dataset.type;
+			let type = e.target.dataset.type;
 
 			let order = "asc";
 			

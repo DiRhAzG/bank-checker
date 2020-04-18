@@ -133,3 +133,12 @@ body.nis:not(.artefact) {
     padding-left: 15px;
     text-align: left;
 }
+
+.mat-col {
+    width: 29px;
+}
+
+.mat-image {
+    width: 29px;
+    height: 25px;
+}

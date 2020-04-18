@@ -30,9 +30,9 @@ function start() {
 
 	if (window.alt1) {
 		reader.find();
-		reader.read();
+		reader.read(undefined, true);
 		matreader.find();
-		matreader.read();
+		matreader.read(undefined, true);
 		toggleTrack();
 	} else {
 		pasteExample("http://localhost:8080/images/1.png");

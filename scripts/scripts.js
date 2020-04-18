@@ -533,7 +533,7 @@ function buildTable() {
 			$(".arts").append(`
 				<div class='row' data-name="${name}">
 					<div class="col hide"><input type="checkbox" class="hideArtefacts" ${art.hide ? "checked=checked" : ""}/></div>
-					<div class="col-5" title="\nLevel: ${art.level}">
+					<div class="col-6" title="\nLevel: ${art.level}">
 						${art.name}
 					</div>
 					<div class="img-col">

@@ -46,7 +46,7 @@ body.nis:not(.artefact) {
 }
 
 .complete {
-    background-color: lime;
+    background-color: rgb(26, 152, 190);
     color: black;
 }
 

@@ -528,7 +528,7 @@ function tidyTable(name) {
 	materials.forEach(mat => {
 		let name = mat.name.replace("'", "");
 		$("[data-name='" + name + "'] > .qty").text(mat.qty);
-		if ((mat.qty >= 0 && mat.goal > 0) && mat.qty >= mat.goal && localStorage.goals === "true") {
+		if ((mat.qty >= 0 && mat.goal >= 0) && mat.qty >= mat.goal && localStorage.goals === "true") {
 			$(`[data-name="${name}"]`).removeClass('getMat normal')
 			$(`[data-name="${name}"]`).addClass("complete")
 		} else {

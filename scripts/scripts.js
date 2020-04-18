@@ -10,6 +10,7 @@ var reader = new BankReader();
 var matreader = new MaterialsReader();
 var bankUI = new BankInterface(reader);
 var geItems = [];
+var sortList = [];
 
 window.onload = () => {
 	loadArtefacts();
@@ -644,12 +645,23 @@ $(function () {
 	$(".sort").click(e => {
 		if (!$(".edit").is(":checked")) {
 			let sort = e.target.dataset.sort;
-			if (sort === "level")
-				materials.sort((a, b) => a[sort] - b[sort])
-			else
-				materials.sort((a, b) => b[sort] - a[sort])
+			let order = "asc";
+			
+			if (sortList[sort] != undefined) {
+				if (sortList[sort] === order) {
+					order = "desc"
+				}
+			}
+
+			if (order === "asc") {
+				materials.sort((a, b) => a[sort] - b[sort]);
+			} else {
+				materials.sort((a, b) => b[sort] - a[sort]);
+			}
+				
 			buildTable();
-			localStorage.sort = sort;
+
+			sortList[sort] = order;
 		}
 	})
 

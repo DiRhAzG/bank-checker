@@ -5,7 +5,7 @@
 	"configUrl": "https://dirhazg.github.io/bank-checker/appconfig.json",
 	"iconUrl": "https://dirhazg.github.io/bank-checker/images/archaeology.png",
 	"defaultWidth": 400,
-	"defaultHeight": 820,
+	"defaultHeight": 1025,
 	"minWidth": 200,
 	"minHeight": 200,
 	"maxWidth": 1000,

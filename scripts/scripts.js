@@ -563,8 +563,30 @@ function buildTable() {
 }
 
 function tidyTable(name) {
-	localStorage.mats = JSON.stringify(materials);
-	localStorage.artefacts = JSON.stringify(artefactsList);
+	let matArr = [];
+	let artArr = [];
+
+	materials.forEach(mat => {
+		matArr.push({
+			name: mat.name,
+			qty: mat.qty,
+			goal: mat.goal,
+			diff: mat.diff,
+			hide: mat.hide
+		});
+	});
+
+	artefactsList.forEach(art => {
+		artArr.push({
+			name: art.name,
+			damaged: art.damaged,
+			repairable: art.repairable,
+			hide: art.hide
+		});
+	});
+
+	localStorage.mats = JSON.stringify(matArr);
+	localStorage.artefacts = JSON.stringify(artArr);
 
 	$(`[data-name="${name}"]`).removeClass('normal complete')
 	$(`[data-name="${name}"]`).addClass("getMat")
@@ -882,11 +904,37 @@ let calculateMats = () => {
 }
 
 if (localStorage.getItem("mats") != null) {
-    materials = JSON.parse(localStorage.mats);
+	let matArr = [];
+
+	matArr = JSON.parse(localStorage.mats);
+	
+	matArr.forEach(mat => {
+		let material = materials.find(m => m.name = mat.name);
+
+		if (material != undefined) {
+			material.qty = mat.qty;
+			material.goal = mat.goal;
+			material.diff = mat.diff;
+			material.hide = mat.hide;
+		}
+	});
 }
 
 if (localStorage.getItem("artefacts") != null) {
-   	artefactsList = JSON.parse(localStorage.artefacts);
+	let artArr = [];
+
+	artArr = JSON.parse(localStorage.artefacts);
+	
+	artArr.forEach(art => {
+		let artefact = artefactsList.find(a => a.name = art.name);
+
+		if (artefact != undefined) {
+			artefact.damaged = art.damaged;
+			artefact.repairable = mat.repairable;
+			artefact.hide = art.hide;
+		}
+	});
+   	
 }
 
 function settab(tabnr) {

@@ -790,21 +790,42 @@ $(function () {
 })
 
 let calculateMats = () => {
-    let goalMats = {};
+	let goalMats = {};
+	
+	materials.forEach((mat, i) => {
+        if (materialsCount[mat.name] == undefined) {
+            mat.qty = 0;
+        } else {
+            mat.qty = parseInt(materialsCount[mat.name])
+		}
+    });
     
     artefactsList.forEach(art => {
-        if (artefactsCount[art.name] != undefined) {
-			art.damaged = artefactsCount[art.name];
+		let repairCount = 0;
 
+        if (artefactsCount[art.name] != undefined) {
             art.mats.forEach(mat => {
                 if (goalMats[mat.name] == undefined){
                     goalMats[mat.name] = parseInt(mat.qty) * parseInt(artefactsCount[art.name])
                 } else{
                     goalMats[mat.name] =+ goalMats[mat.name] + (parseInt(mat.qty) * parseInt(artefactsCount[art.name]))
-                }
-            })
+				}
+				
+				let material = materials.find(m => m.name === mat.name);
+				let matCount = 0;
+
+				matCount = Math.floor(material.qty / mat.qty);
+
+				if (matCount < repairCount && repairCount != 0) {
+					repairCount = matCount;
+				}
+			})
+
+			art.damaged = artefactsCount[art.name];
+			art.repairable = repairCount;
         } else {
 			art.damaged = 0;
+			art.repairable = 0;
 		}
     });
 
@@ -815,12 +836,6 @@ let calculateMats = () => {
             mat.goal = parseInt(goalMats[mat.name])
         }
 
-        if (materialsCount[mat.name] == undefined) {
-            mat.qty = 0;
-        } else {
-            mat.qty = parseInt(materialsCount[mat.name])
-		}
-		
 		mat.diff = mat.qty - mat.goal;
     });
 

@@ -20,47 +20,54 @@
 	<script type="text/javascript" src="scripts/scripts.js"></script>
 	<script type="text/javascript" src="scripts/pixelmatch.js"></script>
     <script type="text/javascript" src="scripts/artefacts.js"></script>
-    <script src="scripts/data.js"></script>
     
 </head>
 
 <body class="nis">
     <div class="container">
         <div class="row">
-            <div class="col">
-                <button class="nisbutton" onclick="start();">
-                    Start
-                </button>
-            </div>
+
         </div>
         <div class="row">
             <div class="col">
                 <div id="menu" class="menu">
                     <div class="row">
-                        <div class="col header" title="When checked, will only show materials with a Quantity greater than 0">
-                            <h6>Filter Mats</h6>
-                        </div>
                         <div class="col">
-                            <input type="checkbox" class="filter" />
+                            <button class="nisbutton" onclick="start();">
+                                Start
+                            </button>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col header" title="When checked, allows you to edit the values for each material.">
-                            <h6>Edit Mode</h6>
+                        <div class="checkbox-header" title="When checked, will only show materials with a Quantity greater than 0">
+                            Filter Mats
                         </div>
-                        <div class="col">
+                        <div class="checkbox">
+                            <input type="checkbox" class="filter" />
+                        </div>
+                   
+                        <div class="checkbox-header" title="When checked, allows you to edit the values for each material.">
+                            Edit Mode
+                        </div>
+                        <div class="checkbox">
                             <input type="checkbox" class="edit" />
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col header" title="When checked, Shows the goals column.">
                             <h6>Enable Goals</h6>
                         </div>
                         <div class="col">
                             <input type="checkbox" class="goals" />
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
+
+                        <div class="col header" title="Exports the current data as a CSV file.">
+                            <button class='nisbutton export'>
+                                    Export
+                            </button>
+                        </div>
                         <div class="col header" title="Clears material Qty column.">
                             <button class="clear nisbutton" data-type="qty" name='qty'>
                                     ClearQty
@@ -72,13 +79,6 @@
                                 </button>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col header" title="Exports the current data as a CSV file.">
-                            <button class='nisbutton export'>
-                                    CSV Export
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
         <div class="row matHeader">
             <div class="col hide">Hide</div>
             <div class="col-6 sort" data-sort='level'>
-                Mats
+                Materials
             </div>
             <div class="col sort" data-sort='qty'>
                 Qty

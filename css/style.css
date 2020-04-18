@@ -106,7 +106,7 @@ body.nis:not(.artefact) {
 }
 
 .menu {
-    margin-bottom: 4em
+    margin-bottom: 1em
 }
 
 .main {
@@ -118,4 +118,18 @@ body.nis:not(.artefact) {
 
 .input-group-text {
     min-width: 249px;
+}
+
+.checkbox-header {
+    position: relative;
+    width: 25%;
+    text-align: right;
+}
+
+.checkbox {
+    position: relative;
+    width: 25%;
+    padding-top: 3px;
+    padding-left: 15px;
+    text-align: left;
 }

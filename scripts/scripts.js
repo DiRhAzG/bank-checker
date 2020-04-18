@@ -494,20 +494,25 @@ var count, mats, index;
 function buildTable() {
 	$(".mats > .row").remove();
 	materials.forEach(mat => {
-		let name = mat.name.replace("'", "");
-		$(".mats").append(`
-	<div class='row' data-name="${name}">
-	<div class="col hide"><input type="checkbox" class="hideMe" ${mat.hide ? "checked=checked" : ""}/></div>
-		<div class='col-6' title="\nLevel: ${mat.level}\nFaction: ${mat.faction}\nLocation(s):\n${mat.location}">
-		${mat.name}
-		</div>
-		<div class="col qty">
-		${mat.qty}
-		</div>
-		<div class="col goal">
-		${mat.goal}
-		</div>
-		</div>`);
+		if (mat.name != "Blank Slot") {
+			let name = mat.name.replace("'", "");
+
+			$(".mats").append(`
+				<div class='row' data-name="${name}">
+				<div class="col hide"><input type="checkbox" class="hideMe" ${mat.hide ? "checked=checked" : ""}/></div>
+				<div class='col-6' title="\nLevel: ${mat.level}\nFaction: ${mat.faction}\nLocation(s):\n${mat.location}">
+				${mat.name}
+				</div>
+				<div class="col qty">
+				${mat.qty}
+				</div>
+				<div class="col goal">
+				${mat.goal}
+				</div>
+				</div>
+			`);
+		}
+
 	})
 	if (localStorage.getItem("filter") === "true") {
 		$(".filter").prop("checked", true)
@@ -633,7 +638,6 @@ $(function () {
 	$(".sort").click(e => {
 		if (!$(".edit").is(":checked")) {
 			let sort = e.target.dataset.sort;
-			sortComps = sort;
 			if (sort === "level")
 				materials.sort((a, b) => a[sort] - b[sort])
 			else
@@ -644,7 +648,7 @@ $(function () {
 	})
 
 	$(".export").click(function () {
-		var str = 'ComponentName,Quantity,goaled\n'; // column headers
+		var str = 'Material,Quantity,Goal\n'; // column headers
 		materials.forEach(mat => {
 			let name = mat.name.replace("'", "");
 			str = `${str}${name},${mat.qty},${mat.goal}\n`;
@@ -743,4 +747,18 @@ let calculateMats = () => {
     });
 
     buildTable();
+}
+
+if (localStorage.getItem("mats") != null) {
+    if (JSON.parse(localStorage.mats)[0].goal === undefined) {
+        materials = JSON.parse(localStorage.mats);
+        materials.forEach(mat => {
+            if (mat.goal === undefined)
+                mat.goal = 0
+        })
+        localStorage.mats = JSON.stringify(materials);
+        location.reload();
+    } else {
+        materials = JSON.parse(localStorage.mats);
+    }
 }

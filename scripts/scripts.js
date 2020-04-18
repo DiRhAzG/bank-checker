@@ -930,7 +930,7 @@ if (localStorage.getItem("artefacts") != null) {
 
 		if (artefact != undefined) {
 			artefact.damaged = art.damaged;
-			artefact.repairable = mat.repairable;
+			artefact.repairable = art.repairable;
 			artefact.hide = art.hide;
 		}
 	});

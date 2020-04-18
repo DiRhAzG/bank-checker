@@ -564,7 +564,7 @@ function buildTable() {
 
 function tidyTable(name) {
 	localStorage.mats = JSON.stringify(materials);
-	// localStorage.artefacts = JSON.stringify(artefactsList);
+	localStorage.artefacts = JSON.stringify(artefactsList);
 
 	$(`[data-name="${name}"]`).removeClass('normal complete')
 	$(`[data-name="${name}"]`).addClass("getMat")
@@ -883,7 +883,8 @@ let calculateMats = () => {
 
 if (localStorage.getItem("mats") != null) {
     if (JSON.parse(localStorage.mats)[0].goal === undefined) {
-        materials = JSON.parse(localStorage.mats);
+		materials = JSON.parse(localStorage.mats);
+		
         materials.forEach(mat => {
             if (mat.goal === undefined)
                 mat.goal = 0

@@ -691,6 +691,8 @@ $(function () {
 				artefactsCount = {};
 				reader.clearSlots();
 			}
+
+			calculateMats();
 			buildTable()
 			// sbox.frame.close();
 		// }

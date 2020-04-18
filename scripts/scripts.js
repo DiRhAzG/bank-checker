@@ -726,6 +726,8 @@ $(function () {
 	$(".sort").click(e => {
 		if (!$(".edit").is(":checked")) {
 			let sort = e.target.dataset.sort;
+			let type = e.tartget.dataset.type;
+
 			let order = "asc";
 			
 			if (sortList[sort] != undefined) {
@@ -735,9 +737,17 @@ $(function () {
 			}
 
 			if (order === "asc") {
-				materials.sort((a, b) => a[sort] - b[sort]);
+				if (type === "artefact") {
+					artefactsList.sort((a, b) => a[sort] - b[sort]);
+				} else {
+					materials.sort((a, b) => a[sort] - b[sort]);
+				}
 			} else {
-				materials.sort((a, b) => b[sort] - a[sort]);
+				if (type === "artefact") {
+					artefactsList.sort((a, b) => b[sort] - a[sort]);
+				} else {
+					materials.sort((a, b) => b[sort] - a[sort]);
+				}
 			}
 				
 			buildTable();

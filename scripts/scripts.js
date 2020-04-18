@@ -29,9 +29,9 @@ function start() {
 	// bankUI.draw();
 
 	if (window.alt1) {
-		reader.find();
+		reader.find(undefined, true);
 		reader.read(undefined, true);
-		matreader.find();
+		matreader.find(undefined, true);
 		matreader.read(undefined, true);
 		toggleTrack();
 	} else {

@@ -56,7 +56,7 @@ function MaterialsReader() {
 	var backcolor = [30, 49, 70];
 	var backcolorlegacy = [62, 53, 40];
 
-	this.find = function (img) {
+	this.find = function (img, clearSlots) {
 		if (!img) { img = a1lib.bindfullrs(); }
 
 		//==== find bank ====
@@ -73,6 +73,10 @@ function MaterialsReader() {
 		loc.height = botright[0].y - loc.y;
 		me.message("Material Storage found at " + loc.x + "," + loc.y  + "," + loc.width  + "," +  loc.height);
 
+        if (clearSlots) {
+			me.clearSlots();
+        }
+        
 		//==== init vars ====
 		var storagearea = {
 			x: loc.x,

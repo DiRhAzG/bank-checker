@@ -61,7 +61,7 @@ function BankReader() {
 	var backcolor = [30, 49, 70];
 	var backcolorlegacy = [62, 53, 40];
 
-	this.find = function (img) {
+	this.find = function (img, clearSlots) {
 		if (!img) { img = a1lib.bindfullrs(); }
 
 		//==== find bank ====
@@ -78,6 +78,10 @@ function BankReader() {
 		loc.height = botright[0].y + 38 - loc.y;
 		me.message("Bank found at " + loc.x + "," + loc.y  + "," + loc.width  + "," +  loc.height);
 
+		if (clearSlots) {
+			me.clearSlots();
+		}
+		
 		//==== init vars ====
 		var bankarea = {
 			x: loc.x,

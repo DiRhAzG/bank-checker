@@ -3,7 +3,7 @@
 	"description": "This app will read your bank for damages artefacts, material storage for materials, and calculate required materials",
 	"appUrl": "https://dirhazg.github.io/bank-checker/",
 	"configUrl": "https://dirhazg.github.io/bank-checker/appconfig.json",
-	"iconUrl": "https://dirhazg.github.io/bank-checker/images/rchaeology.png",
+	"iconUrl": "https://dirhazg.github.io/bank-checker/images/archaeology.png",
 	"defaultWidth": 400,
 	"defaultHeight": 820,
 	"minWidth": 200,

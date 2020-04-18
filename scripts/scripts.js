@@ -816,7 +816,7 @@ let calculateMats = () => {
 
 				matCount = Math.floor(material.qty / mat.qty);
 
-				if (matCount < repairCount && repairCount != 0) {
+				if (matCount < repairCount) {
 					repairCount = matCount;
 				}
 			})

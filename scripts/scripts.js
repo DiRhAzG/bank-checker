@@ -801,7 +801,7 @@ let calculateMats = () => {
     });
     
     artefactsList.forEach(art => {
-		let repairCount = 0;
+		let repairCount = 9999;
 
         if (artefactsCount[art.name] != undefined) {
             art.mats.forEach(mat => {

@@ -512,7 +512,7 @@ function buildTable() {
 					<div class="col goal">
 						${mat.goal}
 					</div>
-					<div class="col goal">
+					<div class="col diff">
 						${mat.qty - mat.goal}
 				</div>
 				</div>

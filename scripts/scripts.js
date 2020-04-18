@@ -714,11 +714,11 @@ let calculateMats = () => {
     let goalMats = {};
     
     artefactsCount.forEach(art => {
-        let artefact = artefactsList.find(o => o.name === art.name);
+        let artefact = artefactsList.find(o => o.name == art.name);
 
         if (artefact != undefined) {
             artefact.mats.forEach(mat => {
-                if (goalMats[mat.name] === undefined){
+                if (goalMats[mat.name] == undefined){
                     goalMats[mat.name] = parseInt(mat.qty) * parseInt(art.qty)
                     }
                 else{

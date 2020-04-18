@@ -571,8 +571,8 @@ function tidyTable(name) {
 
 	materials.forEach(mat => {
 		let name = mat.name.replace("'", "");
-		$("[data-name='" + name + "'] > .qty").text(mat.qty);
-		if ((mat.qty >= 0 && mat.goal >= 0) && mat.qty >= mat.goal) { //&& localStorage.goals === "true") {
+		// $("[data-name='" + name + "'] > .qty").text(mat.qty);
+		if (mat.qty >= mat.goal) { //&& localStorage.goals === "true") {
 			$(`[data-name="${name}"]`).removeClass('getMat normal')
 			$(`[data-name="${name}"]`).addClass("complete")
 		} else {
@@ -582,10 +582,34 @@ function tidyTable(name) {
 			}, 500)
 		}
 	})
+
+	artefactsList.forEach(art => {
+		let name = art.name.replace("'", "");
+		// $("[data-name='" + name + "'] > .qty").text(mat.qty);
+		if (art.repairable >= art.damaged) { //&& localStorage.goals === "true") {
+			$(`[data-name="${name}"]`).removeClass('getMat normal')
+			$(`[data-name="${name}"]`).addClass("complete")
+		} else {
+			setTimeout(function () {
+				$(`[data-name="${name}"]`).removeClass('getMat complete')
+				$(`[data-name="${name}"]`).addClass("normal")
+			}, 500)
+		}
+	})
+
 	if (localStorage.filter === "true" && !$(".edit").is(":checked")) {
 		materials.forEach(mat => {
 			let name = mat.name.replace("'", "")
 			if ((mat.qty === 0 && mat.goal === 0) || mat.hide === true) {
+				$(`[data-name='${name}']`).hide();
+			} else {
+				$(`[data-name='${name}']`).show();
+			}
+		});
+
+		artefactsList.forEach(art => {
+			let name = art.name.replace("'", "")
+			if ((art.damaged === 0) || art.hide === true) {
 				$(`[data-name='${name}']`).hide();
 			} else {
 				$(`[data-name='${name}']`).show();
@@ -819,7 +843,7 @@ let calculateMats = () => {
 				if (matCount > artefactsCount[art.name]) {
 					matCount = artefactsCount[art.name];
 				}
-				
+
 				if (matCount < repairCount) {
 					repairCount = matCount;
 				}

@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="scripts/materialstorage.js"></script>
 	<script type="text/javascript" src="scripts/scripts.js"></script>
 	<script type="text/javascript" src="scripts/pixelmatch.js"></script>
+	<script type="text/javascript" src="scripts/moment.min.js"></script>
     
 </head>
 
@@ -66,7 +67,7 @@
                             </button>
                         </div> -->
                         <div class="col header" title="Refreshes material prices">
-                            <button class='nisbutton refreshprices'>
+                            <button class='nisbutton refreshPrices'>
                                 Refresh Prices
                             </button>
                         </div>
@@ -93,6 +94,7 @@
                         <div onclick="settab(0);" id="contenttab0" class="contenttab">Materials</div>
                         <div onclick="settab(1);" id="contenttab1" class="contenttab">Artefacts</div>
                         <div onclick="settab(2);" id="contenttab2" class="contenttab">Prices</div>
+                        <div onclick="settab(3);" id="contenttab2" class="contenttab">Research</div>
                     </div>
                 </div>
             </div>
@@ -165,6 +167,31 @@
         <div class="row scroll">
             <div class="col prices">
             </div>
+        </div>
+    </div>
+    <div class="container tabcontent" id="tabcontent3" style="display:none;">
+        <div class="row">
+            <div class="col text-label">
+                Enter hours: 
+            </div>
+            <div class="col text-input">
+                <input type="number" id="hours">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-label">
+                Enter minutes: 
+            </div>
+            <div class="col text-input">
+                <input type="number" id="minutes">
+            </div>
+        </div>
+        <div class="col header" id="research-btn" title="Calculates time that research will return">
+            <button class='nisbutton calculateResearch'>
+                Calculate Research
+            </button>
+        </div>
+        <div class="row research">
         </div>
     </div>
 </body>

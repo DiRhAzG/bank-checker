@@ -16,7 +16,7 @@ var currenttab = 0;
 window.onload = () => {
 	loadArtefacts();
 	loadMaterials();
-	settab(0);
+	settab(3);
 	getPrices();
 
 	if (!window.alt1) {
@@ -832,8 +832,24 @@ $(function () {
 		}
 	})
 
-	$(".refreshprices").click(function () {
+	$(".refreshPrices").click(function () {
 		getPrices();
+	});
+
+	$(".calculateResearch").click(function () {
+		let hours = document.getElementById("hours").value;
+		let minutes = document.getElementById("minutes").value;
+		let research = moment().add(hours, 'hours').add(minutes, 'minutes');
+		
+		$(".research > .row").remove();
+
+		$(".research").append(`
+			<div class="col researchTime">
+				Your research will be back at: <br>
+				${research.format('MM/DD/YYYY hh:mm A')} <br>
+				${research.format('DD/MM/YYYY HH:mm')}
+			</div>
+		`);
 	});
 
 	// $(".goals").change(function () {
@@ -846,7 +862,7 @@ $(function () {
 	// 		tidyTable();
 	// 	}
 	// })
-
++
 	// $("button.tracker").click();
 
 	$("#menu").on("shown.bs.collapse", function () { $("body").addClass("expand") })

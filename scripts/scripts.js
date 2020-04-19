@@ -554,7 +554,7 @@ function buildTable() {
 
 			art.mats.forEach(mat => {
 				if (mats != "") {
-					mats += ", ";
+					mats += " | ";
 				}
 				mats += mat.name + ' - ' + mat.qty
 			});

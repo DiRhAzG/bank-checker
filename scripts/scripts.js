@@ -24,7 +24,7 @@ window.onload = () => {
 		$(".prayer").prop("checked", true)
 		buffreader.track();
 	}
-	
+
 	if (!window.alt1) {
 		start();
 	}
@@ -866,6 +866,7 @@ $(function () {
 			buffreader.track()
 		} else {
 			buffreader.stopTrack();
+			alt1.setTooltip("");
 		}
 	})
 

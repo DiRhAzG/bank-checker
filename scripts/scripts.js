@@ -20,6 +20,11 @@ window.onload = () => {
 	settab(0);
 	getPrices();
 
+	if (localStorage.getItem("prayer") === "true") {
+		$(".prayer").prop("checked", true)
+		buffreader.track();
+	}
+	
 	if (!window.alt1) {
 		start();
 	}
@@ -43,11 +48,6 @@ function start() {
 		pasteBuffBar("http://localhost:8080/images/buffbar2.png");
 		//pasteExample("http://localhost:8080/images/violin.png");
 		//matImageFromFile("http://localhost:8080/images/testmats1.png");
-	}
-
-	if (localStorage.getItem("prayer") === "true") {
-		$(".prayer").prop("checked", true)
-		buffreader.track();
 	}
 }
 

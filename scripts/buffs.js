@@ -37,7 +37,7 @@ function BuffReader() {
 
 		if (buff.length == 0) {
 			if (me.buffTimer > 0) {
-				me.buffTimer -= me.config.timers.buffcheck
+				me.buffTimer -= me.config.timers.buffCheck
 				console.log(me.buffTimer + ' ' + 'true');
 			} else {
 				console.log(me.buffTimer + ' ' + 'false');

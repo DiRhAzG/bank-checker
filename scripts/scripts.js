@@ -18,7 +18,7 @@ window.onload = () => {
 	loadMaterials();
 	settab(0);
 	getPrices();
-	
+
 	if (!window.alt1) {
 		start();
 	}
@@ -831,6 +831,10 @@ $(function () {
 			tidyTable();
 		}
 	})
+
+	$(".refreshprices").click(function () {
+		getPrices();
+	}
 
 	// $(".goals").change(function () {
 	// 	localStorage.goals = $(this).is(":checked");

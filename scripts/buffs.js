@@ -91,10 +91,10 @@ function BuffReader() {
 		let buffActive = me.find();
 
 		if (buffActive) {
-			alt1.helpFull("");
+			alt1.setTooltip("");
 			console.log(me.buffTimer + ' true' );
 		} else {
-			alt1.setToolTip("Gibberish Stone");
+			alt1.setTooltip("Gibberish Stone");
 			console.log(me.buffTimer + ' false' );
 		}
 	}

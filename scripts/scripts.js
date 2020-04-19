@@ -44,6 +44,11 @@ function start() {
 		//pasteExample("http://localhost:8080/images/violin.png");
 		//matImageFromFile("http://localhost:8080/images/testmats1.png");
 	}
+
+	if (localStorage.getItem("prayer") === "true") {
+		$(".prayer").prop("checked", true)
+		buffreader.track();
+	}
 }
 
 function shutdown() {
@@ -596,9 +601,6 @@ function buildTable() {
 		$(".filter").prop("checked", true)
 	}
 
-	if (localStorage.getItem("prayer") === "true") {
-		$(".prayer").prop("checked", true)
-	}
 	// if (localStorage.getItem("goals") === "true") {
 	// 	$(".goals").prop("checked", true)
 	// 	$(".goal, .goalCol").show();

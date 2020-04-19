@@ -16,7 +16,7 @@ var currenttab = 0;
 window.onload = () => {
 	loadArtefacts();
 	loadMaterials();
-	settab(3);
+	settab(0);
 	getPrices();
 
 	if (!window.alt1) {

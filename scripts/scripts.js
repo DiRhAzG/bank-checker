@@ -554,7 +554,7 @@ function buildTable() {
 			$(".arts").append(`
 				<div class='row' data-name="${name}">
 					<div class="col hide"><input type="checkbox" class="hideArtefacts" ${art.hide ? "checked=checked" : ""}/></div>
-					<div class="col-6" title="\nLevel: ${art.level}\nXP: ${art.xp}">
+					<div class="col-6" title="\nLevel: ${art.level}\nXP: ${numberWithCommas(art.xp)}">
 						${art.name}
 					</div>
 					<div class="img-col">
@@ -993,4 +993,8 @@ function settab(tabnr) {
 	if (el = elid("tabcontent" + tabnr)) { el.style.display = "block"; }
 
 	currenttab = tabnr;
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

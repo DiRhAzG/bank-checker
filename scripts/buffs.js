@@ -39,6 +39,8 @@ function BuffReader() {
 
 		if (!img) { img = a1lib.bindfullrs(); }
 
+		if (!img) { return false; }
+		
 		let buff = a1lib.findsubimg(img, BuffReader.prayerstone);
 
 		if (buff.length == 0 || buff == false) {

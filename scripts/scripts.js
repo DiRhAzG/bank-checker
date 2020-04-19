@@ -17,7 +17,8 @@ window.onload = () => {
 	loadArtefacts();
 	loadMaterials();
 	settab(0);
-
+	getPrices();
+	
 	if (!window.alt1) {
 		start();
 	}
@@ -919,7 +920,12 @@ let calculateMats = () => {
 
 		mat.diff = mat.qty - mat.goal;
 	});
-	
+
+
+    getPrices();
+}
+
+let getPrices = function() {
 	try {
 		$.getJSON('https://api.portcalc.website/cat/24', function(data) {
 			for (let mat of data.items) {
@@ -935,8 +941,6 @@ let calculateMats = () => {
 	} catch (ex) {
 		console.log(ex);
 	}
-
-    // buildTable();
 }
 
 if (localStorage.getItem("mats") != null) {

@@ -533,8 +533,8 @@ function buildTable() {
 				<div class="mat-col">
 					<img src="${mat.imageData}" alt="${mat.name}" class="mat-image">
 				</div>
-				<div class="col qty">
-					${mat.qty}
+				<div class="col diff">
+					${mat.diff}
 				</div>
 				<div class="col price">
 					${mat.price}

@@ -68,7 +68,6 @@ function BuffReader() {
 	}
 
 	this.track = function (callback) {
-		if (!me.pos) { return; }
 		me.stopTrack();
 		trackInterval = setInterval(trackTick, me.config.timers.buffCheck);
 		trackCallback = callback;

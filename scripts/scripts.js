@@ -554,7 +554,7 @@ function buildTable() {
 			$(".arts").append(`
 				<div class='row' data-name="${name}">
 					<div class="col hide"><input type="checkbox" class="hideArtefacts" ${art.hide ? "checked=checked" : ""}/></div>
-					<div class="col-6" title="\nLevel: ${art.level}\nXP: ${numberWithCommas(art.xp)}">
+					<div class="col-6" title="\nLevel: ${art.level}\nXP: ${numberWithCommas(art.xp)}\nMaterials: ${art.mats}">
 						${art.name}
 					</div>
 					<div class="img-col">
@@ -1013,4 +1013,30 @@ function settab(tabnr) {
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+var SharedBuffReaderFactory = function (isdebuf) {
+	this.reader = new BuffReader();
+	this.reader.debuffs = isdebuf;
+	this.lastread = -1;
+	this.lastfindattempt = -1;
+
+	this.tryFind = function () {
+		if (this.reader.pos) { return true; }
+		if (tickcount == this.lastfindattempt) { return false; }
+		this.lastfindattempt = tickcount;
+		this.reader.find();
+		return !!this.reader.pos;
+	}
+
+	this.read = function () {
+		if (tickcount == this.lastread) { return; }
+		if (!this.reader.pos) { return; }
+		this.lastread = tickcount;
+		var buffdata = this.reader.read();
+		for (var al of alerts) {
+			if (al.type != "buffs" || al.sharedReader != this) { continue; }
+			al.onread(buffdata);
+		}
+	}
 }

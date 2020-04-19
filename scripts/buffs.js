@@ -91,8 +91,10 @@ function BuffReader() {
 		let buffActive = me.find();
 
 		if (buffActive) {
+			alt1.setToolTip("");
 			console.log(me.buffTimer + ' true' );
 		} else {
+			alt1.setToolTip("Gibberish Stone");
 			console.log(me.buffTimer + ' false' );
 		}
 	}

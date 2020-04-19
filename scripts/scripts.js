@@ -8,6 +8,7 @@
 window.onbeforeunload = shutdown;
 var reader = new BankReader();
 var matreader = new MaterialsReader();
+var buffreader = new BuffReader();
 var bankUI = new BankInterface(reader);
 var geItems = [];
 var sortList = [];
@@ -39,7 +40,8 @@ function start() {
 		matreader.read(undefined, true);
 		toggleTrack();
 	} else {
-		pasteExample("http://localhost:8080/images/violin.png");
+		pasteBuffBar("http://localhost:8080/images/buffbar2.png");
+		//pasteExample("http://localhost:8080/images/violin.png");
 		//matImageFromFile("http://localhost:8080/images/testmats1.png");
 	}
 }
@@ -86,6 +88,17 @@ function matImageFromFile(url) {
 	var img = eldiv(":img", { src: url });
 	img.onload = function () { parseMatImage(img); };
 }
+
+function pastedBuffBar(image) {
+	var imgref = new ImgRefCtx(image);
+	buffreader.find(imgref);
+}
+
+function pasteBuffBar(url) {
+	var img = eldiv(":img", { src: url });
+	img.onload = function () { pastedBuffBar(img); };
+}
+
 // function readUpdated() {
 // 	bankUI.bank = reader.state;
 // 	bankUI.activetab = reader.state.tab;
@@ -582,6 +595,10 @@ function buildTable() {
 	if (localStorage.getItem("filter") === "true") {
 		$(".filter").prop("checked", true)
 	}
+
+	if (localStorage.getItem("prayer") === "true") {
+		$(".prayer").prop("checked", true)
+	}
 	// if (localStorage.getItem("goals") === "true") {
 	// 	$(".goals").prop("checked", true)
 	// 	$(".goal, .goalCol").show();
@@ -837,6 +854,16 @@ $(function () {
 			$(".mats .row").show();
 			$(".arts .row").show();
 			tidyTable();
+		}
+	})
+
+	$(".prayer").change(function () {
+		localStorage.prayer = $(this).is(":checked");
+		
+		if (localStorage.prayer == "true") {
+			buffreader.track()
+		} else {
+			buffreader.stopTrack();
 		}
 	})
 

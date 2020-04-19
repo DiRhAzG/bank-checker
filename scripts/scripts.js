@@ -550,11 +550,19 @@ function buildTable() {
 	artefactsList.forEach(art => {
 		if (art.name != "Blank Slot") {
 			let name = art.name.replace("'", "");
+			let mats = "";
+
+			art.mats.forEach(mat => {
+				if (mats != "") {
+					mats += ", ";
+				}
+				mats += mat.name + ' - ' + mat.qty
+			});
 
 			$(".arts").append(`
 				<div class='row' data-name="${name}">
 					<div class="col hide"><input type="checkbox" class="hideArtefacts" ${art.hide ? "checked=checked" : ""}/></div>
-					<div class="col-6" title="\nLevel: ${art.level}\nXP: ${numberWithCommas(art.xp)}\nMaterials: ${art.mats}">
+					<div class="col-6" title="\nLevel: ${art.level}\nXP: ${numberWithCommas(art.xp)}\nMaterials: ${mats}">
 						${art.name}
 					</div>
 					<div class="img-col">

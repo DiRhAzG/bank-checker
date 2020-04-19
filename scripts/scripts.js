@@ -834,7 +834,7 @@ $(function () {
 
 	$(".refreshprices").click(function () {
 		getPrices();
-	}
+	});
 
 	// $(".goals").change(function () {
 	// 	localStorage.goals = $(this).is(":checked");

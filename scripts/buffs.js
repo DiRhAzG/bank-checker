@@ -45,6 +45,11 @@ function BuffReader() {
 			}
 		}
 
+		if (me.buffTimer > 0) {
+			me.buffTimer -= me.config.timers.buffcheck
+			console.log(me.buffTimer + ' ' + 'true');
+		}
+
 		let loc = { x: buff[0].x - 8, y: buff[0].y - 6, width: 27, height: 27 };
 
 		let buffarea = {

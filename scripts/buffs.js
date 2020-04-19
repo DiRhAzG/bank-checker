@@ -41,7 +41,7 @@ function BuffReader() {
 
 		let buff = a1lib.findsubimg(img, BuffReader.prayerstone);
 
-		if (buff.length == 0) {
+		if (buff.length == 0 || buff == false) {
 			console.log(me.buffTimer + ' ' + 'false');
 			return false;
 		}

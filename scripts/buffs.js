@@ -33,18 +33,23 @@ function BuffReader() {
 	this.find = function (img) {
 		if (me.buffTimer > 0) {
 			me.buffTimer -= me.config.timers.buffCheck
-			console.log(me.buffTimer + ' ' + 'true');
-			return true;
+
+			if (me.buffTimer <= 0) {
+				return false;
+			} else {
+				return true;
+			}
 		}
 
 		if (!img) { img = a1lib.bindfullrs(); }
 
-		if (!img) { return false; }
-		
+		if (!img) {
+			return false;
+		}
+
 		let buff = a1lib.findsubimg(img, BuffReader.prayerstone);
 
 		if (buff.length == 0 || buff == false) {
-			console.log(me.buffTimer + ' ' + 'false');
 			return false;
 		}
 
@@ -83,7 +88,13 @@ function BuffReader() {
 	}
 
 	let trackTick = function () {
-		me.find();
+		let buffActive = me.find();
+
+		if (buffActive) {
+			console.log(me.buffTimer + ' true' );
+		} else {
+			console.log(me.buffTimer + ' false' );
+		}
 	}
 
 	let readTime = function (buffer, ox, oy) {

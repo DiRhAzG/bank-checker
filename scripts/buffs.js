@@ -31,23 +31,19 @@ function BuffReader() {
 	let trackCallback = null;
 
 	this.find = function (img) {
+		if (me.buffTimer > 0) {
+			me.buffTimer -= me.config.timers.buffCheck
+			console.log(me.buffTimer + ' ' + 'true');
+			return true;
+		}
+
 		if (!img) { img = a1lib.bindfullrs(); }
 
 		let buff = a1lib.findsubimg(img, BuffReader.prayerstone);
 
 		if (buff.length == 0) {
-			if (me.buffTimer > 0) {
-				me.buffTimer -= me.config.timers.buffCheck
-				console.log(me.buffTimer + ' ' + 'true');
-			} else {
-				console.log(me.buffTimer + ' ' + 'false');
-				return false;
-			}
-		}
-
-		if (me.buffTimer > 0) {
-			me.buffTimer -= me.config.timers.buffCheck
-			console.log(me.buffTimer + ' ' + 'true');
+			console.log(me.buffTimer + ' ' + 'false');
+			return false;
 		}
 
 		let loc = { x: buff[0].x - 8, y: buff[0].y - 6, width: 27, height: 27 };

@@ -844,7 +844,7 @@ $(function () {
 		$(".research > .row").remove();
 
 		$(".research").replaceWith(`
-			<div class="col researchTime">
+			<div class="col research">
 				Your research will be back at: <br>
 				${research.format('MM/DD/YYYY hh:mm A')} <br>
 				${research.format('DD/MM/YYYY HH:mm')}

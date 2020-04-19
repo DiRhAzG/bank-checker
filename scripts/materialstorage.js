@@ -275,15 +275,15 @@ function MaterialsReader() {
 		qw("Rows: " + me.state.rows.length);
         qw("Slot Size: " + slotsize);
         
-        if (!window.alt1) {
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
+        // if (!window.alt1) {
+        //     var c = document.getElementById("myCanvas");
+        //     var ctx = c.getContext("2d");
             
-            ctx.beginPath();
-            ctx.strokeStyle = "red";
-            ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-            ctx.stroke();
-        }
+        //     ctx.beginPath();
+        //     ctx.strokeStyle = "red";
+        //     ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+        //     ctx.stroke();
+        // }
 
 		readcount++;
 		var allvalid = true;
@@ -410,15 +410,15 @@ function MaterialsReader() {
 			y: me.pos.inner.y + 16
         };
         
-        if (!window.alt1) {
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
+        // if (!window.alt1) {
+        //     var c = document.getElementById("myCanvas");
+        //     var ctx = c.getContext("2d");
             
-            ctx.beginPath();
-            ctx.strokeStyle = "red";
-            ctx.rect(bar.x, bar.y, 2, bar.raillength);
-            ctx.stroke();
-        }
+        //     ctx.beginPath();
+        //     ctx.strokeStyle = "red";
+        //     ctx.rect(bar.x, bar.y, 2, bar.raillength);
+        //     ctx.stroke();
+        // }
 
 		var buffer = img.toData(bar.x, bar.y, 3, bar.raillength);
 

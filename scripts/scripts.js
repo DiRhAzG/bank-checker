@@ -38,7 +38,7 @@ function start() {
 		matreader.read(undefined, true);
 		toggleTrack();
 	} else {
-		// pasteExample("http://localhost:8080/images/1.png");
+		pasteExample("http://localhost:8080/images/violin.png");
 		//matImageFromFile("http://localhost:8080/images/testmats1.png");
 	}
 }
@@ -496,6 +496,7 @@ var count, mats, index;
 
 function buildTable() {
 	$(".mats > .row").remove();
+	$(".prices > .row").remove();
 
 	materials.forEach(mat => {
 		if (mat.name != "Blank Slot") {
@@ -518,9 +519,28 @@ function buildTable() {
 					</div>
 					<div class="col diff">
 						${mat.diff}
-				</div>
+					</div>
 				</div>
 			`);
+
+
+			$(".prices").append(`
+			<div class='row' data-name="${name}">
+				<div class="col hide"><input type="checkbox" class="hideMats" ${mat.hide ? "checked=checked" : ""}/></div>
+				<div class="col-5" title="\nLevel: ${mat.level}\nFaction: ${mat.faction}\nLocation(s):\n${mat.location}">
+					${mat.name}
+				</div>
+				<div class="mat-col">
+					<img src="${mat.imageData}" alt="${mat.name}" class="mat-image">
+				</div>
+				<div class="col qty">
+					${mat.qty}
+				</div>
+				<div class="col price">
+					${mat.price}
+				</div>
+			</div>
+		`);
 		}
 	})
 
@@ -898,9 +918,25 @@ let calculateMats = () => {
         }
 
 		mat.diff = mat.qty - mat.goal;
-    });
+	});
+	
+	try {
+		$.getJSON('https://api.portcalc.website/cat/24', function(data) {
+			for (let mat of data.items) {
+				for (let material of materials) {
+					if (mat.name.toUpperCase() === material.name.toUpperCase()) {
+						material.price = mat.price;
+						break;
+					}
+				}
+			}
+			buildTable();
+		});
+	} catch (ex) {
+		console.log(ex);
+	}
 
-    buildTable();
+    // buildTable();
 }
 
 if (localStorage.getItem("mats") != null) {

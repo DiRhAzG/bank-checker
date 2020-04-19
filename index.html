@@ -2,7 +2,7 @@
 
 <head>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://runeapps.org/nis/nis.css" />
@@ -87,6 +87,7 @@
                     <div id="tabcontainer">
                         <div onclick="settab(0);" id="contenttab0" class="contenttab">Materials</div>
                         <div onclick="settab(1);" id="contenttab1" class="contenttab">Artefacts</div>
+                        <div onclick="settab(2);" id="contenttab2" class="contenttab">Prices</div>
                     </div>
                 </div>
             </div>
@@ -134,6 +135,30 @@
         </div>
         <div class="row scroll">
             <div class="col arts">
+            </div>
+        </div>
+    </div>
+    <div class="container matSection tabcontent" id="tabcontent2" style="display:none;">
+        <div class="row mat-header">
+            <div class="col hide col-header">Hide</div>
+            <div class="col-5 sort col-header" data-sort='level' data-type='material'>
+                Materials
+            </div>
+            <div class="img-col col-header">
+                 
+            </div>
+            <div class="col sort col-header" data-sort='qty' data-type='material'>
+                Qty
+            </div>
+            <div class="col sort col-header" data-sort='price' data-type='material'>
+                Price
+            </div>
+            <!-- <div class="col sort col-header" data-sort='total' data-type='material'>
+                Total
+            </div> -->
+        </div>
+        <div class="row scroll">
+            <div class="col prices">
             </div>
         </div>
     </div>

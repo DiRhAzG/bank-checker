@@ -13,6 +13,7 @@
 
 .mats>.row,
 .arts>.row,
+.prices>.row,
 .mat-header *,
 .art-header * {
     border-bottom: white solid .5px;
@@ -23,7 +24,8 @@
 .mat-header,
 .art-header,
 .mats>.row *,
-.arts>.row * {
+.arts>.row *,
+.prices>.row * {
     border-left: white solid .5px;
 }
 

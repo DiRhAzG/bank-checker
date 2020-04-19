@@ -156,7 +156,6 @@ body.nis:not(.artefact) {
 }
 .col-header {
     background-color: rgb(27, 146, 175);
-    cursor: pointer;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -181,5 +180,13 @@ body.nis:not(.artefact) {
 
 .tab-menu {
     padding-bottom: 25px;
+}
+
+.no-click {
+    cursor: not-allowed;
+}
+
+.pointer {
+    cursor: pointer;
 }
 /* .contenttab, .contenttableft{float:right; width:90px; height:20px; line-height:20px; text-align:center; color:#BBB; cursor:pointer; background:url('/nis/alt1-currentskin/tabback.png') 0 0 / 100% 100%; position:relative; margin-left:-14px; z-index:11; margin-top:-1px;} */

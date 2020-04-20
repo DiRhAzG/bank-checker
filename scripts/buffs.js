@@ -32,7 +32,7 @@ function BuffReader() {
 
 	this.find = function (img) {
 		if (me.buffTimer > 0) {
-			me.buffTimer -= me.config.timers.buffCheck
+			me.buffTimer -= me.config.timers.buffCheck / 1000;
 
 			if (me.buffTimer <= 0) {
 				return false;
@@ -129,13 +129,13 @@ function BuffReader() {
 		let time = 0;
 
 		if (m = str.match(/^(\d+)$/)) { time = + m[1]; }
-		if (m = str.match(/^(\d+)m$/)) { time = m[1] * 60}
+		if (m = str.match(/^(\d+)m$/)) { time = (m[1] + 1) * 60}
 
-		if (time < 300) {
-			time += 55;
+		if (time > 300) {
+			time = 300;
 		}
 
-		return time * 1000;
+		return time;
 	}
 	
 	let isNumberCol = function (data, i) {

@@ -15,7 +15,7 @@ function BuffReader() {
 	this.tracking = false;
 	this.config = {
 		timers: {
-			buffCheck: 10000
+			buffCheck: 5000
 		}
 	};
 

@@ -132,7 +132,7 @@ function BuffReader() {
 		if (m = str.match(/^(\d+)m$/)) { time = m[1] * 60}
 
 		if (time < 300) {
-			timee += 55;
+			time += 55;
 		}
 
 		return time * 1000;

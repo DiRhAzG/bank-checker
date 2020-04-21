@@ -442,7 +442,7 @@ function BankReader() {
             ctx.stroke();
         }
 
-		var buffer = img.toData(bar.x + 5, bar.y, 3, bar.raillength);
+		var buffer = img.toData(bar.x, bar.y, 3, bar.raillength);
 
 		// // create off-screen canvas element
 		// var canvas = document.createElement('canvas'),

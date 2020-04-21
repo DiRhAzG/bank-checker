@@ -242,7 +242,7 @@ function BankReader() {
 	var readbuffer = function (img, slot, imgx, imgy, backx, backy) {
 		var clone = img.toData(backx + imgx, backy + imgy, 34, 34);
 
-		var betterClone = img.toData(backx + imgx, backy + imgy - 4, 34, 34);
+		var betterClone = img.toData(backx + imgx, backy + imgy - 8, 34, 34);
 		var data = betterClone.data;
 
 				// create off-screen canvas element

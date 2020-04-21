@@ -20,7 +20,7 @@ window.onload = () => {
 	settab(0);
 	getPrices();
 
-	if (localStorage.getItem("prayer") === "true") {
+	if (window.alt1 && localStorage.getItem("prayer") === "true") {
 		$(".prayer").prop("checked", true)
 		buffreader.track();
 	}
@@ -45,8 +45,8 @@ function start() {
 		matreader.read(undefined, true);
 		toggleTrack();
 	} else {
-		pasteBuffBar("http://localhost:8080/images/buffbar2.png");
-		//pasteExample("http://localhost:8080/images/violin.png");
+		//pasteBuffBar("http://localhost:8080/images/buffbar2.png");
+		pasteExample("http://localhost:8080/images/normalbank1.png");
 		//matImageFromFile("http://localhost:8080/images/testmats1.png");
 	}
 }

@@ -186,7 +186,7 @@ function BankReader() {
 		me.state.rawscrolltop = (scrollbar && scrollbar.scrolltop) || 0;
 
 		//check if the state changed enough to read the items again
-		// if (forceread || tabchanged || scrollchanged || loadretry || !me.state.allslotsvalid) {
+		if (forceread || tabchanged || scrollchanged || loadretry || !me.state.allslotsvalid || !window.alt1) {
 			var buffer = img.toData(me.pos.area.x, me.pos.area.y, me.pos.area.w, me.pos.area.h);
 			qw(new Date().toLocaleTimeString(), "reading bank images");
 			if (me.readInner(buffer, scrollbar, tab)) {
@@ -194,7 +194,7 @@ function BankReader() {
 				calculateMats();
 				changed = true;
 			}
-		// }
+		}
 		//scroll didnt change, add reads that needed this confirmation
 		if (me.state && !tabchanged && !scrollchanged) {
 			for (var a = hoverwaiting.length - 1; a >= 0; a--) {
@@ -241,9 +241,7 @@ function BankReader() {
 
 	var readbuffer = function (img, slot, imgx, imgy, backx, backy) {
 		var clone = img.toData(backx + imgx, backy + imgy, 34, 34);
-
-		var betterClone = img.toData(backx + imgx, backy + imgy + 1, 34, 34);
-		var data = betterClone.data;
+		var data = clone.data;
 
 				// create off-screen canvas element
 				var canvas = document.createElement('canvas'),
@@ -353,14 +351,14 @@ function BankReader() {
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
 
-		// if (!window.alt1) {
-		// 	var c = document.getElementById("myCanvas");
-		// 	var ctx = c.getContext("2d");
+		if (!window.alt1) {
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
 			
-		// 	ctx.beginPath();
-		// 	ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-		// 	ctx.stroke();
-		// }
+			ctx.beginPath();
+			ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+			ctx.stroke();
+		}
 
 		readcount++;
 		var allvalid = true;
@@ -390,65 +388,9 @@ function BankReader() {
 					continue;
 				}
 
-					// // create off-screen canvas element
-					// var canvas = document.createElement('canvas'),
-					// ctx = canvas.getContext('2d');
-			
-					// canvas.width = buffer.width;
-					// canvas.height = buffer.height;
-			
-					// // create imageData object
-					// var idata = ctx.createImageData(buffer.width, buffer.height);
-			
-					// // set our buffer as source
-					// idata.data.set(buffer.data);
-			
-					// // update canvas with new data
-					// ctx.putImageData(idata, 0, 0);
-					// var dataUri = canvas.toDataURL(); // produces a PNG file
-			
-					// console.log(dataUri);
-
-				var transbuf = readbuffer(bufref, slot, imgx, imgy, 0, 0);
-				// // create off-screen canvas element
-				// 	var canvas = document.createElement('canvas'),
-				// 	ctx = canvas.getContext('2d');
-			
-				// 	canvas.width = 34;
-				// 	canvas.height = 34;
-			
-				// 	// create imageData object
-				// 	var idata = ctx.createImageData(34, 34);
-			
-				// 	// set our buffer as source
-				// 	idata.data.set(transbuf.data);
-			
-				// 	// update canvas with new data
-				// 	ctx.putImageData(idata, 0, 0);
-				// 	var dataUri = canvas.toDataURL(); // produces a PNG file
-			
-				// 	console.log(dataUri);
+				var transbuf = readbuffer(bufref, slot, imgx, imgy, 0, 0);;
 																 
 				slot.setBuffer(transbuf);
-				
-				// const canvas = document.getElementById('myCanvas');
-				// const ctx = canvas.getContext('2d');
-
-				// const diff = ctx.createImageData(34, 34);
-				// let imgData = "data:image/png;base64,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";
-				
-				// let img = new Image();
-				// img.src = imgData;
-				// let imgToCompare = img.toBuffer();
-
-				// var data = pixelmatch(imgToCompare.data, slot.buffer.data, null, 34, 34, {threshold: 0.1});
-
-				// if (data < 100) {
-				// 	console.log("Nosorog! Sculpture");
-				// }
-				// console.log(data);
-				// ctx.putImageData(diff, 0, 0);
-
 
 				let itemName = compareArtefacts(slot);
 
@@ -470,16 +412,11 @@ function BankReader() {
 					var backcolor = a1lib.mixcolor(255, 0, 0);
 					//alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 60000, 1);
 
-					// if (!window.alt1) {
-					// 	ctx.beginPath();
-					// 	ctx.rect(x, y, 34, 34);
-					// 	ctx.stroke();
-					// }
-				// if (bankx == 0 && banky == 0)
-				//  {
-				// 	qw(x + " | " + y + " | " + imgx + " | " + imgy);
-				// 	qw(me.pos.area.x + " | " + me.pos.area.y + " | " + slot.readinfo.x + " | " + slot.readinfo.y);
-				//  }
+					if (!window.alt1) {
+						ctx.beginPath();
+						ctx.rect(x, y, 34, 34);
+						ctx.stroke();
+					}
 			}
 		}
 
@@ -495,15 +432,15 @@ function BankReader() {
 			y: me.pos.inner.y + 16
 		};
 		        
-        // if (!window.alt1) {
-        //     var c = document.getElementById("myCanvas");
-        //     var ctx = c.getContext("2d");
+        if (!window.alt1) {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
             
-        //     ctx.beginPath();
-        //     ctx.strokeStyle = "red";
-        //     ctx.rect(bar.x, bar.y, 2, bar.raillength);
-        //     ctx.stroke();
-        // }
+            ctx.beginPath();
+            ctx.strokeStyle = "red";
+            ctx.rect(bar.x, bar.y, 2, bar.raillength);
+            ctx.stroke();
+        }
 
 		var buffer = img.toData(bar.x + 5, bar.y, 3, bar.raillength);
 
@@ -530,7 +467,7 @@ function BankReader() {
 			var i1 = 4 * 0 + 4 * buffer.width * y;
 			var i2 = 4 * 2 + 4 * buffer.width * y;
 			return coldiff(210, 144, 24, buffer.data[i1], buffer.data[i1 + 1], buffer.data[i1 + 2]) < 20
-				&& coldiff(18, 24, 26, buffer.data[i2], buffer.data[i2], buffer.data[i2]) < 20;
+				&& coldiff(18, 24, 26, buffer.data[i2], buffer.data[i2 + 1], buffer.data[i2 + 2]) < 20;
 		}
 		var israil = function (y) {
 			var i = 4 * 0 + 4 * buffer.width * y;

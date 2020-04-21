@@ -641,7 +641,7 @@ function BankReader() {
 				previousyellow = yellow;
 
 				var amount = readAmount(buffer, me.pos.inner.x - me.pos.area.x + bankx * 44 + 12, me.pos.inner.y - me.pos.area.y + imgy - 8);
-				if (amount) { return imgy - 8 - 5; }
+				if (amount) { return imgy - 8 - 4; }
 			}
 		}
 		return null;

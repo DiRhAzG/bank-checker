@@ -384,8 +384,8 @@ function BankReader() {
 
 		artefactsCount = {};
 
-		//let imgOffset = 5; // Search
-		let imgOffset = 1; // No search
+		let imgOffset = 5; // Search
+		//let imgOffset = 1; // No search
 
 		for (var bankx = 0; bankx < me.pos.columns; bankx++) {
 			var imgx = me.pos.inner.x - me.pos.area.x + bankx * slotsize + 10; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
@@ -430,7 +430,7 @@ function BankReader() {
 					var y = slot.readinfo.y + me.pos.area.y;
 					var t = me.config.timers.overlay + 500;
 					var backcolor = a1lib.mixcolor(255, 0, 0);
-					 alt1.overLayRect(backcolor, x, y, 34, 34, 2000, 1);
+					 //alt1.overLayRect(backcolor, x, y, 34, 34, 2000, 1);
 
 					if (!window.alt1) {
 						ctx.beginPath();

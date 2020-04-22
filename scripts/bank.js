@@ -384,9 +384,9 @@ function BankReader() {
 
 		artefactsCount = {};
 
-		let imgOffset = 5; // Search
-		//let imgOffset = 1; // No search
-		
+		//let imgOffset = 5; // Search
+		let imgOffset = 1; // No search
+
 		for (var bankx = 0; bankx < me.pos.columns; bankx++) {
 			var imgx = me.pos.inner.x - me.pos.area.x + bankx * slotsize + 10; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
 			for (var banky = 0; banky < me.state.rows.length; banky++) {
@@ -534,6 +534,24 @@ function BankReader() {
 	}
 
 	this.readInner = function (buffer, scrollbar, tab) {
+		// create off-screen canvas element
+		var canvas = document.createElement('canvas'),
+		ctx = canvas.getContext('2d');
+
+		canvas.width = buffer.width;
+		canvas.height = buffer.height;
+
+		// create imageData object
+		var idata = ctx.createImageData(buffer.width, buffer.height);
+
+		// set our buffer as source
+		idata.data.set(buffer.data);
+
+		// update canvas with new data
+		ctx.putImageData(idata, 0, 0);
+		var dataUri = canvas.toDataURL(); // produces a PNG file
+		console.log(dataUri);
+
 		var tabspaces = (tab == 0 ? findTabSpaces(buffer) : []);
 		me.state.slots = [];
 		me.state.tabspaces = tabspaces;
@@ -600,7 +618,7 @@ function BankReader() {
 			}
 
 			//check if we have to skip a tabseperator for next row
-			if (tabspaces.find(function (space) { return rowy + 43 + me.state.pxoffset + slotsize == space.y })) {
+			if (tabspaces.find(function (space) { return rowy + 80 + slotsize == space.y })) {
 				rowy += 20;
 			}
 		}

@@ -233,9 +233,26 @@ function BankReader() {
 			data[i] == 255 && data[i + 1] == 255 && data[i + 2] == 0 ||//yellow (1)
 			data[i] == 255 && data[i + 1] == 255 && data[i + 2] == 255 ||//white (K)
 			data[i] == 0 && data[i + 1] == 255 && data[i + 2] == 128 ||//green (M)
-			data[i] == 255 && data[i + 1] == 203 && data[i + 2] == 5;//yellowish (tab seperator)
+			data[i] == 255 && data[i + 1] == 203 && data[i + 2] == 5; //yellowish (tab seperator)
 
 		//data[i] = data[i + 1] = data[i + 2] = data[i + 3] = 255;
+		return r;
+	}
+
+	var tabSeparator = function (data, i) {
+		var r =	
+			coldiff(data[i], data[i + 1], data[i + 2], 90, 89, 52) < 20 ||
+			coldiff(data[i], data[i + 1], data[i + 2], 133, 115, 32) < 20 ||
+			coldiff(data[i], data[i + 1], data[i + 2], 208, 170, 15) < 20;
+			// data[i] == 90 && data[i + 1] == 89 && data[i + 2] == 52 ||
+			// data[i] == 195 && data[i + 1] == 162 && data[i + 2] == 22 ||
+			// data[i] == 222 && data[i + 1] == 178 && data[i + 2] == 7 ||
+			// data[i] == 135 && data[i + 1] == 120 && data[i + 2] == 39 ||
+			// data[i] == 129 && data[i + 1] == 110 && data[i + 2] == 24 ||
+			// data[i] == 206 && data[i + 1] == 165 && data[i + 2] == 8 ||
+			// data[i] == 210 && data[i + 1] == 172 && data[i + 2] == 18 ||
+			// data[i] == 209 && data[i + 1] == 171 && data[i + 2] == 16;
+
 		return r;
 	}
 
@@ -351,14 +368,14 @@ function BankReader() {
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
 
-		// if (!window.alt1) {
-		// 	var c = document.getElementById("myCanvas");
-		// 	var ctx = c.getContext("2d");
+		if (!window.alt1) {
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
 			
-		// 	ctx.beginPath();
-		// 	ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-		// 	ctx.stroke();
-		// }
+			ctx.beginPath();
+			ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+			ctx.stroke();
+		}
 
 		readcount++;
 		var allvalid = true;
@@ -396,9 +413,9 @@ function BankReader() {
 
 				console.log(itemName);
 
-				if (itemName == "Blank Slot") {
-					break;
-				}
+				// if (itemName == "Blank Slot") {
+				// 	break;
+				// }
 
 				if (!slot.imginfo.valid) {
 					if (!slot.imginfo.empty) { allvalid = false; }
@@ -410,13 +427,13 @@ function BankReader() {
 					var y = slot.readinfo.y + me.pos.area.y;
 					var t = me.config.timers.overlay + 500;
 					var backcolor = a1lib.mixcolor(255, 0, 0);
-					//alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 60000, 1);
+					alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 2000, 1);
 
-					// if (!window.alt1) {
-					// 	ctx.beginPath();
-					// 	ctx.rect(x, y, 34, 34);
-					// 	ctx.stroke();
-					// }
+					if (!window.alt1) {
+						ctx.beginPath();
+						ctx.rect(x, y, 34, 34);
+						ctx.stroke();
+					}
 			}
 		}
 
@@ -528,11 +545,11 @@ function BankReader() {
 		}
 
 		//==== find the y offset of the first row ====
-		if (tabspaces.length != 0) {
-			if (tabspaces[0].y - 6 - slotsize >= -5) { me.state.pxoffset = (tabspaces[0].y - 6 + 5) % slotsize - 5; }
-			else { me.state.pxoffset = (tabspaces[0].y + 9); }
-		}
-		else if (!me.state.scrollbar) { me.state.pxoffset = 1; }
+		// if (tabspaces.length != 0) {
+		// 	if (tabspaces[0].y - 6 - slotsize >= -5) { me.state.pxoffset = (tabspaces[0].y - 6 + 5) % slotsize - 5; }
+		// 	else { me.state.pxoffset = (tabspaces[0].y + 9); }
+		// }
+		if (!me.state.scrollbar) { me.state.pxoffset = 1; }
 		else {
 			var a = me.getRowOffset(buffer);
 			if (a != null) { me.state.pxoffset = a % slotsize; }
@@ -542,10 +559,10 @@ function BankReader() {
 		//==== check if we know the exact scroll offset ====
 		if (tab != 0) { me.state.rowoffset = Math.round((me.state.rawscrolltop + me.state.pxoffset) / slotsize); }
 		else if (!me.state.scrollbar) { me.state.rowoffset = 0; }
-		else if (tabspaces.length != 0) {
-			var ntabs = (tabspaces[0].y < me.state.pxoffset ? tabspaces[0].tabnr : tabspaces[0].tabnr - 1);
-			me.state.rowoffset = Math.round((me.state.scrollbar.scrolltop - ntabs * 15) / slotsize);
-		}
+		// else if (tabspaces.length != 0) {
+		// 	var ntabs = (tabspaces[0].y < me.state.pxoffset ? tabspaces[0].tabnr : tabspaces[0].tabnr - 1);
+		// 	me.state.rowoffset = Math.round((me.state.scrollbar.scrolltop - ntabs * 15) / slotsize);
+		// }
 		else {
 			me.message("Unknown rowoffset");
 		}
@@ -580,8 +597,8 @@ function BankReader() {
 			}
 
 			//check if we have to skip a tabseperator for next row
-			if (tabspaces.find(function (space) { return rowy + slotsize / 2 < space.y && rowy + slotsize / 2 * 3 > space.y + 15; })) {
-				rowy += 15;
+			if (tabspaces.find(function (space) { return rowy + 43 + me.state.pxoffset + slotsize == space.y })) {
+				rowy += 20;
 			}
 		}
 
@@ -589,9 +606,18 @@ function BankReader() {
 		for (var a = 0; a < tabspaces.length; a++) {
 			var tabmatch = false;
 			for (var b = 0; b < me.state.tabs[tab].tabspaces.length; b++) {
-				if (Math.abs(me.state.tabs[tab].tabspaces[b].scrolly - tabspaces[a].y - me.state.rawscrolltop) <= me.config.maxrowcombinedist) { tabmatch = true; break; }
+				if (Math.abs(me.state.tabs[tab].tabspaces[b].scrolly - tabspaces[a].y - me.state.rawscrolltop) <= me.config.maxrowcombinedist) {
+					tabmatch = true;
+					break;
+				}
 			}
-			if (!tabmatch) { me.state.tabs[tab].tabspaces.push({ y: tabspaces[a].y, scrolly: tabspaces[a].y + me.state.rawscrolltop, tabnr: tabspaces[a].tabnr }); }
+			if (!tabmatch) {
+				me.state.tabs[tab].tabspaces.push({
+					y: tabspaces[a].y,
+					scrolly: tabspaces[a].y + me.state.rawscrolltop,
+					tabnr: tabspaces[a].tabnr
+				});
+			}
 		}
 
 		//find possible tooltips
@@ -648,12 +674,12 @@ function BankReader() {
 	}
 	var findTabSpaces = function (buffer) {
 		var locs = a1lib.findsubimg(buffer, BankReader.tabsep, null, 8, me.pos.inner.y - me.pos.area.y, 7, me.pos.inner.h);
-		var r = [];
-		for (var a = 0; a < locs.length; a++) {
-			var n = readAmount(buffer, locs[a].x + 21, locs[a].y);
-			r.push({ y: locs[a].y - (me.pos.inner.y - me.pos.area.y) + 1, tabnr: +n - 1 });
-		}
-		return r;
+		// var r = [];
+		// for (var a = 0; a < locs.length; a++) {
+		// 	var n = readAmount(buffer, locs[a].x + 26, locs[a].y);
+		// 	r.push({ y: locs[a].y - (me.pos.inner.y - me.pos.area.y) + 1, tabnr: +n - 1 });
+		// }
+		return locs;
 	}
 
 	me.allTabSlots = function (tab) {

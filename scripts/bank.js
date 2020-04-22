@@ -388,7 +388,7 @@ function BankReader() {
 			var imgx = me.pos.inner.x - me.pos.area.x + bankx * slotsize + 10; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
 			for (var banky = 0; banky < me.state.rows.length; banky++) {
 				var slot = me.state.slots[bankx + banky * me.pos.columns];
-				var imgy = me.pos.inner.y - me.pos.area.y + me.state.rows[banky].y + 1;
+				var imgy = me.pos.inner.y - me.pos.area.y + me.state.rows[banky].y + 5;
 				slot.readinfo = { x: imgx, y: imgy, readnr: readcount };
 				if (slot.isempty) { continue; }
 				if (slot.imginfo && slot.imginfo.valid) {

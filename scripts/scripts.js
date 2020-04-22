@@ -46,7 +46,7 @@ function start() {
 		toggleTrack();
 	} else {
 		//pasteBuffBar("http://localhost:8080/images/buffbar2.png");
-		pasteExample("http://localhost:8080/images/tabs3.png");
+		pasteExample("http://localhost:8080/images/testbank10.png");
 		//matImageFromFile("http://localhost:8080/images/testmats1.png");
 	}
 }

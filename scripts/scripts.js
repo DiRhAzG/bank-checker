@@ -26,7 +26,7 @@ window.onload = () => {
 	}
 
 	if (!window.alt1) {
-		start();
+		setTimeout(start, 1000);
 	}
 };
 

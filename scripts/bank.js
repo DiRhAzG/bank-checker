@@ -92,9 +92,9 @@ function BankReader() {
 		};
 		var bankinner = {
 			x: bankarea.x + 5,
-			y: bankarea.y + 79,
-			w: bankarea.w - 11 - 239,//TODO get exact numbers
-			h: bankarea.h - 78 - 50//TODO
+			y: bankarea.y + 75,
+			w: bankarea.w - 226,//TODO get exact numbers
+			h: bankarea.h - 115//TODO
 		};
 
 		//==== initial run ====
@@ -351,14 +351,14 @@ function BankReader() {
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
 
-		if (!window.alt1) {
-			var c = document.getElementById("myCanvas");
-			var ctx = c.getContext("2d");
+		// if (!window.alt1) {
+		// 	var c = document.getElementById("myCanvas");
+		// 	var ctx = c.getContext("2d");
 			
-			ctx.beginPath();
-			ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-			ctx.stroke();
-		}
+		// 	ctx.beginPath();
+		// 	ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+		// 	ctx.stroke();
+		// }
 
 		readcount++;
 		var allvalid = true;
@@ -412,11 +412,11 @@ function BankReader() {
 					var backcolor = a1lib.mixcolor(255, 0, 0);
 					//alt1.overLayRect(backcolor, imgx, imgy, 34, 34, 60000, 1);
 
-					if (!window.alt1) {
-						ctx.beginPath();
-						ctx.rect(x, y, 34, 34);
-						ctx.stroke();
-					}
+					// if (!window.alt1) {
+					// 	ctx.beginPath();
+					// 	ctx.rect(x, y, 34, 34);
+					// 	ctx.stroke();
+					// }
 			}
 		}
 
@@ -428,19 +428,19 @@ function BankReader() {
 			raillength: me.pos.inner.h - 29,
 			start: -1,
 			end: -1,
-			x: me.pos.inner.x + me.pos.inner.w + 11,
-			y: me.pos.inner.y + 16
+			x: me.pos.inner.x + me.pos.inner.w - 13,
+			y: me.pos.inner.y + 19
 		};
 		        
-        if (!window.alt1) {
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
+        // if (!window.alt1) {
+        //     var c = document.getElementById("myCanvas");
+        //     var ctx = c.getContext("2d");
             
-            ctx.beginPath();
-            ctx.strokeStyle = "red";
-            ctx.rect(bar.x, bar.y, 2, bar.raillength);
-            ctx.stroke();
-        }
+        //     ctx.beginPath();
+        //     ctx.strokeStyle = "red";
+        //     ctx.rect(bar.x, bar.y, 2, bar.raillength);
+        //     ctx.stroke();
+        // }
 
 		var buffer = img.toData(bar.x, bar.y, 3, bar.raillength);
 

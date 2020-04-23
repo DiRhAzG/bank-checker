@@ -298,6 +298,15 @@ function BankReader() {
 				var imgy = me.pos.inner.y - me.pos.area.y + me.state.rows[banky].y;
 				slot.readinfo = { x: imgx, y: imgy, readnr: readcount };
 				if (slot.isempty) { continue; }
+
+				var x = slot.readinfo.x + me.pos.area.x;
+				var y = slot.readinfo.y + me.pos.area.y;
+				var backcolor = a1lib.mixcolor(255, 0, 0);
+
+				if (window.alt1 && localStorage.highlightSlots == "true") {
+					alt1.overLayRect(backcolor, x, y, 34, 34, 2000, 1);
+				}
+
 				if (slot.imginfo && slot.imginfo.valid) {
 					let itemName = compareArtefacts(slot);
 
@@ -330,15 +339,7 @@ function BankReader() {
 					if (!slot.imginfo.empty) { allvalid = false; }
 					else { hadempty = true; }
 				}
-			
-				var x = slot.readinfo.x + me.pos.area.x;
-				var y = slot.readinfo.y + me.pos.area.y;
-				var backcolor = a1lib.mixcolor(255, 0, 0);
-
-				if (window.alt1 && localStorage.highlightSlots == "true") {
-					alt1.overLayRect(backcolor, x, y, 34, 34, 2000, 1);
-				}
-
+		
 				if (!window.alt1) {
 					ctx.beginPath();
 					ctx.rect(x, y, 34, 34);

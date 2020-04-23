@@ -152,7 +152,6 @@ function MaterialsReader() {
 
 		//check if we are looking at a new screen
 		var scrollchanged = (!(me.state.rawscrolltop == 0 && !scrollbar) && me.state.rawscrolltop != scrollbar.scrolltop);
-		var loadretry = false;
 		if (scrollchanged) {
 			me.state.lastScroll = Date.now();
 		}
@@ -160,17 +159,13 @@ function MaterialsReader() {
 			me.state.firstscan = Date.now();
 			me.state.scanretried = 0;
 		}
-		else if (me.state.scanretried < 2 && me.state.firstscan + (me.state.scanretried + 1) * 500 < Date.now()) {
-			loadretry = true;
-			me.state.scanretried++;
-		}
 
 		//update bank state with what we know
 		me.state.scrollbar = scrollbar;
 		me.state.rawscrolltop = (scrollbar && scrollbar.scrolltop) || 0;
 
 		//check if the state changed enough to read the items again
-		if (forceread || scrollchanged || loadretry || !me.state.allslotsvalid || !window.alt1) {
+		if (forceread || scrollchanged || !me.state.allslotsvalid || !window.alt1) {
 			var buffer = img.toData(me.pos.area.x, me.pos.area.y, me.pos.area.w, me.pos.area.h);
 			qw(new Date().toLocaleTimeString(), "reading bank images");
 			if (me.readInner(buffer, scrollbar)) {

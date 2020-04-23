@@ -287,23 +287,23 @@ function toggleMaterialTrack() {
 	}
 }
 
-function BankInterface(reader) {
-	var me = this;
-	this.activetab = 0;
-	this.activemode = 2;
-	this.bank = null;
-	this.reader = reader;
+// function BankInterface(reader) {
+// 	var me = this;
+// 	this.activetab = 0;
+// 	this.activemode = 2;
+// 	this.bank = null;
+// 	this.reader = reader;
 
-	var els = {};
-	this.root = eldiv("bankstate", [
-		eldiv("flexline", [
-			els.toggletrack = eldiv("nisbutton2", { onclick: toggleTrack.b() }, ["Track: off"]),
-			eldiv("flexlabel", { style: "flex-grow:1" }, ["Tab value:"]),
-			els.tabvalue = eldiv("flexlabel", { style: "flex-grow:3;" }),
-		]),
-		els.tabroot = eldiv("nisseperator", { style: "position:relative;" }),
-		els.body = eldiv("bank-body")
-	]);
+// 	var els = {};
+// 	this.root = eldiv("bankstate", [
+// 		eldiv("flexline", [
+// 			els.toggletrack = eldiv("nisbutton2", { onclick: toggleTrack.b() }, ["Track: off"]),
+// 			eldiv("flexlabel", { style: "flex-grow:1" }, ["Tab value:"]),
+// 			els.tabvalue = eldiv("flexlabel", { style: "flex-grow:3;" }),
+// 		]),
+// 		els.tabroot = eldiv("nisseperator", { style: "position:relative;" }),
+// 		els.body = eldiv("bank-body")
+// 	]);
 
 	// this.drawButtons = function () {
 	// 	els.toggletrack.innerText = "Track: " + (me.reader.tracking ? "on" : "off");
@@ -417,36 +417,36 @@ function BankInterface(reader) {
 
 	// 	return frag;
 	// }
-	this.drawItems = function (tab) {
-		var rows = (tab ? tab.rows.concat(tab.tabspaces).sort(function (a, b) { return a.scrolly - b.scrolly; }) : []);
-		var frag = elfrag();
-		var lasty = 0;
-		for (var a = 0; a < rows.length; a++) {
-			var row = rows[a];
-			if (row.scrolly - lasty > 54) {
-				frag.appendChild(eldiv("bank-gap"));
-			}
-			if (!row.slots) {
-				frag.appendChild(eldiv("bank-tabspace", { onclick: function (row) { me.activetab = row.tabnr; me.draw(); }.b(row) }, ["tab " + row.tabnr]));
-				lasty = row.scrolly + 15;
-			}
-			else {
-				var el = eldiv("bank-row");
-				var slotcount = 0;
-				for (var b = 0; b < row.slots.length; b++) {
-					var slot = row.slots[b];
-					el.appendChild(slotDiv(slot, els.body));
-					if (slot.imginfo && !slot.imginfo.empty) { slotcount++; }
-				}
-				if (slotcount != 0) {
-					frag.appendChild(el);
-				}
-				lasty = row.scrolly + 44;
-			}
-		}
-		return frag;
-	}
-}
+// 	this.drawItems = function (tab) {
+// 		var rows = (tab ? tab.rows.concat(tab.tabspaces).sort(function (a, b) { return a.scrolly - b.scrolly; }) : []);
+// 		var frag = elfrag();
+// 		var lasty = 0;
+// 		for (var a = 0; a < rows.length; a++) {
+// 			var row = rows[a];
+// 			if (row.scrolly - lasty > 54) {
+// 				frag.appendChild(eldiv("bank-gap"));
+// 			}
+// 			if (!row.slots) {
+// 				frag.appendChild(eldiv("bank-tabspace", { onclick: function (row) { me.activetab = row.tabnr; me.draw(); }.b(row) }, ["tab " + row.tabnr]));
+// 				lasty = row.scrolly + 15;
+// 			}
+// 			else {
+// 				var el = eldiv("bank-row");
+// 				var slotcount = 0;
+// 				for (var b = 0; b < row.slots.length; b++) {
+// 					var slot = row.slots[b];
+// 					el.appendChild(slotDiv(slot, els.body));
+// 					if (slot.imginfo && !slot.imginfo.empty) { slotcount++; }
+// 				}
+// 				if (slotcount != 0) {
+// 					frag.appendChild(el);
+// 				}
+// 				lasty = row.scrolly + 44;
+// 			}
+// 		}
+// 		return frag;
+// 	}
+// }
 
 function slotDiv(slot, container) {
 	var price = slot.price;

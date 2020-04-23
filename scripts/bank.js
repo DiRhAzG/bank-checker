@@ -62,6 +62,16 @@ function BankReader() {
 	var backcolor = [30, 49, 70];
 	var backcolorlegacy = [62, 53, 40];
 
+	// create off-screen canvas element
+	var canvas = document.createElement('canvas'),
+	ctx = canvas.getContext('2d');
+
+	canvas.width = 34;
+	canvas.height = 34;
+
+	// create imageData object
+	var idata = ctx.createImageData(34, 34);
+	
 	this.find = function (img, clearSlots) {
 		if (!img) { img = a1lib.bindfullrs(); }
 
@@ -231,16 +241,6 @@ function BankReader() {
 		var data = clone.data;
 
 		if (!window.alt1 || localStorage.showImageData == "true") {
-			// create off-screen canvas element
-			var canvas = document.createElement('canvas'),
-			ctx = canvas.getContext('2d');
-	
-			canvas.width = 34;
-			canvas.height = 34;
-	
-			// create imageData object
-			var idata = ctx.createImageData(34, 34);
-	
 			// set our buffer as source
 			idata.data.set(data);
 	
@@ -269,15 +269,15 @@ function BankReader() {
 		qw("Rows: " + me.state.rows.length);
 		qw("Slot Size: " + slotsize);
 
-		if (!window.alt1) {
-			var c = document.getElementById("myCanvas");
-			var ctx = c.getContext("2d");
+		// if (!window.alt1) {
+		// 	var c = document.getElementById("myCanvas");
+		// 	var ctx = c.getContext("2d");
 			
-			ctx.beginPath();
-			ctx.fillStyle = "red";
-			ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
-			ctx.stroke();
-		}
+		// 	ctx.beginPath();
+		// 	ctx.fillStyle = "red";
+		// 	ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
+		// 	ctx.stroke();
+		// }
 
 		readcount++;
 		var allvalid = true;
@@ -353,15 +353,15 @@ function BankReader() {
 			y: me.pos.inner.y + 19
 		};
 		        
-        if (!window.alt1) {
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
+        // if (!window.alt1) {
+        //     var c = document.getElementById("myCanvas");
+        //     var ctx = c.getContext("2d");
             
-            ctx.beginPath();
-            ctx.strokeStyle = "red";
-            ctx.rect(bar.x, bar.y, 2, bar.raillength);
-            ctx.stroke();
-        }
+        //     ctx.beginPath();
+        //     ctx.strokeStyle = "red";
+        //     ctx.rect(bar.x, bar.y, 2, bar.raillength);
+        //     ctx.stroke();
+        // }
 
 		var buffer = img.toData(bar.x, bar.y, 3, bar.raillength);
 

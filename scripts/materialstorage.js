@@ -53,6 +53,16 @@ function MaterialsReader() {
 	var slotsize = 36;
 	var iconsize = 36;
 
+	// create off-screen canvas element
+	var canvas = document.createElement('canvas'),
+	ctx = canvas.getContext('2d');
+
+	canvas.width = 36;
+	canvas.height = 32;
+
+	// create imageData object
+	var idata = ctx.createImageData(36, 32);
+		
 	this.find = function (img, clearSlots) {
 		if (!img) { img = a1lib.bindfullrs(); }
 
@@ -212,16 +222,6 @@ function MaterialsReader() {
 		var data = clone.data;
 
 		if (!window.alt1 || localStorage.showImageData == "true") {
-			// create off-screen canvas element
-			var canvas = document.createElement('canvas'),
-			ctx = canvas.getContext('2d');
-	
-			canvas.width = 36;
-			canvas.height = 32;
-	
-			// create imageData object
-			var idata = ctx.createImageData(36, 32);
-	
 			// set our buffer as source
 			idata.data.set(data);
 	

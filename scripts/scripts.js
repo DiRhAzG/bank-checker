@@ -902,6 +902,21 @@ $(function () {
 		}
 	})
 	
+	$(".forceRead").click(function () {
+		try {
+			reader.find();
+			reader.read(undefined, true);
+		} catch (e) {
+
+		}
+
+		try {
+			matreader.find();
+			matreader.read(undefined, true);
+		} catch (e) {
+			
+		}
+	})
 
 	$(".calculateResearch").click(function () {
 		let hours = document.getElementById("hours").value;

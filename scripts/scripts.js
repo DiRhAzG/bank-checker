@@ -49,9 +49,11 @@ function start() {
 	if (window.alt1) {
 		reader.find(undefined, true);
 		reader.read(undefined, true);
+		toggleBankTrack();
+
 		matreader.find(undefined, true);
 		matreader.read(undefined, true);
-		toggleTrack();
+		toggleMaterialTrack();
 	} else {
 		//pasteBuffBar("http://localhost:8080/images/buffbar2.png");
 		pasteExample("http://localhost:8080/images/tabs3.png");
@@ -269,25 +271,17 @@ function clickSlot(slot, el, container) {
 	menu.style.visibility = "";
 }
 
-function toggleTrack() {
+function toggleBankTrack() {
 	if (!reader.tracking) {
 		if (window.alt1) {
-			if (!reader.pos) {
-				if (!reader.find()) {
-					return;
-				}
-			}
 			reader.track();
 		}
 	}
+}
 
+function toggleMaterialTrack() {
 	if (!matreader.tracking) {
 		if (window.alt1) {
-			if (!matreader.pos) {
-				if (!matreader.find()) {
-					return;
-				}
-			}
 			matreader.track();
 		}
 	}

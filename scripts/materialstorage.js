@@ -723,7 +723,6 @@ function MaterialsReader() {
 	//======================================== tracking ========================================
 	//==========================================================================================
 	this.track = function (callback) {
-		if (!me.pos) { return; }
 		me.stopTrack();
 		trackInterval = setInterval(trackTick, me.config.timers.scrollcheck);
 		trackTooltipInterval = setInterval(tooltipTick, me.config.timers.tooltipMeta);
@@ -738,6 +737,7 @@ function MaterialsReader() {
 		me.tracking = false;
 	}
 	var trackTick = function () {
+		if (!me.pos) { return; }
 		me.read();
 	}
 	var tooltipTick = function () {

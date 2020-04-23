@@ -38,18 +38,6 @@ window.onload = () => {
 	}
 };
 
-$(".tracker").click(function () {
-	if ($(this).html().trim() === "Start") {
-		console.log("Starting tracker");
-		setTimeout(start, 1000);
-		$(this).html("Stop");
-	} else {
-		console.log("Stopping tracker");
-		$(this).html("Start");
-		stop();
-	}
-})
-
 function start() {
 	a1lib.identifyUrl("appconfig.json");
 	
@@ -918,6 +906,19 @@ $(function () {
 	$(".refreshPrices").click(function () {
 		getPrices();
 	});
+
+	$(".tracker").click(function () {
+		if ($(this).html().trim() === "Start") {
+			console.log("Starting tracker");
+			setTimeout(start, 1000);
+			$(this).html("Stop");
+		} else {
+			console.log("Stopping tracker");
+			$(this).html("Start");
+			stop();
+		}
+	})
+	
 
 	$(".calculateResearch").click(function () {
 		let hours = document.getElementById("hours").value;

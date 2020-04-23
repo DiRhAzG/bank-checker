@@ -353,22 +353,22 @@ function BankReader() {
 
 	this.readScrollbar = function (img, old) {
 		var bar = {
-			raillength: me.pos.inner.h - 29,
+			raillength: me.pos.inner.h - 37,
 			start: -1,
 			end: -1,
-			x: me.pos.inner.x + me.pos.inner.w - 13,
+			x: me.pos.inner.x + me.pos.inner.w - 12,
 			y: me.pos.inner.y + 19
 		};
 		        
-        // if (!window.alt1) {
-        //     var c = document.getElementById("myCanvas");
-        //     var ctx = c.getContext("2d");
+        if (!window.alt1) {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
             
-        //     ctx.beginPath();
-        //     ctx.strokeStyle = "red";
-        //     ctx.rect(bar.x, bar.y, 2, bar.raillength);
-        //     ctx.stroke();
-        // }
+            ctx.beginPath();
+            ctx.strokeStyle = "red";
+            ctx.rect(bar.x, bar.y, 2, bar.raillength);
+            ctx.stroke();
+        }
 
 		var buffer = img.toData(bar.x, bar.y, 3, bar.raillength);
 

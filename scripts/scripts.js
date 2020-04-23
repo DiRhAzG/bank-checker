@@ -38,6 +38,18 @@ window.onload = () => {
 	}
 };
 
+$("button.tracker").click(function () {
+	if ($(this).html().trim() === "Start") {
+		console.log("Starting tracker");
+		setTimeout(start, 1000);
+		$(this).html("Stop");
+	} else {
+		console.log("Stopping tracker");
+		$(this).html("Start");
+		stop();
+	}
+})
+
 function start() {
 	a1lib.identifyUrl("appconfig.json");
 	
@@ -54,8 +66,18 @@ function start() {
 		toggleTrack();
 	} else {
 		//pasteBuffBar("http://localhost:8080/images/buffbar2.png");
-		//pasteExample("http://localhost:8080/images/tabs2.png");
-		matImageFromFile("http://localhost:8080/images/mats2.png");
+		pasteExample("http://localhost:8080/images/tabs3.png");
+		//matImageFromFile("http://localhost:8080/images/mats2.png");
+	}
+}
+
+function stop() {
+	if (reader.tracking) {
+		reader.stopTrack();
+	}
+
+	if (matreader.tracking) {
+		matreader.stopTrack();
 	}
 }
 
@@ -260,26 +282,33 @@ function clickSlot(slot, el, container) {
 }
 
 function toggleTrack() {
+	if (reader.tracking) {
+		reader.stopTrack();
+	}
+	else {
+		if (window.alt1) {
+			if (!reader.pos) {
+				if (!reader.find()) {
+					return;
+				}
+			}
+			reader.track();
+		}
+	}
+
 	if (matreader.tracking) {
 		matreader.stopTrack();
-		// reader.stopOverlay();
 	}
 	else {
 		if (window.alt1) {
 			if (!matreader.pos) {
 				if (!matreader.find()) {
-					// message("Could not find your material storage. Please make sure you're that not using legacy mode and that capture is working correctly in the alt1 settings.");
 					return;
 				}
 			}
 			matreader.track();
-			// reader.startOverlay();
-		}
-		else {
-			message("This feature is only available in Alt1.");
 		}
 	}
-	// bankUI.drawButtons();
 }
 
 function BankInterface(reader) {

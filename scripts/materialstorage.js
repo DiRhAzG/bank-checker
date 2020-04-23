@@ -335,15 +335,15 @@ function MaterialsReader() {
 			y: me.pos.inner.y + 20
         };
         
-        if (!window.alt1) {
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
+        // if (!window.alt1) {
+        //     var c = document.getElementById("myCanvas");
+        //     var ctx = c.getContext("2d");
             
-            ctx.beginPath();
-            ctx.strokeStyle = "red";
-            ctx.rect(bar.x, bar.y, 2, bar.raillength);
-            ctx.stroke();
-        }
+        //     ctx.beginPath();
+        //     ctx.strokeStyle = "red";
+        //     ctx.rect(bar.x, bar.y, 2, bar.raillength);
+        //     ctx.stroke();
+        // }
 
 		var buffer = img.toData(bar.x, bar.y, 3, bar.raillength);
 

@@ -300,13 +300,13 @@ function BankReader() {
 					alt1.overLayRect(backcolor, x, y, 34, 34, 2000, 1);
 				}
 
-				if (slot.imginfo && slot.imginfo.valid) {
-					let itemName = compareArtefacts(slot);
+				// if (slot.imginfo && slot.imginfo.valid) {
+				// 	let itemName = compareArtefacts(slot);
 
-					if (itemName != undefined) {
-						continue;
-					}
-				}
+				// 	if (itemName != undefined) {
+				// 		continue;
+				// 	}
+				// }
 
 				//check if we hit a tooltip
 				if (me.tooltipIntersect(slot, me.state.tooltip, 5)) {

@@ -6,8 +6,8 @@
 ///<reference path="tooltip.js">
 "use strict";
 
-BankReader.bankinterface = new InterfaceTracker(new Rect(-159, 28, 1, 1), 'data:image/png;base64,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');
 BankReader.itemnumbers = new ImageSet("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAAICAIAAAA+4JV/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC8SURBVEhLjYsBDoAwDAL9/6dnDYYR6KoXE+nBLrDWG4iayvgUM21rm8IMN61UUtoA5Kv9s8c8zX8GYCc4jYu2+imtVf9kq4lmkpLGqmGZaNXmQWpVUO5WF6cMzNSZexq07UAlMINNygy2KZpXqk65sJPQI+RMBzYG9mSu8OlpmHlOVX+ywaoCP0UH5JSLoQKUCMPz4j3nqXlwatO3y1aCdqbk2+HJPrPAp5kG2AnmAYxtkpwp9DpoZbHWdQOh12Sq5X4vpQAAAABJRU5ErkJggg==", [0, 7, 11, 18, 24, 29, 35, 42, 48, 55, 62, 69]);
+ImageData.fromBase64(function (i) { BankReader.search = i }, "iVBORw0KGgoAAAANSUhEUgAAADgAAAAJCAIAAADownhBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuNWWFMmUAAAPkSURBVDhPTVRbb1RVFD77fu7nzLnMvVM6Q7ElhBghxJjG9KGTEh98QCk+kAAmFDSIjZcUlfrqtC/GB9Spb6jRNDGh1bcOl/hK+QnTnzD8BPz22YfiZGey9zprrW+tb397WSprX36vOho6o6E73lU33lcWYYPb8sVTgTV+wCePBD5RLyHctixChMOz6a0vwv5izMKcVxoiroVTs9/frb0MEZOHYviNyFoZj6rUDvGP2EpIBp/wg9/keE8d7tmHfzujX3wWNra+jBA1eSRXlm0NweTW5wEsz5/Yqx/O5SfP2Y3jNMis8+dbsJ44EREmeh2xfoURJolwYdy/xy39I9rIBTboAcDVTmPyWO7/pJif0qCOLDxp+DOnjkJWLzDs169Q+BPlUz9JMxc97/8okswjXBmsg18FNiyu/x/LQJQWQnmY/fVD5e7tuvXVxxmsS+cIqzSLvlGTBPZLVxx1l0RoOg2jCJk8VnA4e1qzK5ImeAW7JkR6IU/bZo9UxI0At7mm/bttSqQj0qao93g+c+ndzNKFls5FcpeoEDSX4coTjePP/vA212zrzLzuHmvwqTQNoWNUZlyZUDDq6pHCXL10cGvLizEchl8zJ2sCkqWdo964GzTeWMReM2qwBUQlISEwxvxEpG2E8GpXtWbtvO1OzZnAIrnHvJhXmiW67Ylaz2nPEZQB+JU+h6qKb0K7uhGuEkesw115uKe2N6AerV1qB8tL+bM/fShhtO3BIa8FvDoDVmRztszuBmsfzfx7P0VZTlIDowjEJ2i3LMUJqO1rSQQ5DRqsMmWw4IB+xpDvP6XwQIqs99AJGrMgAoT1Ogof8Plin4u4Gr921rgCLE0UNKf1AxjKRz87EOh4V5jbB208rtOoBQ3giAU8/N/8wKdCxcfm66+/HR07iWcKYyXUvCCPWcgGUl7JTCNQi+r3YCwotLiuafRjXVyiuGjoPcs1QwAOp+eyU28ZV6pcNMSimkndbVHcYBJDuwQZsccToW5MoxoyHuHtDHTP/QUPaoN8MTHMGEFyIl3kNNLvdrSCkbYMJAT3DmGgMmNBodgf/O5sfuZbQMLggLcR65l5gqIhYewP7nO8SnR845JnfAa32M53pnWo1t/e0L0tvclR6KvsTCRpjAcOOfUXQiIrRAQIRzY4bNxKq6cXnEYXhRbF6YpNIDovCIYeyjmAF8yj+s6mjbFj4YyMKBdLs1tUsX61nKOas11VvAMMKT1T4Y8bxBFr9YLGRuDKO/6d6772fyjuXJPETtNatjPQGYbfQqgJnFEr8FAuRiZU+PyJ8+BezpR7FFgMQS0M0FFarnI9v4VrUfYfvupnGD0XBXQAAAAASUVORK5CYII=");
 ImageData.fromBase64(function (i) { BankReader.scrollstart = i }, "iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAYAAAB8ZH1oAAAAkUlEQVQIW2Pk1TT/z/DmEYOIAAtDYaggQ6gpC8PTu88Z1h7/xbD0DBvD+28MDAwicgyMvFrm/xnfPGZozpBgSPPgYWD4+o3h4c0nDJ/efmNYeoKJYf5ZLob/wrIMjCATGd8+Zri5RoNBgOUPisJ3734zhC0XZPgvgqTw5U5tBobvP1EU/vzyi8F7oRCqiYQUAgCDTVcjawB2BwAAAABJRU5ErkJggg==");
 ImageData.fromBase64(function (i) { BankReader.scrollend = i }, "iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAYAAAB8ZH1oAAAAhUlEQVQIW2Pk1TT/z/j2McPLndoMDN9/MjB8/cbw8OYThk9vvzH8/PKLwXuhEMN/YVkGRpjCm2s0GARY/qAofPfuN0PYckESFIogmdicIcGQ5sGDYuKyE0wM885yIUxkePOIQUSAhaEwVJAh1IyV4emdZwxrj/9iWHqGjeH9NwYGBhE5BgC60VYjPg0gygAAAABJRU5ErkJggg==");
 ImageData.fromBase64(function (i) { BankReader.emptycoins = i }, "iVBORw0KGgoAAAANSUhEUgAAACAAAAAcCAIAAACPoCp1AAADDUlEQVRIS7WT3UvTURjHz4Xku5tbuS2U1FDyLXNL8W04dItNc1taiVYKGqZYqRn5UiZehiBZQVdBXXUXdB0F3fQXFN0E3fZn9Pnt0eOv45xeLPhy+O38nvP57HnOpp5t72w9f/mfAlwtrT094TjpPtvorWny1DZnJaAAgl1aXVeLy2u5zrLWWwux2ZXYvSckend31Q/6Y9odnf1TsysAwc4/WlN3Fh7mlnoqIiPnoiN1MSvywKof9Me0Ozr2TYBgpxeX1dTc/VyX93TftfKu/iPjLMg5GKNGAhAscDVxe/qYAljfv7748/O95MenzW8fll9vb6R1iAC4GhufPI4ACjigB/Pl3Uy1q9ioFwFwNTx6Qwt87ZcOCwJh2dHk46ubbzZ7eGvUiwC46h8ezXX7fMGEpzWSISCgC05na6Zpfbx+Pl7JW6MeIFjgKpq8mneq3Nc54Ar0ZYgWAN150EoEPRn0Et4a9QDBAleRwSs8uTsuGxVGQHAHWsAq9GG/m/DWHuoBgu2LD9kELaEM4ZgxIjogXIP9dyW3QrEIwgj6EsMicJ7vzpSCnLcbozhkPoQO5FcrXHvolXqwfHvVm7QErraos6krbYoiJTrC1cMxuAQ0zVEgAuB7AqZ8CDr0K0J44PDvz1NMQDQ4eKYna2Krfpkb+/pWdgXhuHUHCPLbCh2NnSUN7ax2tKZbrFU/dG54rtuDQK5ddlgJm/E6hxYAV6FUB06/JQBUXNdqRwudasaNABDhbgFNBNz7156hg+7U/6C4pReB4Aw6ShHAMgTSltGBXRDiVxSMWx1ogUEvqvUTqmUaxoikA0NgH1FwcEh1J6wOHBd60gtqWoh0oEf0eKBcj4hkGFFKkBpRSUOHIdB07eCw/LlkRFCOvGTgKYG36qBAHAXVTdBl5YwRTJku2Vu118GeIG2gHxbRJLtqCGhpSzYBgv2nA+Pw8SNEHdncF3Qmr4ugkFnXBrIVEQBXHYmxfG9l6cVIaSBsrdkLWOCqPTmaV1ZRcKY+6wELXPljQ83heHMkkf2E4/7Y0F+cv82FFdwxCwAAAABJRU5ErkJggg==");
@@ -28,6 +28,7 @@ function BankReader() {
 	this.overlayState = null;
 	this.tooltipState = null;
 	this.tracking = false;
+	// this.imgOffset = 5;
 	this.config = {
 		timers: {
 			scrollcheck: 70,
@@ -65,8 +66,15 @@ function BankReader() {
 		if (!img) { img = a1lib.bindfullrs(); }
 
 		//==== find bank ====
-		//TODO ditch the interfacereader structure
 
+		// let search = a1lib.findsubimg(img, BankReader.search);
+
+		// if (search.length == 0) {
+		// 	me.imgOffset = 1; // Not searching in bank
+		// } else {
+		// 	me.imgOffset = 5; // Searching bank, offset is higher
+		// }
+		
 		var botright = a1lib.findsubimg(img, BankReader.botright);
 		var topleft = a1lib.findsubimg(img, BankReader.topleft);
 		if (botright.length == 0 || topleft.length == 0) {
@@ -91,10 +99,10 @@ function BankReader() {
 			scrollbar: null,
 		};
 		var bankinner = {
-			x: bankarea.x + 5,
-			y: bankarea.y + 75,
-			w: bankarea.w - 226,//TODO get exact numbers
-			h: bankarea.h - 115//TODO
+			x: bankarea.x + 4,
+			y: bankarea.y + 74,
+			w: bankarea.w - 226,
+			h: bankarea.h - 114
 		};
 
 		//==== initial run ====
@@ -114,7 +122,6 @@ function BankReader() {
 				tabspaces: [],
 				rows: [],
 				scrollbar: null,
-				rowoffset: -1,
 				pxoffset: -1,
 				rawscrolltop: 0,
 				tooltip: null,
@@ -161,17 +168,15 @@ function BankReader() {
 		}
 
 		//=== find bank state ===
-		var tab = me.readTabNr(img);
 		var scrollbar = me.readScrollbar(img, me.state && me.state.scrollbar);
 
 		//check if we are looking at a new screen
 		var scrollchanged = (!(me.state.rawscrolltop == 0 && !scrollbar) && me.state.rawscrolltop != scrollbar.scrolltop);
-		var tabchanged = me.state.tab != tab;
 		var loadretry = false;
 		if (scrollchanged) {
 			me.state.lastScroll = Date.now();
 		}
-		if (tabchanged || scrollchanged) {
+		if (scrollchanged) {
 			me.state.firstscan = Date.now();
 			me.state.scanretried = 0;
 		}
@@ -181,22 +186,21 @@ function BankReader() {
 		}
 
 		//update bank state with what we know
-		me.state.tab = tab;
 		me.state.scrollbar = scrollbar;
 		me.state.rawscrolltop = (scrollbar && scrollbar.scrolltop) || 0;
 
 		//check if the state changed enough to read the items again
-		if (forceread || tabchanged || scrollchanged || loadretry || !me.state.allslotsvalid || !window.alt1) {
+		if (forceread || scrollchanged || loadretry || !me.state.allslotsvalid || !window.alt1) {
 			var buffer = img.toData(me.pos.area.x, me.pos.area.y, me.pos.area.w, me.pos.area.h);
 			qw(new Date().toLocaleTimeString(), "reading bank images");
-			if (me.readInner(buffer, scrollbar, tab)) {
+			if (me.readInner(buffer, scrollbar)) {
 				me.readItems(buffer);
 				calculateMats();
 				changed = true;
 			}
 		}
 		//scroll didnt change, add reads that needed this confirmation
-		if (me.state && !tabchanged && !scrollchanged) {
+		if (me.state && !scrollchanged) {
 			for (var a = hoverwaiting.length - 1; a >= 0; a--) {
 				if (!me.tooltipIntersect(hoverwaiting[a].slot, me.tooltipState && me.tooltipState.area, 10)) {
 					if (me.confirmItem(hoverwaiting[a].slot, img)) {
@@ -216,18 +220,6 @@ function BankReader() {
 		return me.state;
 	}
 
-	this.readTabNr = function (img) {
-		var x = 55;
-		//TODO get exact bound width
-		for (var tabnr = 0; tabnr * 48 + 48 < this.pos.area.w; tabnr++) {
-			var pixel = img.toData(me.pos.area.x + 54 + 48 * tabnr, me.pos.area.y + 36, 1, 1);
-			var sum = pixel.data[0] + pixel.data[1] + pixel.data[2];
-			if (sum > 400) { return tabnr + 1; }
-			if (sum < 200) { break }
-		}
-		return 0;
-	}
-
 	var isNumberCol = function (data, i) {
 		var r =
 			data[i] == 255 && data[i + 1] == 255 && data[i + 2] == 0 ||//yellow (1)
@@ -239,117 +231,31 @@ function BankReader() {
 		return r;
 	}
 
-	var tabSeparator = function (data, i) {
-		var r =	
-			coldiff(data[i], data[i + 1], data[i + 2], 90, 89, 52) < 20 ||
-			coldiff(data[i], data[i + 1], data[i + 2], 133, 115, 32) < 20 ||
-			coldiff(data[i], data[i + 1], data[i + 2], 208, 170, 15) < 20;
-			// data[i] == 90 && data[i + 1] == 89 && data[i + 2] == 52 ||
-			// data[i] == 195 && data[i + 1] == 162 && data[i + 2] == 22 ||
-			// data[i] == 222 && data[i + 1] == 178 && data[i + 2] == 7 ||
-			// data[i] == 135 && data[i + 1] == 120 && data[i + 2] == 39 ||
-			// data[i] == 129 && data[i + 1] == 110 && data[i + 2] == 24 ||
-			// data[i] == 206 && data[i + 1] == 165 && data[i + 2] == 8 ||
-			// data[i] == 210 && data[i + 1] == 172 && data[i + 2] == 18 ||
-			// data[i] == 209 && data[i + 1] == 171 && data[i + 2] == 16;
-
-		return r;
-	}
-
 	var readbuffer = function (img, slot, imgx, imgy, backx, backy) {
 		var clone = img.toData(backx + imgx, backy + imgy, 34, 34);
 		var data = clone.data;
 
-				// create off-screen canvas element
-				var canvas = document.createElement('canvas'),
-				ctx = canvas.getContext('2d');
-		
-				canvas.width = 34;
-				canvas.height = 34;
-		
-				// create imageData object
-				var idata = ctx.createImageData(34, 34);
-		
-				// set our buffer as source
-				idata.data.set(data);
-		
-				// update canvas with new data
-				ctx.putImageData(idata, 0, 0);
-				var dataUri = canvas.toDataURL(); // produces a PNG file
-		
-				console.log(dataUri);
-
-		// for (var x = 0; x < clone.width; x++) {
-		// 	for (var y = 0; y < clone.height; y++) {
-		// 		var i = 4 * x + 4 * clone.width * y;
-		// 		var r = (me.pos.legacy ? backcolorlegacy[0] : backcolor[0]);
-		// 		var g = (me.pos.legacy ? backcolorlegacy[1] : backcolor[1]);
-		// 		var b = (me.pos.legacy ? backcolorlegacy[2] : backcolor[2]);
-		// 		var colmargin = 0;
-		// 		if (slot.hasborder) {
-		// 			var islot = 4 * (x + 4) + 4 * BankReader.slotoutline.width * (y + 3);
-		// 			var aslot = BankReader.slotoutline.data[islot + 3] / 255;
-		// 			var aback = 1 - aslot;
-		// 			r = aback * r + aslot * BankReader.slotoutline.data[islot + 0];
-		// 			g = aback * g + aslot * BankReader.slotoutline.data[islot + 1];
-		// 			b = aback * b + aslot * BankReader.slotoutline.data[islot + 2];
-		// 			colmargin = 10;
-		// 		}
-		// 		var d = Math.abs(r - data[i + 0]) + Math.abs(g - data[i + 1]) + Math.abs(b - data[i + 2]);
-		// 		if (d <= colmargin) {
-		// 			data[i + 0] = data[i + 1] = data[i + 2] = data[i + 3] = 0;
-		// 		}
-		// 	}
-		// }
-		return clone;
-	}
-
-	var readbufferOld = function (img, slot, imgx, imgy, backx, backy) {
-		imgy += 9;
-		var clone = img.toData(backx + imgx, backy + imgy - 9, 34, 34);
-		var data = clone.data;
-		var backdata = BankReader.bankback.data;
-		var outlinedata = BankReader.slotoutline.data;
-
-		for (var x = 0; x < clone.width; x++) {
-			for (var y = 0; y < clone.height; y++) {
-				var i = 4 * x + 4 * clone.width * y;
-				var iback = 4 * ((x + imgx + 2) % 128) + 4 * 128 * ((y + imgy + 79) % 128);
-
-				//remove the border around the first item in a tab if needed
-				if (slot.hasborder) {
-					var islot = 4 * (x + 2) + 4 * BankReader.slotoutline.width * (y + 3);
-					var a = outlinedata[islot + 3] / 255;
-					var aback = 1 - a;
-					var r = a * outlinedata[islot + 0] + aback * backdata[iback + 0];
-					var g = a * outlinedata[islot + 1] + aback * backdata[iback + 1];
-					var b = a * outlinedata[islot + 2] + aback * backdata[iback + 2];
-					var d = Math.abs(r - data[i + 0]) + Math.abs(g - data[i + 1]) + Math.abs(b - data[i + 2]);
-					if (d < 10) {
-						data[i] = data[i + 1] = data[i + 2] = data[i + 3] = 0;
-					}
-				}
-				else {
-					var d = Math.abs(data[i] - backdata[iback]) + Math.abs(data[i + 1] - backdata[iback + 1]) + Math.abs(data[i + 2] - backdata[iback + 2]);
-					if (d < 3) { data[i] = data[i + 1] = data[i + 2] = data[i + 3] = 0; }
-				}
-			}
+		if (!window.alt1 || localStorage.showImageData == "true") {
+			// create off-screen canvas element
+			var canvas = document.createElement('canvas'),
+			ctx = canvas.getContext('2d');
+	
+			canvas.width = 34;
+			canvas.height = 34;
+	
+			// create imageData object
+			var idata = ctx.createImageData(34, 34);
+	
+			// set our buffer as source
+			idata.data.set(data);
+	
+			// update canvas with new data
+			ctx.putImageData(idata, 0, 0);
+			var dataUri = canvas.toDataURL(); // produces a PNG file
+	
+			console.log(dataUri);
 		}
-		//try and filter random noise
-		var checkpixels = function (x1, y1, x2, y2) {
-			var i1 = clone.pixelOffset(x1, y1);
-			var i2 = clone.pixelOffset(x2, y2);
-			if (data[i1 + 3] != 0) {
-				if (data[i2 + 3] != 0) { return true; }
-				else if (coldiff(data[i1], data[i1 + 1], data[i1 + 2], 0, 0, 2) < 5 || coldiff(data[i1], data[i1 + 1], data[i1 + 2], 51, 51, 51) < 5) { return true; }
-				else { data[i1] = data[i1 + 1] = data[i1 + 2] = data[i1 + 3] = 0; }
-			}
-			return false;
-		}
-		for (var y = 9; y < clone.height; y++) {
-			for (var x = 0; x < clone.width / 2 | 0; x++) { if (checkpixels(x, y, x + 1, y)) { break; } }
-			for (var x = clone.width - 1; x > clone.width / 2 | 0; x--) { if (checkpixels(x, y, x - 1, y)) { break; } }
-		}
+
 		return clone;
 	}
 
@@ -373,6 +279,7 @@ function BankReader() {
 			var ctx = c.getContext("2d");
 			
 			ctx.beginPath();
+			ctx.fillStyle = "red";
 			ctx.rect(me.pos.inner.x, me.pos.inner.y, me.pos.inner.w, me.pos.inner.h);
 			ctx.stroke();
 		}
@@ -384,14 +291,11 @@ function BankReader() {
 
 		artefactsCount = {};
 
-		let imgOffset = 5; // Search
-		//let imgOffset = 1; // No search
-
 		for (var bankx = 0; bankx < me.pos.columns; bankx++) {
-			var imgx = me.pos.inner.x - me.pos.area.x + bankx * slotsize + 10; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
+			var imgx = me.pos.inner.x - me.pos.area.x + bankx * slotsize + 11; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
 			for (var banky = 0; banky < me.state.rows.length; banky++) {
 				var slot = me.state.slots[bankx + banky * me.pos.columns];
-				var imgy = me.pos.inner.y - me.pos.area.y + me.state.rows[banky].y + imgOffset;
+				var imgy = me.pos.inner.y - me.pos.area.y + me.state.rows[banky].y;
 				slot.readinfo = { x: imgx, y: imgy, readnr: readcount };
 				if (slot.isempty) { continue; }
 				if (slot.imginfo && slot.imginfo.valid) {
@@ -414,9 +318,11 @@ function BankReader() {
 
 				let itemName = compareArtefacts(slot);
 
-				console.log(itemName);
+				if (!window.alt1 || localStorage.showImageData == "true") {
+					console.log(itemName);
+				}
 
-				// if (itemName == "Blank Slot") {
+				// if (me.imgOffset == 5 && itemName == "Blank Slot") {
 				// 	break;
 				// }
 
@@ -424,19 +330,20 @@ function BankReader() {
 					if (!slot.imginfo.empty) { allvalid = false; }
 					else { hadempty = true; }
 				}
-				
 			
-					var x = slot.readinfo.x + me.pos.area.x;
-					var y = slot.readinfo.y + me.pos.area.y;
-					var t = me.config.timers.overlay + 500;
-					var backcolor = a1lib.mixcolor(255, 0, 0);
-					 //alt1.overLayRect(backcolor, x, y, 34, 34, 2000, 1);
+				var x = slot.readinfo.x + me.pos.area.x;
+				var y = slot.readinfo.y + me.pos.area.y;
+				var backcolor = a1lib.mixcolor(255, 0, 0);
 
-					if (!window.alt1) {
-						ctx.beginPath();
-						ctx.rect(x, y, 34, 34);
-						ctx.stroke();
-					}
+				if (window.alt1 && localStorage.highlightSlots == "true") {
+					alt1.overLayRect(backcolor, x, y, 34, 34, 2000, 1);
+				}
+
+				if (!window.alt1) {
+					ctx.beginPath();
+					ctx.rect(x, y, 34, 34);
+					ctx.stroke();
+				}
 			}
 		}
 
@@ -463,24 +370,6 @@ function BankReader() {
         // }
 
 		var buffer = img.toData(bar.x, bar.y, 3, bar.raillength);
-
-		// // create off-screen canvas element
-		// var canvas = document.createElement('canvas'),
-		// ctx = canvas.getContext('2d');
-
-		// canvas.width = buffer.width;
-		// canvas.height = buffer.height;
-
-		// // create imageData object
-		// var idata = ctx.createImageData(buffer.width, buffer.height);
-
-		// // set our buffer as source
-		// idata.data.set(buffer.data);
-
-		// // update canvas with new data
-		// ctx.putImageData(idata, 0, 0);
-		// var dataUri = canvas.toDataURL(); // produces a PNG file
-		// console.log(dataUri);
 
 		//==== find bar imgs ====
 		var isbar = function (y) {
@@ -533,84 +422,41 @@ function BankReader() {
 		return bar;
 	}
 
-	this.readInner = function (buffer, scrollbar, tab) {
-		// create off-screen canvas element
-		var canvas = document.createElement('canvas'),
-		ctx = canvas.getContext('2d');
-
-		canvas.width = buffer.width;
-		canvas.height = buffer.height;
-
-		// create imageData object
-		var idata = ctx.createImageData(buffer.width, buffer.height);
-
-		// set our buffer as source
-		idata.data.set(buffer.data);
-
-		// update canvas with new data
-		ctx.putImageData(idata, 0, 0);
-		var dataUri = canvas.toDataURL(); // produces a PNG file
-		console.log(dataUri);
-
-		var tabspaces = (tab == 0 ? findTabSpaces(buffer) : []);
+	this.readInner = function (buffer, scrollbar) {
+		var tabspaces = findTabSpaces(buffer);
 		me.state.slots = [];
 		me.state.tabspaces = tabspaces;
-		me.state.rowoffset = -1;
 		me.state.pxoffset = -1;
 		me.state.tooltip = null;
 		me.state.allslotsvalid = true;
 
-		if (!me.state.tabs[tab]) {
-			var tabname = (tab == 0 ? "all" : "tab " + tab);
-			me.state.tabs[tab] = { name: tabname, rows: [], tabspaces: [], height: (scrollbar ? scrollbar.scrollheight : me.pos.inner.h) };
+		if (!me.state.tabs[0]) {
+			me.state.tabs[0] = { name: "", rows: [], tabspaces: [], height: (scrollbar ? scrollbar.scrollheight : me.pos.inner.h) };
 		}
 
-		//==== find the y offset of the first row ====
-		// if (tabspaces.length != 0) {
-		// 	if (tabspaces[0].y - 6 - slotsize >= -5) { me.state.pxoffset = (tabspaces[0].y - 6 + 5) % slotsize - 5; }
-		// 	else { me.state.pxoffset = (tabspaces[0].y + 9); }
-		// }
-		if (!me.state.scrollbar) { me.state.pxoffset = 1; }
-		else {
-			var a = me.getRowOffset(buffer);
-			if (a != null) { me.state.pxoffset = a % slotsize; }
-			else { me.message("Need at least one item with a stack amount in the screen to be able to read the icons"); return false; }
-		}
-
-		//==== check if we know the exact scroll offset ====
-		if (tab != 0) { me.state.rowoffset = Math.round((me.state.rawscrolltop + me.state.pxoffset) / slotsize); }
-		else if (!me.state.scrollbar) { me.state.rowoffset = 0; }
-		// else if (tabspaces.length != 0) {
-		// 	var ntabs = (tabspaces[0].y < me.state.pxoffset ? tabspaces[0].tabnr : tabspaces[0].tabnr - 1);
-		// 	me.state.rowoffset = Math.round((me.state.scrollbar.scrolltop - ntabs * 15) / slotsize);
-		// }
-		else {
-			me.message("Unknown rowoffset");
-		}
+		var a = me.getRowOffset(buffer);
+		if (a != null) { me.state.pxoffset = a % slotsize; }
+		else { me.message("Need at least one item with a stack amount in the screen to be able to read the icons"); return false; }
 
 		me.state.rows = [];
 		me.state.slots = [];
 		for (var rowy = me.state.pxoffset; rowy + slotsize < me.pos.inner.h + 5; rowy += slotsize) {
 			//find any matching rows
 			var matchrow = null;
-			for (var a = 0; a < me.state.tabs[tab].rows.length; a++) {
-				if (Math.abs(me.state.tabs[tab].rows[a].scrolly - rowy - me.state.rawscrolltop) <= me.config.maxrowcombinedist) {
-					matchrow = me.state.tabs[tab].rows[a];
+			for (var a = 0; a < me.state.tabs[0].rows.length; a++) {
+				if (Math.abs(me.state.tabs[0].rows[a].scrolly - rowy - me.state.rawscrolltop) <= me.config.maxrowcombinedist) {
+					matchrow = me.state.tabs[0].rows[a];
 				}
 			}
 
 			//make and combine new row
 			var tabrow = { y: rowy, scrolly: rowy + me.state.rawscrolltop, slots: [] };
-			if (!matchrow) { me.state.tabs[tab].rows.push(tabrow); }
+			if (!matchrow) { me.state.tabs[0].rows.push(tabrow); }
 			me.state.rows.push(tabrow);
 			for (var column = 0; column < me.pos.columns; column++) {
 				var slot = matchrow ? matchrow.slots[column] : null;
 				if (!slot) {
 					var hasborder = false;
-					if (tab != 0 && column == 0 && rowy + me.state.rawscrolltop < 10) { hasborder = true; }
-					else if (tab == 0 && column == 0 && tabspaces.find(function (space) { return rowy - 30 < space.y && rowy > space.y; })) {
-						hasborder = true;
-					}
 					slot = new ItemSlot(hasborder);
 				}
 				me.state.slots.push(slot);
@@ -618,7 +464,7 @@ function BankReader() {
 			}
 
 			//check if we have to skip a tabseperator for next row
-			if (tabspaces.find(function (space) { return rowy + 80 + slotsize == space.y })) {
+			if (tabspaces.find(function (space) { return rowy + 78 + slotsize == space.y })) {
 				rowy += 20;
 			}
 		}
@@ -626,14 +472,14 @@ function BankReader() {
 		//add tabspaces
 		for (var a = 0; a < tabspaces.length; a++) {
 			var tabmatch = false;
-			for (var b = 0; b < me.state.tabs[tab].tabspaces.length; b++) {
-				if (Math.abs(me.state.tabs[tab].tabspaces[b].scrolly - tabspaces[a].y - me.state.rawscrolltop) <= me.config.maxrowcombinedist) {
+			for (var b = 0; b < me.state.tabs[0].tabspaces.length; b++) {
+				if (Math.abs(me.state.tabs[0].tabspaces[b].scrolly - tabspaces[a].y - me.state.rawscrolltop) <= me.config.maxrowcombinedist) {
 					tabmatch = true;
 					break;
 				}
 			}
 			if (!tabmatch) {
-				me.state.tabs[tab].tabspaces.push({
+				me.state.tabs[0].tabspaces.push({
 					y: tabspaces[a].y,
 					scrolly: tabspaces[a].y + me.state.rawscrolltop,
 					tabnr: tabspaces[a].tabnr
@@ -673,22 +519,21 @@ function BankReader() {
 
 	me.getRowOffset = function (buffer) {
 		for (var bankx = 0; bankx < 10; bankx++) {
-			var previousyellow = 0;
 			for (var imgy = 0; imgy < me.pos.inner.h - 10; imgy++) {
 				var yellow = 0;
 				for (var imgdx = 0; imgdx < 5; imgdx++) {
-					var i = 4 * (me.pos.inner.x - me.pos.area.x + bankx * 44 + 12 + imgdx) + 4 * buffer.width * (imgy + me.pos.inner.y - me.pos.area.y);
+					var i = 4 * (me.pos.inner.x - me.pos.area.x + bankx * 44 + 13 + imgdx) + 4 * buffer.width * (imgy + me.pos.inner.y - me.pos.area.y);
 					if (isNumberCol(buffer.data, i)) { yellow++; }
 				}
 
-				if (yellow != 0 || previousyellow == 0) {
-					previousyellow = yellow;
+				if (yellow == 0) {
 					continue;
 				}
-				previousyellow = yellow;
 
-				var amount = readAmount(buffer, me.pos.inner.x - me.pos.area.x + bankx * 44 + 12, me.pos.inner.y - me.pos.area.y + imgy - 8);
-				if (amount) { return imgy - 8 - 4; }
+				var amount = readAmount(buffer, me.pos.inner.x - me.pos.area.x + bankx * 44 + 13, me.pos.inner.y - me.pos.area.y + imgy);
+				if (amount) {
+					return imgy - 3; // Small offset to get image centered
+				}
 			}
 		}
 		return null;
@@ -1113,52 +958,11 @@ function BankReader() {
 			return -1;
 		}
 
-		
-		// // create off-screen canvas element
-		// var canvas = document.createElement('canvas'),
-		// ctx = canvas.getContext('2d');
-
-		// canvas.width = buffer.width;
-		// canvas.height = buffer.height;
-
-		// // create imageData object
-		// var idata = ctx.createImageData(buffer.width, buffer.height);
-
-		// // set our buffer as source
-		// idata.data.set(buffer.data);
-
-		// // update canvas with new data
-		// ctx.putImageData(idata, 0, 0);
-		// var dataUri = canvas.toDataURL(); // produces a PNG file
-
-		// console.log(dataUri);
-		// console.log(buffer.data.toString());
-
 		while (anymatch && dx < slotsize) {
 			anymatch = false;
 			for (var a = 0; a < BankReader.itemnumbers.buffers.length; a++) {
 				var buf = BankReader.itemnumbers.buffers[a];
 				var match = true;
-
-		// 				// create off-screen canvas element
-		// var canvas = document.createElement('canvas'),
-		// ctx = canvas.getContext('2d');
-
-		// canvas.width = buf.width;
-		// canvas.height = buf.height;
-
-		// // create imageData object
-		// var idata = ctx.createImageData(buf.width, buf.height);
-
-		// // set our buffer as source
-		// idata.data.set(buf.data);
-
-		// // update canvas with new data
-		// ctx.putImageData(idata, 0, 0);
-		// var dataUri = canvas.toDataURL(); // produces a PNG file
-
-		// console.log(dataUri);
-		// // console.log(buffer.data.toString());
 
 				for (var x = 0; x < buf.width; x++) {
 					if (ox + dx + x >= buffer.width && x > 2) {

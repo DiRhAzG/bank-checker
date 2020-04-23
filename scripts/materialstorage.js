@@ -53,19 +53,14 @@ function MaterialsReader() {
 	var slotsize = 36;
 	var iconsize = 36;
 
-	var backcolor = [30, 49, 70];
-	var backcolorlegacy = [62, 53, 40];
-
 	this.find = function (img, clearSlots) {
 		if (!img) { img = a1lib.bindfullrs(); }
 
-		//==== find bank ====
-		//TODO ditch the interfacereader structure
+		//==== Find Material Storage ====
 
 		var botright = a1lib.findsubimg(img, MaterialsReader.botright);
 		var topleft = a1lib.findsubimg(img, MaterialsReader.topleft);
 		if (botright.length == 0 || topleft.length == 0) {
-			// me.message("Couldn't find Material Storage interface");
 			return false;
 		}
 		var loc = { x: topleft[0].x, y: topleft[0].y, width: -1, height: -1 };
@@ -86,17 +81,17 @@ function MaterialsReader() {
 			scrollbar: null,
 		};
 		var storageinner = {
-			x: storagearea.x + 15,
-			y: storagearea.y + 22,
-			w: storagearea.w - 12,
-			h: storagearea.h - 80
+			x: storagearea.x + 12,
+			y: storagearea.y + 18,
+			w: storagearea.w - 6,
+			h: storagearea.h - 78
 		};
 
 		//==== initial run ====
 		me.pos = {
 			area: storagearea,
 			inner: storageinner,
-			columns: Math.floor(storageinner.w / 40),
+			columns: Math.floor(storageinner.w / 43),
 			legacy: false
 		};
 		me.message("Material Storage inner at " + me.pos.inner.x + "," + me.pos.inner.y  + "," + me.pos.inner.w  + "," +  me.pos.inner.h);
@@ -104,12 +99,9 @@ function MaterialsReader() {
 		if (!me.state) {
 			me.state = {
 				slots: [],
-				tab: null,
 				tabs: [],
-				tabspaces: [],
 				rows: [],
 				scrollbar: null,
-				rowoffset: -1,
 				pxoffset: -1,
 				rawscrolltop: 0,
 				tooltip: null,
@@ -156,17 +148,15 @@ function MaterialsReader() {
 		}
 
 		//=== find bank state ===
-		var tab = me.readTabNr(img);
 		var scrollbar = me.readScrollbar(img, me.state && me.state.scrollbar);
 
 		//check if we are looking at a new screen
 		var scrollchanged = (!(me.state.rawscrolltop == 0 && !scrollbar) && me.state.rawscrolltop != scrollbar.scrolltop);
-		var tabchanged = me.state.tab != tab;
 		var loadretry = false;
 		if (scrollchanged) {
 			me.state.lastScroll = Date.now();
 		}
-		if (tabchanged || scrollchanged) {
+		if (scrollchanged) {
 			me.state.firstscan = Date.now();
 			me.state.scanretried = 0;
 		}
@@ -176,22 +166,22 @@ function MaterialsReader() {
 		}
 
 		//update bank state with what we know
-		me.state.tab = tab;
 		me.state.scrollbar = scrollbar;
 		me.state.rawscrolltop = (scrollbar && scrollbar.scrolltop) || 0;
 
 		//check if the state changed enough to read the items again
-		if (forceread || tabchanged || scrollchanged || loadretry || !me.state.allslotsvalid || !window.alt1) {
+		if (forceread || scrollchanged || loadretry || !me.state.allslotsvalid || !window.alt1) {
 			var buffer = img.toData(me.pos.area.x, me.pos.area.y, me.pos.area.w, me.pos.area.h);
 			qw(new Date().toLocaleTimeString(), "reading bank images");
-			if (me.readInner(buffer, scrollbar, tab)) {
+			if (me.readInner(buffer, scrollbar)) {
 				me.readItems(buffer);
 				calculateMats();
 				changed = true;
 			}
 		}
+
 		//scroll didnt change, add reads that needed this confirmation
-		if (me.state && !tabchanged && !scrollchanged) {
+		if (me.state && !scrollchanged) {
 			for (var a = hoverwaiting.length - 1; a >= 0; a--) {
 				if (!me.tooltipIntersect(hoverwaiting[a].slot, me.tooltipState && me.tooltipState.area, 10)) {
 					if (me.confirmItem(hoverwaiting[a].slot, img)) {
@@ -211,18 +201,6 @@ function MaterialsReader() {
 		return me.state;
 	}
 
-	this.readTabNr = function (img) {
-		var x = 55;
-		//TODO get exact bound width
-		for (var tabnr = 0; tabnr * 48 + 48 < this.pos.area.w; tabnr++) {
-			var pixel = img.toData(me.pos.area.x + 54 + 7 * tabnr, me.pos.area.y + 13, 1, 1);
-			var sum = pixel.data[0] + pixel.data[1] + pixel.data[2];
-			if (sum > 400) { return tabnr + 1; }
-			if (sum < 200) { break }
-		}
-		return 0;
-	}
-
 	var isNumberCol = function (data, i) {
 		var r =
 			data[i] == 255 && data[i + 1] == 255 && data[i + 2] == 0 ||//yellow (1)
@@ -238,24 +216,26 @@ function MaterialsReader() {
 		var clone = img.toData(backx + imgx, backy + imgy, 36, 32);
 		var data = clone.data;
 
-				// create off-screen canvas element
-				var canvas = document.createElement('canvas'),
-				ctx = canvas.getContext('2d');
-		
-				canvas.width = 36;
-				canvas.height = 32;
-		
-				// create imageData object
-				var idata = ctx.createImageData(36, 32);
-		
-				// set our buffer as source
-				idata.data.set(data);
-		
-				// update canvas with new data
-				ctx.putImageData(idata, 0, 0);
-				var dataUri = canvas.toDataURL(); // produces a PNG file
-		
-				console.log(dataUri);
+		if (!window.alt1 || localStorage.showImageData == "true") {
+			// create off-screen canvas element
+			var canvas = document.createElement('canvas'),
+			ctx = canvas.getContext('2d');
+	
+			canvas.width = 36;
+			canvas.height = 32;
+	
+			// create imageData object
+			var idata = ctx.createImageData(36, 32);
+	
+			// set our buffer as source
+			idata.data.set(data);
+	
+			// update canvas with new data
+			ctx.putImageData(idata, 0, 0);
+			var dataUri = canvas.toDataURL(); // produces a PNG file
+	
+			console.log(dataUri);
+		}
 
 		return clone;
 	}
@@ -290,7 +270,7 @@ function MaterialsReader() {
 		var hadempty = false;
 		var bufref = new ImgRefData(buffer, new Rect(0, 0, buffer.width, buffer.height));
 		for (var bankx = 0; bankx < me.pos.columns; bankx++) {
-			var imgx = me.pos.inner.x - me.pos.area.x + bankx * (slotsize + 7) + 7; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
+			var imgx = me.pos.inner.x - me.pos.area.x + bankx * (slotsize + 7) + 10; // Inner bank x - outer bank x + bankx which is the current column * size of each slot in the row
 			for (var banky = 0; banky < me.state.rows.length; banky++) {
 				var slot = me.state.slots[bankx + banky * me.pos.columns];
 				var imgy = me.pos.inner.y - me.pos.area.y + me.state.rows[banky].y;
@@ -310,68 +290,15 @@ function MaterialsReader() {
 					continue;
 				}
 
-					// // create off-screen canvas element
-					// var canvas = document.createElement('canvas'),
-					// ctx = canvas.getContext('2d');
-			
-					// canvas.width = buffer.width;
-					// canvas.height = buffer.height;
-			
-					// // create imageData object
-					// var idata = ctx.createImageData(buffer.width, buffer.height);
-			
-					// // set our buffer as source
-					// idata.data.set(buffer.data);
-			
-					// // update canvas with new data
-					// ctx.putImageData(idata, 0, 0);
-					// var dataUri = canvas.toDataURL(); // produces a PNG file
-			
-					// console.log(dataUri);
-
 				var transbuf = readbuffer(bufref, slot, imgx, imgy, 0, 0);
-				// // create off-screen canvas element
-				// 	var canvas = document.createElement('canvas'),
-				// 	ctx = canvas.getContext('2d');
-			
-				// 	canvas.width = 35;
-				// 	canvas.height = 31;
-			
-				// 	// create imageData object
-				// 	var idata = ctx.createImageData(36, 21);
-			
-				// 	// set our buffer as source
-				// 	idata.data.set(transbuf.data);
-			
-				// 	// update canvas with new data
-				// 	ctx.putImageData(idata, 0, 0);
-				// 	var dataUri = canvas.toDataURL(); // produces a PNG file
-			
-				// 	console.log(dataUri);
 																 
 				slot.setBuffer(transbuf);
-				
-				// const canvas = document.getElementById('myCanvas');
-				// const ctx = canvas.getContext('2d');
-
-				// const diff = ctx.createImageData(36, 21);
-				
-				// let img = new Image();
-				// img.src = imgData;
-				// let imgToCompare = img.toBuffer();
-
-				// var data = pixelmatch(imgToCompare.data, slot.buffer.data, null, 36, 32, {threshold: 0.1});
-
-				// if (data < 100) {
-				// 	console.log("Nosorog! Sculpture");
-				// }
-				// console.log(data);
-				// ctx.putImageData(diff, 0, 0);
-
 
 				let itemName = compareMats(slot);
 
-				console.log(itemName);
+				if (!window.alt1 || localStorage.showImageData == "true") {
+					console.log(itemName);
+				}
 
 				if (itemName == "Blank Slot") {
 					break;
@@ -381,21 +308,18 @@ function MaterialsReader() {
 					if (!slot.imginfo.empty) { allvalid = false; }
 					else { hadempty = true; }
 				}
-				
-			
-					var x = slot.readinfo.x + me.pos.area.x;
-					var y = slot.readinfo.y + me.pos.area.y;
-					var t = me.config.timers.overlay + 500;
-					var backcolor = a1lib.mixcolor(255, 0, 0);
-					//alt1.overLayRect(backcolor, imgx, imgy, 36, 32, 60000, 1);
-					// ctx.beginPath();
-					// ctx.rect(x, y, 36, 32);
-					// ctx.stroke();
-				// if (bankx == 0 && banky == 0)
-				//  {
-				// 	qw(x + " | " + y + " | " + imgx + " | " + imgy);
-				// 	qw(me.pos.area.x + " | " + me.pos.area.y + " | " + slot.readinfo.x + " | " + slot.readinfo.y);
-				//  }
+							
+				var x = slot.readinfo.x + me.pos.area.x;
+				var y = slot.readinfo.y + me.pos.area.y;
+				var backcolor = a1lib.mixcolor(255, 0, 0);
+
+				if (window.alt1 && localStorage.highlightSlots == "true") {
+					alt1.overLayRect(backcolor, x, y, 34, 34, 2000, 1);
+				}
+
+				// ctx.beginPath();
+				// ctx.rect(x, y, 36, 32);
+				// ctx.stroke();
 			}
 		}
 		me.state.allslotsvalid = allvalid;
@@ -491,87 +415,46 @@ function MaterialsReader() {
 		return bar;
 	}
 
-	this.readInner = function (buffer, scrollbar, tab) {
-		var tabspaces = [];//(tab == 0 ? findTabSpaces(buffer) : []);
+	this.readInner = function (buffer, scrollbar) {
 		me.state.slots = [];
-		me.state.tabspaces = tabspaces;
-		me.state.rowoffset = -1;
 		me.state.pxoffset = -1;
 		me.state.tooltip = null;
 		me.state.allslotsvalid = true;
 
-		if (!me.state.tabs[tab]) {
-			var tabname = (tab == 0 ? "all" : "tab " + tab);
-			me.state.tabs[tab] = { name: tabname, rows: [], tabspaces: [], height: (scrollbar ? scrollbar.scrollheight : me.pos.inner.h) };
+		if (!me.state.tabs[0]) {
+			me.state.tabs[0] = { name: "", rows: [], tabspaces: [], height: (scrollbar ? scrollbar.scrollheight : me.pos.inner.h) };
 		}
 
-		//==== find the y offset of the first row ====
-		if (tabspaces.length != 0) {
-			if (tabspaces[0].y - 6 - slotsize >= -5) { me.state.pxoffset = (tabspaces[0].y - 6 + 5) % slotsize - 5; }
-			else { me.state.pxoffset = (tabspaces[0].y + 9); }
+		var a = me.getRowOffset(buffer);
+		if (a != null) {
+			me.state.pxoffset = (a % slotsize) + 4;
 		}
-		else if (!me.state.scrollbar) { me.state.pxoffset = 4; }
-		else {
-			var a = me.getRowOffset(buffer);
-			if (a != null) {
-                me.state.pxoffset = (a % slotsize) + 4;
-            }
-			else { me.message("Need at least one item with a stack amount in the screen to be able to read the icons"); return false; }
-		}
-
-		//==== check if we know the exact scroll offset ====
-		if (tab != 0) { me.state.rowoffset = Math.round((me.state.rawscrolltop + me.state.pxoffset) / slotsize); }
-		else if (!me.state.scrollbar) { me.state.rowoffset = 0; }
-		else if (tabspaces.length != 0) {
-			var ntabs = (tabspaces[0].y < me.state.pxoffset ? tabspaces[0].tabnr : tabspaces[0].tabnr - 1);
-			me.state.rowoffset = Math.round((me.state.scrollbar.scrolltop - ntabs * 15) / slotsize);
-		}
-		else {
-			me.message("Unknown rowoffset");
-		}
+		else { me.message("Need at least one item with a stack amount in the screen to be able to read the icons"); return false; }
 
 		me.state.rows = [];
 		me.state.slots = [];
 		for (var rowy = me.state.pxoffset; rowy + slotsize < me.pos.inner.h + 5; rowy += slotsize) {
 			//find any matching rows
 			var matchrow = null;
-			for (var a = 0; a < me.state.tabs[tab].rows.length; a++) {
-				if (Math.abs(me.state.tabs[tab].rows[a].scrolly - rowy - me.state.rawscrolltop) <= me.config.maxrowcombinedist) {
-					matchrow = me.state.tabs[tab].rows[a];
+			for (var a = 0; a < me.state.tabs[0].rows.length; a++) {
+				if (Math.abs(me.state.tabs[0].rows[a].scrolly - rowy - me.state.rawscrolltop) <= me.config.maxrowcombinedist) {
+					matchrow = me.state.tabs[0].rows[a];
 				}
 			}
 
 			//make and combine new row
 			var tabrow = { y: rowy, scrolly: rowy + me.state.rawscrolltop, slots: [] };
-			if (!matchrow) { me.state.tabs[tab].rows.push(tabrow); }
+			if (!matchrow) { me.state.tabs[0].rows.push(tabrow); }
 			me.state.rows.push(tabrow);
 			for (var column = 0; column < me.pos.columns; column++) {
 				var slot = matchrow ? matchrow.slots[column] : null;
 				if (!slot) {
 					var hasborder = false;
-					if (tab != 0 && column == 0 && rowy + me.state.rawscrolltop < 10) { hasborder = true; }
-					else if (tab == 0 && column == 0 && tabspaces.find(function (space) { return rowy - 30 < space.y && rowy > space.y; })) {
-						hasborder = true;
-					}
 					slot = new ItemSlot(hasborder);
 				}
 				me.state.slots.push(slot);
 				tabrow.slots[column] = slot;
 			}
-
-			//check if we have to skip a tabseperator for next row
-			if (tabspaces.find(function (space) { return rowy + slotsize / 2 < space.y && rowy + slotsize / 2 * 3 > space.y + 15; })) {
-				rowy += 15;
-			}
-		}
-
-		//add tabspaces
-		for (var a = 0; a < tabspaces.length; a++) {
-			var tabmatch = false;
-			for (var b = 0; b < me.state.tabs[tab].tabspaces.length; b++) {
-				if (Math.abs(me.state.tabs[tab].tabspaces[b].scrolly - tabspaces[a].y - me.state.rawscrolltop) <= me.config.maxrowcombinedist) { tabmatch = true; break; }
-			}
-			if (!tabmatch) { me.state.tabs[tab].tabspaces.push({ y: tabspaces[a].y, scrolly: tabspaces[a].y + me.state.rawscrolltop, tabnr: tabspaces[a].tabnr }); }
 		}
 
 		//find possible tooltips
@@ -606,34 +489,25 @@ function MaterialsReader() {
 
 	me.getRowOffset = function (buffer) {
 		for (var bankx = 0; bankx < 10; bankx++) {
-			var previousyellow = 0;
 			for (var imgy = 0; imgy < me.pos.inner.h - 10; imgy++) {
 				var yellow = 0;
 				for (var imgdx = 0; imgdx < 5; imgdx++) {
-					var i = 4 * (me.pos.inner.x - me.pos.area.x + bankx * 43 + 10 + imgdx) + 4 * buffer.width * (imgy + me.pos.inner.y - me.pos.area.y);
+					var i = 4 * (me.pos.inner.x - me.pos.area.x + bankx * 43 + 13 + imgdx) + 4 * buffer.width * (imgy + me.pos.inner.y - me.pos.area.y);
 					if (isNumberCol(buffer.data, i)) { yellow++; }
 				}
 
-				if (yellow != 0 || previousyellow == 0) {
-					previousyellow = yellow;
+				if (yellow == 0) {
 					continue;
 				}
-				previousyellow = yellow;
 
-				var amount = readAmount(buffer, me.pos.inner.x - me.pos.area.x + bankx * 43 + 10, me.pos.inner.y - me.pos.area.y + imgy - 8);
-				if (amount) { return imgy - 8 - 5; }
+				var amount = readAmount(buffer, me.pos.inner.x - me.pos.area.x + bankx * 43 + 13, me.pos.inner.y - me.pos.area.y + imgy);
+				
+				if (amount) {
+					return imgy - 5; // Small offset to get image centered
+				}
 			}
 		}
 		return null;
-	}
-	var findTabSpaces = function (buffer) {
-		var locs = a1lib.findsubimg(buffer, MaterialsReader.tabsep, null, 8, me.pos.inner.y - me.pos.area.y, 7, me.pos.inner.h);
-		var r = [];
-		for (var a = 0; a < locs.length; a++) {
-			var n = readAmount(buffer, locs[a].x + 21, locs[a].y);
-			r.push({ y: locs[a].y - (me.pos.inner.y - me.pos.area.y) + 1, tabnr: +n - 1 });
-		}
-		return r;
 	}
 
 	me.allTabSlots = function (tab) {

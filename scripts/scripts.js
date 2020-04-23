@@ -20,12 +20,20 @@ window.onload = () => {
 	settab(0);
 	getPrices();
 
-	if (window.alt1 && localStorage.getItem("prayer") === "true") {
-		$(".prayer").prop("checked", true)
-		buffreader.track();
-	}
+	if (window.alt1) {
+		if (localStorage.getItem("prayer") === "true") {
+			$(".prayer").prop("checked", true)
+			buffreader.track();
+		}
 
-	if (!window.alt1) {
+		if (localStorage.getItem("showImageData") === "true") {
+			$(".showImageData").prop("checked", true)
+		}
+		
+		if (localStorage.getItem("highlightSlots") === "true") {
+			$(".highlightSlots").prop("checked", true)
+		}
+	} else {
 		setTimeout(start, 1000);
 	}
 };
@@ -46,8 +54,8 @@ function start() {
 		toggleTrack();
 	} else {
 		//pasteBuffBar("http://localhost:8080/images/buffbar2.png");
-		pasteExample("http://localhost:8080/images/tabs2.png");
-		//matImageFromFile("http://localhost:8080/images/testmats1.png");
+		//pasteExample("http://localhost:8080/images/tabs2.png");
+		matImageFromFile("http://localhost:8080/images/mats2.png");
 	}
 }
 
@@ -868,6 +876,14 @@ $(function () {
 			buffreader.stopTrack();
 			alt1.setTooltip("");
 		}
+	})
+
+	$(".showImageData").change(function () {
+		localStorage.showImageData = $(this).is(":checked");
+	})
+
+	$(".highlightSlots").change(function () {
+		localStorage.highlightSlots = $(this).is(":checked");
 	})
 
 	$(".refreshPrices").click(function () {

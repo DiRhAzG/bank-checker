@@ -219,3 +219,17 @@ input {
     font-weight: bolder;
     text-align: center;
 }
+
+.settings-header {
+    position: relative;
+    width: 80%;
+    text-align: right;
+}
+
+.settings-checkbox {
+    position: relative;
+    width: 20%;
+    padding-top: 3px;
+    padding-left: 15px;
+    text-align: left;
+}

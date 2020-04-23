@@ -891,7 +891,7 @@ $(function () {
 	});
 
 	$(".tracker").click(function () {
-		if ($(this).html().trim() === "Start") {
+		if ($(this).html().trim() === "Start Tracking") {
 			console.log("Starting tracker");
 			setTimeout(start, 1000);
 			$(this).html("Stop Tracking");

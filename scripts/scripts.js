@@ -270,10 +270,7 @@ function clickSlot(slot, el, container) {
 }
 
 function toggleTrack() {
-	if (reader.tracking) {
-		reader.stopTrack();
-	}
-	else {
+	if (!reader.tracking) {
 		if (window.alt1) {
 			if (!reader.pos) {
 				if (!reader.find()) {
@@ -284,10 +281,7 @@ function toggleTrack() {
 		}
 	}
 
-	if (matreader.tracking) {
-		matreader.stopTrack();
-	}
-	else {
+	if (!matreader.tracking) {
 		if (window.alt1) {
 			if (!matreader.pos) {
 				if (!matreader.find()) {

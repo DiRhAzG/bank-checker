@@ -47,12 +47,7 @@ function start() {
 	// bankUI.draw();
 
 	if (window.alt1) {
-		reader.find(undefined, true);
-		reader.read(undefined, true);
 		toggleBankTrack();
-
-		matreader.find(undefined, true);
-		matreader.read(undefined, true);
 		toggleMaterialTrack();
 	} else {
 		//pasteBuffBar("http://localhost:8080/images/buffbar2.png");

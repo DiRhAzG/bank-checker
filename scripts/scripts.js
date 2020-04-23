@@ -38,7 +38,7 @@ window.onload = () => {
 	}
 };
 
-$("button.tracker").click(function () {
+$(".tracker").click(function () {
 	if ($(this).html().trim() === "Start") {
 		console.log("Starting tracker");
 		setTimeout(start, 1000);

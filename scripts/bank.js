@@ -779,6 +779,7 @@ function BankReader() {
 		me.read();
 	}
 	var tooltipTick = function () {
+		if (!me.pos) { return; }
 		var mp = a1lib.mousePosition();
 
 		var inbank = (mp.x >= me.pos.inner.x && mp.x <= me.pos.inner.x + me.pos.inner.w && mp.y >= me.pos.inner.y && mp.y <= me.pos.inner.y + me.pos.inner.h);

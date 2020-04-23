@@ -894,10 +894,10 @@ $(function () {
 		if ($(this).html().trim() === "Start") {
 			console.log("Starting tracker");
 			setTimeout(start, 1000);
-			$(this).html("Stop");
+			$(this).html("Stop Tracking");
 		} else {
 			console.log("Stopping tracker");
-			$(this).html("Start");
+			$(this).html("Start Tracking");
 			stop();
 		}
 	})

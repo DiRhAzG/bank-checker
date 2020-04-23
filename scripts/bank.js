@@ -775,11 +775,19 @@ function BankReader() {
 		me.tracking = false;
 	}
 	var trackTick = function () {
-		if (!me.pos) { return; }
+		if (!me.pos) {
+			if (!me.find()) {
+				return;
+			}
+		}
 		me.read();
 	}
 	var tooltipTick = function () {
-		if (!me.pos) { return; }
+		if (!me.pos) {
+			if (!me.find()) {
+				return;
+			}
+		}
 		var mp = a1lib.mousePosition();
 
 		var inbank = (mp.x >= me.pos.inner.x && mp.x <= me.pos.inner.x + me.pos.inner.w && mp.y >= me.pos.inner.y && mp.y <= me.pos.inner.y + me.pos.inner.h);

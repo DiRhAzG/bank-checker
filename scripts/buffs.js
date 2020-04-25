@@ -135,7 +135,7 @@ function BuffReader() {
 			time = 300;
 		}
 
-		return time;
+		return time + 5;
 	}
 	
 	let isNumberCol = function (data, i) {
